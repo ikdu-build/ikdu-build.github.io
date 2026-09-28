@@ -3,7 +3,7 @@
   const PROJECTS = {
     "polysh":  { name:"Polysh", sub:"Nail salon · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Salon", Scope:"Full fit-out + furniture", Year:"2025" },
-                 intro:"Built from bare concrete to opening day, and everything inside except the chairs: the terracotta walls and arched niches, the vaulted massage room, the chain curtains, the sphere, the custom light fixtures, the reception desk and every manicure table.",
+                 intro:"From bare concrete to the furniture — all made to measure.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
     "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
@@ -40,7 +40,7 @@
   const PROJECTS_AR = {
     "polysh":      { name:"Polysh", sub:"صالون أظافر · أركان، الجيزة",
                      facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · صالون", "الشغل":"تشطيب وتجهيز كامل + الفرش", "السنة":"2025" },
-                     intro:"اتبنى من الخرسانة لحد يوم الافتتاح، وكل حاجة جوه ما عدا الكراسي: حيطان التيراكوتا والنيشات المقوّسة، أوضة المساج المقبّبة، ستاير السلاسل، المجسّم الكروي، وحدات الإضاءة المعمولة مخصوص، مكتب الاستقبال، وكل ترابيزات المانيكير." },
+                     intro:"من الخرسانة لحد الفرش — كله معمول على المقاس." },
     "s-roof":      { name:"روف سوديك", sub:"روف · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · روف", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"من الخرسانة لحد قعدة برّه كاملة: برجولة خشب بيتش باين، وكنبة وبار وكاونتر وحوض بيلت إن وترابيزة دوّارة، كلهم تيرازو اتصبّ في الموقع." },

@@ -3,7 +3,7 @@ const H = window.IKDU_AR ? {
   info: { "polysh": ["Polysh", "صالون أظافر · أركان، الجيزة"], "s-roof": ["روف سوديك", "روف · سوديك كورتيارد، الجيزة"],
           "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "twin-villas": ["الفيلتين التوأم", "فيلتين · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "كل المشاريع", jumpNav: "أقسام المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
-  view: "شوف المشروع &larr;", tagline: "مقاولات وتشطيبات في مصر كلها… من على المحارة لحد ما تستلم مكانك جاهز."
+  view: "شوف المشروع &larr;", tagline: "مقاولات وتشطيبات في مصر كلها… من الخرسانة لحد ما تستلم مكانك جاهز."
 } : {
   info: { "polysh": ["Polysh", "Nail salon · Arkan, Giza"], "s-roof": ["Sodic Rooftop", "Rooftop · Sodic Courtyard, Giza"],
           "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "twin-villas": ["Twin Villas", "Twin villas · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
