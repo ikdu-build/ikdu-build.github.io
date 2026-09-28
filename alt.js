@@ -40,6 +40,7 @@ window.IKDU_ALT = {
   "polysh/DSC02600.jpg": "Polysh waiting lounge: curved sofa, terracotta niche shelving, chain curtain and the \"You just got Polyshed\" sign",
   "polysh/20260510_215911-alcove.jpg": "Polysh massage room: the rounded terracotta alcove with the timber sink unit",
   "polysh/20260510_215836.jpg": "Polysh massage room: warm timber walls, lit ceiling and the Polysh sign",
+  "polysh/20260510_215941.jpg": "Polysh massage room reflected in a mirror wall: vaulted terracotta ceiling, two beds and a plant",
   "polysh/DSC02597.jpg": "Polysh manicure stations behind the terracotta shelving screen",
   "polysh/DSC02608.jpg": "Polysh reception: curved terracotta desk in front of a copper chain curtain with the Polysh sign",
   "polysh/DSC02619.jpg": "Polysh pedicure chairs and manicure stations with lit display shelves",

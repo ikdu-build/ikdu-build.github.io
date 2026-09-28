@@ -4,8 +4,8 @@
     "polysh":  { name:"Polysh", sub:"Nail salon · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Salon", Scope:"Full fit-out", Year:"2025" },
                  intro:"A nail salon built from bare concrete to opening day: terracotta walls, a curved reception desk, arched niches and warm linear lighting.",
-                 // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | massage room vault], storefront last (IMG_1862 removed)
-                 gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg"], "IMG_0959.jpg"] },
+                 // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width, storefront last (IMG_1862 removed)
+                 gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"], "IMG_0959.jpg"] },
     "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
                  intro:"From a steel frame and a view to an outdoor living room: white pergolas with oak battens, built-in seating with hidden LED and an outdoor kitchen.",
@@ -199,12 +199,10 @@
       });
     };
     // duo: each photo's width follows its shape (width ÷ height), so both end up exactly the same height
-    // and the row is never taller than 85% of the screen (it narrows and centres instead)
     const duoFit = im => {
       const f = im.closest(".duo-item"); if (!f || !im.naturalWidth) return;
       f.style.flexGrow = im.naturalWidth / im.naturalHeight;
-      const duo = f.parentElement, items = [...duo.children];
-      if (items.every(x => x.style.flexGrow)) duo.style.maxWidth = `calc(85vh * ${items.reduce((t, x) => t + +x.style.flexGrow, 0)} + ${16 * (items.length - 1)}px)`;
+      // (no height cap: the row's edges line up with the full-width photos above and below)
     };
     g.querySelectorAll(".duo-item img").forEach(im => im.complete ? duoFit(im) : im.addEventListener("load", () => duoFit(im), { once: true }));
     g.querySelectorAll("img").forEach(im => im.complete || im.addEventListener("load", evenPairs, { once: true }));
