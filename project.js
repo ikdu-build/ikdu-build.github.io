@@ -15,7 +15,7 @@
                  gallery:["DSC09787.jpg", "DSC00057.jpg", "DSC09885.jpg", "DSC00011.jpg"] },
     "m-villa": { name:"M-Villa", sub:"Villa interior · Mountain View, Tagamoa, Cairo", cover:"DSC09366.jpg",   // cover (Amr, 2026-09-28): the old first photo is also the "after" in before/after
                  facts:{ Location:"Mountain View, Tagamoa, Cairo", Type:"Residential · Villa", Scope:"Design + build", Year:"2026" },
-                 intro:"A raw concrete shell turned into a warm, calm home, designed and built by us. Open-book Italian marble runs across the floors, and the centrepiece is the staircase: marble treads, a full-height timber slat screen and hidden step lighting.",
+                 intro:"A raw concrete shell turned into a warm, calm home, designed and built by us. Open-book Italian marble runs across the floors, and the staircase has marble treads, a full-height timber slat screen and hidden step lighting.",
                  ba:[["20230917_135241.jpg","DSC09375.jpg"]],
                  detail:[["DSC09518.jpg","DSC09527.jpg","Hidden door · flush with the timber slat wall"],
                          ["DSC09530-HDR-2.jpg","DSC09538-HDR-1.jpg","Hidden bathroom storage · behind the mirror"]],
@@ -46,7 +46,7 @@
                      intro:"من الخرسانة لحد قعدة برّه كاملة: برجولة خشب بيتش باين، وكنبة وبار وكاونتر وحوض بيلت إن وترابيزة دوّارة، كلهم تيرازو اتصبّ في الموقع." },
     "m-villa":     { name:"M-Villa", sub:"تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة",
                      facts:{ "المكان":"ماونتن فيو، التجمع، القاهرة", "النوع":"سكني · فيلا", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
-                     intro:"هيكل خرسانة اتحوّل لبيت دافي وهادي، من تصميمنا وتنفيذنا. أرضيات رخام إيطالي أوبن بوك، وقلب الفيلا هو السلم: درجات رخام، ساتر شرائح خشب بطول الدور، وإضاءة مخفية في الدرج." },
+                     intro:"هيكل خرسانة اتحوّل لبيت دافي وهادي، من تصميمنا وتنفيذنا. أرضيات رخام إيطالي أوبن بوك، وسلم بدرجات رخام، ساتر شرائح خشب بطول الدور، وإضاءة مخفية في الدرج." },
     "twin-villas": { name:"الفيلتين التوأم", sub:"فيلتين · تشطيب كامل · ليجندا، الجيزة",
                      facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلتين توأم", "الشغل":"تشطيب كامل، جوّه وبرّه", "السنة":"2023 (الفيلا الأولى) · 2024 (التوأم)" },
                      intro:"تشطيب كامل لفيلتين عائليتين في ليجندا (الأولى هنا، والتانية قريب): باركيه هيرينجبون، مطبخ خشب كلاسيك، دريسنج روم، حمامات حجر، ومدخل حجر جديد." },
