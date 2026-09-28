@@ -4,8 +4,8 @@
     "polysh":  { name:"Polysh", sub:"Nail salon · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Salon", Scope:"Full fit-out", Year:"2025" },
                  intro:"A nail salon built from bare concrete to opening day: terracotta walls, a curved reception desk, arched niches and warm linear lighting.",
-                 // gallery in this exact order (Amr, 2026-09-28): wall close-up beside the massage room, storefront last
-                 gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", "IMG_1862.jpg", "20260510_215836.jpg", "IMG_0959.jpg"] },
+                 // gallery in this exact order (Amr, 2026-09-28): [lounge | wall close-up], [massage room wide | massage room tall], storefront last
+                 gallery:["DSC02645.jpg", "DSC02619.jpg", ["DSC02600.jpg", "IMG_1862.jpg"], ["20260510_215911.jpg", "20260510_215836.jpg"], "IMG_0959.jpg"] },
     "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
                  intro:"From a steel frame and a view to an outdoor living room: white pergolas with oak battens, built-in seating with hidden LED and an outdoor kitchen.",
@@ -172,8 +172,12 @@
     const g = document.getElementById("gallery");
     const orient = Object.fromEntries(all[key].map(x => [x.f, x.o]));
     const list = P.gallery || photos.filter(f => f !== cover && !compFiles.includes(f));   // a project can fix its own gallery order
-    const tall = list.filter(f => orient[f] === "P");
+    const tall = list.filter(f => typeof f === "string" && orient[f] === "P");
     list.forEach(f => {
+      if (Array.isArray(f)) {   // ["a.jpg", "b.jpg"] = side by side at the same height, neither cropped (any shapes, e.g. wide + tall)
+        g.insertAdjacentHTML("beforeend", `<div class="duo">${f.map(x => `<figure class="duo-item">${pic(x, { sizes: "(max-width:760px) 100vw, 60vw" })}</figure>`).join("")}</div>`);
+        return;
+      }
       let cls = "wide";
       if (orient[f] === "P") cls = tall.length % 2 && f === tall[tall.length - 1] ? "solo" : "";
       g.insertAdjacentHTML("beforeend", `<figure class="${cls}">${pic(f, { sizes: cls === "wide" ? "100vw" : "(max-width:760px) 100vw, 50vw" })}</figure>`);
@@ -183,7 +187,7 @@
     // Two tall photos side by side end at the same line (Amr, 2026-09-28): both get the shorter photo's shape,
     // the taller one is cropped from the bottom. One column (phones): photos keep their own shape.
     const evenPairs = () => {
-      const figs = [...g.querySelectorAll("figure:not(.wide):not(.solo)")];
+      const figs = [...g.querySelectorAll("figure:not(.wide):not(.solo):not(.duo-item)")];
       figs.forEach(f => { f.style.aspectRatio = ""; f.classList.remove("crop"); });
       const rows = {};
       figs.forEach(f => (rows[f.offsetTop] ??= []).push(f));
@@ -194,6 +198,9 @@
         r.forEach(f => { f.style.aspectRatio = ar; f.classList.add("crop"); });
       });
     };
+    // duo: each photo's width follows its shape (width ÷ height), so both end up exactly the same height
+    const duoFit = im => { const f = im.closest(".duo-item"); if (f && im.naturalWidth) f.style.flexGrow = im.naturalWidth / im.naturalHeight; };
+    g.querySelectorAll(".duo-item img").forEach(im => im.complete ? duoFit(im) : im.addEventListener("load", () => duoFit(im), { once: true }));
     g.querySelectorAll("img").forEach(im => im.complete || im.addEventListener("load", evenPairs, { once: true }));
     evenPairs(); addEventListener("resize", evenPairs);
 

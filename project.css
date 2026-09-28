@@ -81,6 +81,9 @@
   .gallery figure.solo img { width:auto; max-width:100%; max-height:85vh; }
   .gallery img { width:100%; height:auto; display:block; transform:scale(1.08); transition:transform 1.8s ease; }
   .gallery figure.in img { transform:scale(1); }
+  /* duo: two photos side by side at the same height, uncropped (widths set from each photo's shape in project.js) */
+  .gallery .duo { grid-column:1 / -1; display:flex; gap:16px; align-items:flex-start; }
+  .gallery .duo figure { flex:1 1 0; min-width:0; }
   .gallery figure.crop picture { display:block; height:100%; }
   .gallery figure.crop img { height:100%; object-fit:cover; object-position:center top; }   /* pairs end together: crop the bottom of the taller photo */
 
@@ -98,6 +101,7 @@
     .intro { padding:0 16px; font-size:18px; margin:40px auto 64px; }
     .ba-wrap { padding:0 16px; }
     .gallery { grid-template-columns:1fr; gap:10px; padding:0 16px; }
+    .gallery .duo { flex-direction:column; gap:10px; } .gallery .duo figure { flex:none !important; width:100%; }   /* phones: stacked */
 
     .next h3 { font-size:38px; }
   }
