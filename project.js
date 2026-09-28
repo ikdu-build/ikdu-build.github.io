@@ -104,6 +104,10 @@
 
       document.querySelectorAll(".steps").forEach(el => {
         const imgs = el.querySelectorAll("img"), tabs = el.querySelectorAll("button"), dots = el.querySelectorAll(".dots span");
+        // a very wide finished (last) photo widens the frame, so shots like the Polysh shopfront aren't cut at the sides
+        const last = imgs[imgs.length - 1], frame = el.querySelector(".frame");
+        const shapeFrame = () => { const r = last.naturalWidth / last.naturalHeight; if (r > 1.5) frame.style.aspectRatio = r; };   // only wider than the usual 3:2
+        last.complete ? shapeFrame() : last.addEventListener("load", shapeFrame, { once: true });
         let i = 0, timer = null;
         const go = n => {
           i = n % 3;
