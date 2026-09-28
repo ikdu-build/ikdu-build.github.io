@@ -109,3 +109,13 @@
   .detail-row.two { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
   @media (max-width:760px) { .detail-row.two { grid-template-columns:1fr; gap:0; } }
   .ba-cap { text-align:center; font-size:12px; letter-spacing:.25em; text-transform:uppercase; margin:-10px 0 32px; opacity:.8; }
+
+  /* "3D concept" label on any render shown on a project page; link to the Concept -> Reality page (2026-09-29) */
+  .gallery figure { position:relative; }
+  .chip3d { position:absolute; top:12px; left:12px; background:var(--cream); color:#000; font-size:11px; letter-spacing:.15em; text-transform:uppercase; padding:6px 10px; line-height:1; }
+  [dir="rtl"] .chip3d { left:auto; right:12px; letter-spacing:0; font-size:13px; }
+  .concept-link { max-width:760px; margin:-56px auto 72px; padding:0 40px; font-size:12px; letter-spacing:.2em; text-transform:uppercase; }
+  .concept-link a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--camel); padding-bottom:3px; }
+  .concept-link a:hover { color:var(--brown); }
+  [dir="rtl"] .concept-link { letter-spacing:0; font-size:15px; }
+  @media (max-width:760px) { .concept-link { padding:0 16px; margin:-40px auto 56px; } }

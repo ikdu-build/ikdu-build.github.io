@@ -94,3 +94,9 @@
     .cards, .included, .steps4 { grid-template-columns:1fr; gap:16px; }
     .included { gap:20px; }
   }
+
+  /* Link to the Concept -> Reality page (2026-09-29) */
+  .concept-link { text-align:center; padding:72px 24px 0; font-size:12px; letter-spacing:.2em; text-transform:uppercase; }
+  .concept-link a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--camel); padding-bottom:3px; }
+  .concept-link a:hover { color:var(--brown); }
+  [dir="rtl"] .concept-link { letter-spacing:0; font-size:15px; }

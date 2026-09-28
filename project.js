@@ -58,9 +58,9 @@
   const DETAIL_AR = { "DSC09938.jpg": "ترابيزة بتلف · بتتخبى جوّه كاونتر التيرازو", "DSC09530-HDR-2.jpg": "تخزين مخفي في الحمام · ورا المراية", "DSC09518.jpg": "باب مخفي · على نفس مستوى حيطة الشرائح الخشب" };
   const U = window.IKDU_AR
     ? { ba:"قبل / بعد", drag:"اسحب الخط وقارن.", story:"من أرض فاضية لمكان جاهز.", steps:["قبل", "أثناء الشغل", "بعد"],
-        before:"قبل", after:"بعد", detail:"تفاصيل", dragMove:"اسحب الخط وشوفها بتتحرك.", by:" من إكدو", knob:"اسحب", slider:"مقارنة قبل وبعد" }
+        before:"قبل", after:"بعد", detail:"تفاصيل", dragMove:"اسحب الخط وشوفها بتتحرك.", concept:"تصميم ثلاثي الأبعاد", conceptLink:"شوف التصميم الثلاثي الأبعاد جنب المكان بعد التنفيذ ←", by:" من إكدو", knob:"اسحب", slider:"مقارنة قبل وبعد" }
     : { ba:"Before / after", drag:"Drag the line to compare.", story:"From bare site to finished space.", steps:["Before", "Building", "After"],
-        altSteps:["Before", "During", "After"], before:"Before", after:"After", detail:"In detail", dragMove:"Drag the line to see it move.", by:" by IKDU", knob:"Drag", slider:"Before and after comparison" };
+        altSteps:["Before", "During", "After"], before:"Before", after:"After", detail:"In detail", dragMove:"Drag the line to see it move.", concept:"3D concept", conceptLink:"See the 3D concept next to the finished space →", by:" by IKDU", knob:"Drag", slider:"Before and after comparison" };
   U.altSteps ??= U.steps;
   const P = window.IKDU_AR ? { ...PROJECTS[key], ...PROJECTS_AR[key] } : PROJECTS[key];
   const NAME = k => (window.IKDU_AR ? PROJECTS_AR[k] : PROJECTS[k]).name;
@@ -97,6 +97,8 @@
     factsEl.style.setProperty("--n", facts.length);
     factsEl.innerHTML = facts.map(([k, v]) => `<div><span class="label">${k}</span><b>${v}</b></div>`).join("");
     document.getElementById("intro").textContent = P.intro;
+    // Concept -> Reality page exists for these projects: link under the intro
+    if (["polysh", "s-roof"].includes(key)) document.getElementById("intro").insertAdjacentHTML("afterend", `<p class="concept-link"><a href="transformation.html#${key}">${U.conceptLink}</a></p>`);
 
     if (comps.length) {
       const hasSlider = comps.some(c => c.length === 2);
@@ -184,14 +186,17 @@
     const orient = Object.fromEntries(all[key].map(x => [x.f, x.o]));
     const list = P.gallery || photos.filter(f => f !== cover && !compFiles.includes(f));   // a project can fix its own gallery order
     const tall = list.filter(f => typeof f === "string" && orient[f] === "P");
+    // renders flagged in photos.json (render:true) always carry a "3D concept" label wherever they appear
+    const renders = new Set(all[key].filter(x => x.render).map(x => x.f));
+    const chip3d = f => renders.has(f) ? `<span class="chip3d">${U.concept}</span>` : "";
     list.forEach(f => {
       if (Array.isArray(f)) {   // ["a.jpg", "b.jpg"] = side by side at the same height, neither cropped (any shapes, e.g. wide + tall)
-        g.insertAdjacentHTML("beforeend", `<div class="duo">${f.map(x => `<figure class="duo-item">${pic(x, { sizes: "(max-width:760px) 100vw, 60vw" })}</figure>`).join("")}</div>`);
+        g.insertAdjacentHTML("beforeend", `<div class="duo">${f.map(x => `<figure class="duo-item">${pic(x, { sizes: "(max-width:760px) 100vw, 60vw" })}${chip3d(x)}</figure>`).join("")}</div>`);
         return;
       }
       let cls = "wide";
       if (orient[f] === "P") cls = tall.length % 2 && f === tall[tall.length - 1] ? "solo" : "";
-      g.insertAdjacentHTML("beforeend", `<figure class="${cls}">${pic(f, { sizes: cls === "wide" ? "100vw" : "(max-width:760px) 100vw, 50vw" })}</figure>`);
+      g.insertAdjacentHTML("beforeend", `<figure class="${cls}">${pic(f, { sizes: cls === "wide" ? "100vw" : "(max-width:760px) 100vw, 50vw" })}${chip3d(f)}</figure>`);
     });
     const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")), { threshold: .15 });
     g.querySelectorAll("figure").forEach(f => io.observe(f));

@@ -44,7 +44,7 @@
 
   // Language switcher (عربي / EN): goes to the SAME page in the other language.
   // Only pages that exist in both languages get it; add a file name here when its twin is built.
-  const TWINS = ["hero.html", "about.html", "connect.html",
+  const TWINS = ["hero.html", "about.html", "connect.html", "transformation.html",
                  "twin-villas.html", "polysh.html", "s-roof.html", "sane.html", "m-villa.html"];
   const file = location.pathname.split("/").pop() || "hero.html";
   const twin = TWINS.includes(file) ? (AR ? `../${file}` : `ar/${file}`) : null;
