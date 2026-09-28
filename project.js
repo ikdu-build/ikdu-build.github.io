@@ -3,7 +3,9 @@
   const PROJECTS = {
     "polysh":  { name:"Polysh", sub:"Nail salon · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Salon", Scope:"Full fit-out", Year:"2025" },
-                 intro:"A nail salon built from bare concrete to opening day: terracotta walls, a curved reception desk, arched niches and warm linear lighting." },
+                 intro:"A nail salon built from bare concrete to opening day: terracotta walls, a curved reception desk, arched niches and warm linear lighting.",
+                 // gallery in this exact order (Amr, 2026-09-28): wall close-up beside the massage room, storefront last
+                 gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", "IMG_1862.jpg", "20260510_215836.jpg", "IMG_0959.jpg"] },
     "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
                  intro:"From a steel frame and a view to an outdoor living room: white pergolas with oak battens, built-in seating with hidden LED and an outdoor kitchen.",
