@@ -8,7 +8,7 @@
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
     "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
-                 intro:"From a steel frame and a view to an outdoor living room: white pergolas with oak battens, built-in seating with hidden LED and an outdoor kitchen.",
+                 intro:"Taken from bare concrete to a finished outdoor living room: a pitch pine pergola, and a couch, bar, counter, built-in sink and rotating table, all in terrazzo poured on site.",
                  ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016.jpg"]],
                  detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]],
                  // gallery in this exact order (Amr, 2026-09-28): the whole-roof overview first, then the close-ups
@@ -42,7 +42,7 @@
                      intro:"اتبنى من الخرسانة لحد يوم الافتتاح، وكل حاجة جوه ما عدا الكراسي: حيطان التيراكوتا والنيشات المقوّسة، أوضة المساج المقبّبة، ستاير السلاسل، المجسّم الكروي، وحدات الإضاءة المعمولة مخصوص، مكتب الاستقبال، وكل ترابيزات المانيكير." },
     "s-roof":      { name:"روف سوديك", sub:"روف · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · روف", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
-                     intro:"من إطار حديد وفيو، لقعدة برّه كاملة: برجولات بيضا بشرائح خشب بلوط، قعدة بيلت إن بإضاءة مخفية، ومطبخ خارجي." },
+                     intro:"من الخرسانة لحد قعدة برّه كاملة: برجولة خشب بيتش باين، وكنبة وبار وكاونتر وحوض بيلت إن وترابيزة دوّارة، كلهم تيرازو اتصبّ في الموقع." },
     "m-villa":     { name:"M-Villa", sub:"تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة",
                      facts:{ "المكان":"ماونتن فيو، التجمع، القاهرة", "النوع":"سكني · فيلا", "الشغل":"تشطيب داخلي", "السنة":"2026" },
                      intro:"هيكل خرسانة اتحوّل لبيت دافي وهادي. قلب الفيلا هو السلم: درجات رخام، ساتر شرائح خشب بطول الدور، وإضاءة مخفية في الدرج." },
