@@ -105,4 +105,7 @@
 
     .next h3 { font-size:38px; }
   }
+  /* In detail: two sliders side by side (phones: one column) */
+  .detail-row.two { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
+  @media (max-width:760px) { .detail-row.two { grid-template-columns:1fr; gap:0; } }
   .ba-cap { text-align:center; font-size:12px; letter-spacing:.25em; text-transform:uppercase; margin:-10px 0 32px; opacity:.8; }

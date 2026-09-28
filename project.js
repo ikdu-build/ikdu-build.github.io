@@ -17,9 +17,10 @@
                  facts:{ Location:"Mountain View, Tagamoa, Cairo", Type:"Residential · Villa", Scope:"Design + build", Year:"2026" },
                  intro:"A raw concrete shell turned into a warm, calm home, designed and built by us. Open-book Italian marble runs across the floors, and the centrepiece is the staircase: marble treads, a full-height timber slat screen and hidden step lighting.",
                  ba:[["20230917_135241.jpg","DSC09375.jpg"]],
-                 detail:[["DSC09518.jpg","DSC09527.jpg","Hidden door · flush with the timber slat wall"]],
+                 detail:[["DSC09518.jpg","DSC09527.jpg","Hidden door · flush with the timber slat wall"],
+                         ["DSC09530-HDR-2.jpg","DSC09538-HDR-1.jpg","Hidden bathroom storage · behind the mirror"]],
                  // gallery in this exact order (Amr, 2026-09-28): tall photos pair up two by two
-                 gallery:["DSC09599.jpg", "DSC09722.jpg", "DSC09712.jpg", "DSC09530-HDR-2.jpg", "DSC09755-1.jpg", "DSC09717.jpg"] },
+                 gallery:["DSC09599.jpg", "DSC09722.jpg", "DSC09712.jpg", "DSC09737.jpg", "DSC09755-1.jpg", "DSC09717.jpg", "DSC09617.jpg"] },
     "twin-villas":    { name:"Twin Villas", sub:"Twin villas · full finishing · Legenda, Giza",
                  facts:{ Location:"Legenda, Giza", Type:"Residential · Twin villas", Scope:"Full finishing, inside + out", Year:"2023 (first villa) · 2024 (twin)" },
                  intro:"Full finishing of twin family villas in Legenda (the first shown here, the twin coming soon): herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
@@ -54,7 +55,7 @@
                      intro:"فصل في الجنينة لمساحة فنية للأطفال: ممشى دائري اتصبّ في الموقع، نجيلة، سور خشب، وفرش أطفال معمول مخصوص." }
   };
   // Detail-slider captions in Arabic, by the first ("closed") photo
-  const DETAIL_AR = { "DSC09938.jpg": "ترابيزة بتلف · بتتخبى جوّه الرخامة", "DSC09518.jpg": "باب مخفي · على نفس مستوى حيطة الشرائح الخشب" };
+  const DETAIL_AR = { "DSC09938.jpg": "ترابيزة بتلف · بتتخبى جوّه كاونتر التيرازو", "DSC09530-HDR-2.jpg": "تخزين مخفي في الحمام · ورا المراية", "DSC09518.jpg": "باب مخفي · على نفس مستوى حيطة الشرائح الخشب" };
   const U = window.IKDU_AR
     ? { ba:"قبل / بعد", drag:"اسحب الخط وقارن.", story:"من أرض فاضية لمكان جاهز.", steps:["قبل", "أثناء الشغل", "بعد"],
         before:"قبل", after:"بعد", detail:"تفاصيل", dragMove:"اسحب الخط وشوفها بتتحرك.", by:" من إكدو", knob:"اسحب", slider:"مقارنة قبل وبعد" }
@@ -129,9 +130,11 @@
 
     // Details: same drag slider, no Before/After labels (rotating table, hidden door...)
     if (details.length) {
-      document.getElementById("detail").innerHTML = `<h2 class="serif">${U.detail}</h2><p>${U.dragMove}</p>` +
-        details.map(([a, b, cap]) => `<div class="ba">${pic(b, { sizes: "(max-width:760px) 100vw, 1120px" })}${pic(a, { cls: "before", sizes: "(max-width:760px) 100vw, 1120px" })}
-          <span class="line"></span><span class="knob" aria-hidden="true">${U.knob}</span></div>${(window.IKDU_AR ? DETAIL_AR[a] : cap) ? `<p class="ba-cap">${window.IKDU_AR ? DETAIL_AR[a] : cap}</p>` : ""}`).join("");
+      // two details sit side by side (phones: stacked); being in the same row, their automatic wipes run together
+      const two = details.length === 2, size = two ? "(max-width:760px) 100vw, 560px" : "(max-width:760px) 100vw, 1120px";
+      document.getElementById("detail").innerHTML = `<h2 class="serif">${U.detail}</h2><p>${U.dragMove}</p><div class="detail-row${two ? " two" : ""}">` +
+        details.map(([a, b, cap]) => `<div class="detail-item"><div class="ba">${pic(b, { sizes: size })}${pic(a, { cls: "before", sizes: size })}
+          <span class="line"></span><span class="knob" aria-hidden="true">${U.knob}</span></div>${(window.IKDU_AR ? DETAIL_AR[a] : cap) ? `<p class="ba-cap">${window.IKDU_AR ? DETAIL_AR[a] : cap}</p>` : ""}</div>`).join("") + `</div>`;
     }
 
     document.querySelectorAll(".ba").forEach(el => {
