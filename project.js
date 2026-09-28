@@ -199,7 +199,13 @@
       });
     };
     // duo: each photo's width follows its shape (width ÷ height), so both end up exactly the same height
-    const duoFit = im => { const f = im.closest(".duo-item"); if (f && im.naturalWidth) f.style.flexGrow = im.naturalWidth / im.naturalHeight; };
+    // and the row is never taller than 85% of the screen (it narrows and centres instead)
+    const duoFit = im => {
+      const f = im.closest(".duo-item"); if (!f || !im.naturalWidth) return;
+      f.style.flexGrow = im.naturalWidth / im.naturalHeight;
+      const duo = f.parentElement, items = [...duo.children];
+      if (items.every(x => x.style.flexGrow)) duo.style.maxWidth = `calc(85vh * ${items.reduce((t, x) => t + +x.style.flexGrow, 0)} + ${16 * (items.length - 1)}px)`;
+    };
     g.querySelectorAll(".duo-item img").forEach(im => im.complete ? duoFit(im) : im.addEventListener("load", () => duoFit(im), { once: true }));
     g.querySelectorAll("img").forEach(im => im.complete || im.addEventListener("load", evenPairs, { once: true }));
     evenPairs(); addEventListener("resize", evenPairs);
