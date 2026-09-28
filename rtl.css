@@ -1,0 +1,41 @@
+/* Arabic pages (/ar/): <html lang="ar" dir="rtl">. Loaded after the page styles and site.css.
+   Font: IBM Plex Sans Arabic for everything on Arabic pages (BRAND-RULES: all Arabic text).
+   Layout: mirrored per Amr's approved defaults (2026-09-27): logo centred, Projects on the right,
+   name + "View project" bottom-right, arrows point left, WhatsApp bottom-left, "before" on the right of sliders. */
+
+html[lang="ar"] { --serif: var(--arabic); --sans: var(--arabic); }
+html[lang="ar"] body { line-height: 1.8; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3,
+html[lang="ar"] .caption h2, html[lang="ar"] .intro h1, html[lang="ar"] .cta h2 { font-weight: 300; line-height: 1.35; }
+/* Arabic is never letter-spaced or upper-cased (the English uppercase labels become plain Arabic) */
+html[lang="ar"] * { letter-spacing: 0 !important; text-transform: none !important; }
+html[lang="ar"] .label, html[lang="ar"] nav { font-size: 14px; }
+
+/* Home: project caption bottom-right; keep clear of the WhatsApp button (now bottom-left) */
+[dir="rtl"] .caption { left: auto; right: 40px; }
+[dir="rtl"] .caption .name { flex-direction: row; }
+[dir="rtl"] .wa-float { right: auto; left: 24px; padding: 14px 16px 14px 20px; }
+[dir="rtl"] .nav-projects .legend { left: auto; right: -16px; }
+[dir="rtl"] .menu-overlay .close { right: auto; left: 16px; }
+[dir="rtl"] .filters a { padding: 6px 6px 6px 14px; }
+
+/* Connect / Services rows: arrow points left and moves left on hover */
+[dir="rtl"] .row:hover .go { transform: translateX(-6px); }
+[dir="rtl"] .included li { padding-left: 0; padding-right: 22px; }
+[dir="rtl"] .included li::before { left: auto; right: 0; }
+
+/* Project pages: "before" on the right of the slider (the start, in Arabic reading order) */
+[dir="rtl"] .ba .before { clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }  /* AR: before LEFT of the line, finished on the right; line sweeps right -> left */
+[dir="rtl"] .ba .tag.b { right: auto; left: 16px; }
+[dir="rtl"] .ba .tag.a { left: auto; right: 16px; }
+[dir="rtl"] .steps .tabs button { text-align: right; }
+[dir="rtl"] .cover .title { left: auto; right: 40px; }
+
+@media (max-width: 760px) {
+  [dir="rtl"] .caption { right: 16px; left: 88px; }
+  [dir="rtl"] .wa-float { left: 16px; padding: 14px; }
+  [dir="rtl"] .cover .title { right: 16px; }
+}
+
+/* About story: Amr's full Arabic line as the lead */
+html[lang="ar"] .story p.lead { font-size: 26px; line-height: 1.7; }

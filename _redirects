@@ -1,0 +1,3 @@
+# Netlify rules for ikdu.build (made by tools/make_site.py)
+/services.html      /about.html#services      301
+/ar/services.html   /ar/about.html#services   301
