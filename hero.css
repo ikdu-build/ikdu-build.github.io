@@ -16,7 +16,7 @@
   header.small { height:64px; }
   nav { display:flex; gap:48px; font-size:12px; letter-spacing:.25em; text-transform:uppercase; }
   nav a { color:var(--ink); text-decoration:none; opacity:.75; }
-  nav a:hover { opacity:1; color:var(--brown); }   /* brown: 6.1:1 on light beige */
+  nav a:hover, nav a.on { opacity:1; color:var(--brown); }   /* brown: 6.1:1 on light beige */
   nav.right { justify-content:flex-end; }
   .logo { position:relative; width:220px; height:80px; display:grid; place-items:center; transition:height .5s; }
   header.small .logo { height:44px; }

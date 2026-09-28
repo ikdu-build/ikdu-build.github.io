@@ -13,11 +13,11 @@
   const A = AR ? "../assets" : "assets";          // assets folder, seen from this page
   window.IKDU_ASSETS = A;
   const T = AR
-    ? { projects: "المشاريع", services: "خدماتنا", about: "عنّا وخدماتنا", connect: "تواصل معانا", menu: "القائمة", close: "إغلاق",
+    ? { cr: "من التصميم للتنفيذ", projects: "المشاريع", services: "خدماتنا", about: "عنّا وخدماتنا", connect: "تواصل معانا", menu: "القائمة", close: "إغلاق",
         waFloat: "واتساب", waFloatLabel: "كلّمنا على واتساب", waUs: "كلّمنا واتساب", place: "الجيزة، مصر",
         villa: "فيلات", apartments: "شقق", commercial: "تجاري", other: "EN", otherLabel: "English",
         ig: "إنستجرام", li: "لينكدإن", fb: "فيسبوك" }
-    : { projects: "Projects", services: "Services", about: "About &amp; Services", connect: "Contact us", menu: "Menu", close: "Close",
+    : { cr: "Concept → Reality", projects: "Projects", services: "Services", about: "About &amp; Services", connect: "Contact us", menu: "Menu", close: "Close",
         waFloat: "WhatsApp", waFloatLabel: "Chat on WhatsApp", waUs: "WhatsApp us", place: "Giza, Egypt",
         villa: "Villas", apartments: "Apartments", commercial: "Commercial", other: "عربي", otherLabel: "العربية",
         ig: "Instagram", li: "LinkedIn", fb: "Facebook" };
@@ -49,7 +49,7 @@
   const file = (location.pathname.split("/").pop() || "hero.html").replace(/^index\.html$/, "hero.html");   // live home = index.html (copy of hero.html)
   // Pages are pre-rendered at build time (make_site.py), so the menu, footer, WhatsApp button etc. may already be in the HTML.
   // Take those copies out first and build them again, so nothing appears twice and every button works.
-  document.querySelectorAll(".lang-switch, .wa-float, .menu-btn, .menu-overlay, .site-footer").forEach(e => e.remove());
+  document.querySelectorAll(".lang-switch, .nav-cr, .wa-float, .menu-btn, .menu-overlay, .site-footer").forEach(e => e.remove());
   document.querySelectorAll("header .nav-projects").forEach(w => { const a = w.querySelector("a"); w.replaceWith(a); });
   const twin = TWINS.includes(file) ? (AR ? `../${file}` : `ar/${file}`) : null;
   const twinLink = twin ? `<a class="lang-switch" href="${twin}${location.search}${location.hash}" hreflang="${AR ? "en" : "ar"}" lang="${AR ? "en" : "ar"}" aria-label="${T.otherLabel}">${T.other}</a>` : "";
@@ -67,6 +67,9 @@
     wrap.querySelector(".legend").addEventListener("click", e => { if (e.target.closest("a")) { wrap.classList.add("closed"); document.activeElement?.blur(); } });
     wrap.addEventListener("mouseleave", () => wrap.classList.remove("closed"));
   });
+  // "Concept → Reality" tab (Amr, 2026-09-29): next to Projects in the header; highlighted on its own page
+  document.querySelector("header nav:not(.right)")?.insertAdjacentHTML("beforeend",
+    `<a class="nav-cr${file === "transformation.html" ? " on" : ""}" href="transformation.html">${T.cr}</a>`);
   document.querySelectorAll("[data-wa]").forEach(a => a.href = waLink);
 
   // Floating button
@@ -80,7 +83,7 @@
     header.insertAdjacentHTML("beforeend", `<button class="menu-btn" aria-label="${T.menu}">${T.menu}</button>`);
     document.body.insertAdjacentHTML("beforeend", `<nav class="menu-overlay" aria-label="${T.menu}">
       <button class="close">${T.close}</button>
-      <a href="hero.html">${T.projects}</a><a href="about.html">${T.about}</a><a href="connect.html">${T.connect}</a>
+      <a href="hero.html">${T.projects}</a><a href="transformation.html">${T.cr}</a><a href="about.html">${T.about}</a><a href="connect.html">${T.connect}</a>
       ${twinLink}<a class="wa" href="${waLink}">${T.waUs}</a></nav>`);
     const ov = document.querySelector(".menu-overlay");
     header.querySelector(".menu-btn").onclick = () => ov.classList.add("open");
@@ -90,7 +93,7 @@
   // Footer
   document.body.insertAdjacentHTML("beforeend", `<footer class="site-footer">
     <img src="${A}/web/brand/bilingual-handdrawn.png" alt="IKDU إكدو">
-    <div class="links"><a href="hero.html">${T.projects}</a><a href="about.html">${T.about}</a><a href="mailto:hello@ikdu.build" dir="ltr">hello@ikdu.build</a><a href="https://www.instagram.com/ikdu.build/">${T.ig}</a><a href="https://www.linkedin.com/company/ikdu/">${T.li}</a><a href="https://www.facebook.com/ikdu.build/">${T.fb}</a><a href="connect.html">${T.connect}</a></div>
+    <div class="links"><a href="hero.html">${T.projects}</a><a href="transformation.html">${T.cr}</a><a href="about.html">${T.about}</a><a href="mailto:hello@ikdu.build" dir="ltr">hello@ikdu.build</a><a href="https://www.instagram.com/ikdu.build/">${T.ig}</a><a href="https://www.linkedin.com/company/ikdu/">${T.li}</a><a href="https://www.facebook.com/ikdu.build/">${T.fb}</a><a href="connect.html">${T.connect}</a></div>
     <small>${T.place}</small></footer>`);
 
 })();
