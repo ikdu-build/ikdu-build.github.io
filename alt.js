@@ -37,6 +37,7 @@ window.IKDU_ALT = {
   "m-villa/DSC09717.jpg": "M-Villa upper hallway: marble floor, timber doors and the slatted wooden balustrade",
   "polysh/20241104_193756.jpg": "Polysh before fit-out: bare concrete shell with brick walls",
   "polysh/20241228_063515.jpg": "Polysh during fit-out: installing walls and services",
+  "polysh/DSC02600.jpg": "Polysh waiting lounge: curved sofa, terracotta niche shelving, chain curtain and the \"You just got Polyshed\" sign",
   "polysh/20260510_215836.jpg": "Polysh massage room: warm timber walls, lit ceiling and the Polysh sign",
   "polysh/DSC02597.jpg": "Polysh manicure stations behind the terracotta shelving screen",
   "polysh/DSC02608.jpg": "Polysh reception: curved terracotta desk in front of a copper chain curtain with the Polysh sign",
