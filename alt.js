@@ -67,6 +67,8 @@ window.IKDU_ALT = {
   "sane/C361BE98-8ECD-4E9E-B90A-B857DB3771C2_1_201_a.jpg": "Sane garden classroom: circular planter with a tree, turf, timber fencing and play furniture",
   "sane/new-2.jpg": "Sane: custom timber seat with cushions",
   "sane/new.jpg": "Sane: timber shelving wall with art supplies",
+  "sane/new-4.jpg": "Sane art table set for class: paper sheets and chalk on a timber table with turquoise stools",
+  "sane/new-5.jpg": "Two children drawing at Sane on custom timber chairs, a painted sun on the floor",
   // Connect page close-ups
   "connect/mirror-ceiling.jpg": "Close-up of the mirror mosaic ceiling at Polysh",
   "connect/polysh-terracotta-lattice.jpg": "Close-up of the terracotta wall and timber lattice at Polysh",

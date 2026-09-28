@@ -25,7 +25,9 @@
     "sane":    { name:"Sane", sub:"Kids' art space · Masyaf & Almaza, North Coast", cover:"8379CE78-E7CE-4747-A89E-ADBB7ABB8C41_1_201_a.jpg",
                  facts:{ Location:"Masyaf & Almaza, North Coast", Type:"Education · Kids' space", Scope:"Landscape · Interiors · Furniture", Year:"2025" },
                  intro:"A garden classroom for a kids' art space: a circular path poured on site, turf, timber fencing and custom children's furniture.",
-                 ba:[["20250712_013724.jpg","20250712_200146.jpg","C361BE98-8ECD-4E9E-B90A-B857DB3771C2_1_201_a.jpg"]] }
+                 ba:[["20250712_013724.jpg","20250712_200146.jpg","C361BE98-8ECD-4E9E-B90A-B857DB3771C2_1_201_a.jpg"]],
+                 // gallery in this exact order (Amr, 2026-09-28): [new-4 tall | new-5 wide] side by side at the end
+                 gallery:["20250823-DSC04416-Edit.jpg", "new-2.jpg", "new.jpg", ["new-4.jpg", "new-5.jpg"]] }
   };
 
   const key = document.body.dataset.project;   // each project page says which project it is: <body data-project="twin-villas">
