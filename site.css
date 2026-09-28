@@ -11,6 +11,12 @@ header nav a { white-space:nowrap; }
   .menu-btn { display:block !important; }
 }
 
+/* Very small phones (320-360 px): let the logo column shrink so MENU keeps its side margin (2026-09-28) */
+@media (max-width:360px) {
+  header { grid-template-columns:1fr 130px 1fr !important; }
+  header .logo { width:130px !important; }
+}
+
 /* Floating WhatsApp button (bottom-right, always visible) */
 .wa-float { position:fixed; right:24px; bottom:24px; z-index:30; display:flex; align-items:center; gap:10px;
             background:var(--brick); color:#fff; text-decoration:none; border-radius:999px; padding:14px 20px 14px 16px;
