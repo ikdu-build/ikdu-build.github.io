@@ -60,6 +60,7 @@ window.IKDU_ALT = {
   "s-roof/IMG-20251218-WA0024.jpg": "Sodic rooftop during works: bare steel pergola frame",
   "s-roof/IMG-20251230-WA0007.jpg": "Sodic rooftop during works: pergola frame with battens going up",
   "s-roof/IMG_1016.jpg": "Sodic rooftop at dusk: pergola and built-in lounge with hidden LED lighting",
+  "s-roof/DSC09787.jpg": "Sodic Rooftop overview: white pergola with oak battens over the built-in seating, and the outdoor kitchen along the timber screen",
   "sane/20250712_013724.jpg": "Sane during works: the circular path set out on site at night",
   "sane/20250712_200146.jpg": "Sane during works: the circular path poured in concrete",
   "sane/20250823-DSC04416-Edit.jpg": "Sane art room: giraffe table and shelving wall made by IKDU, children working with a teacher",

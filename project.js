@@ -10,7 +10,9 @@
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
                  intro:"From a steel frame and a view to an outdoor living room: white pergolas with oak battens, built-in seating with hidden LED and an outdoor kitchen.",
                  ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016.jpg"]],
-                 detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]] },
+                 detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]],
+                 // gallery in this exact order (Amr, 2026-09-28): the whole-roof overview first, then the close-ups
+                 gallery:["DSC09787.jpg", "DSC00057.jpg", "DSC09885.jpg", "DSC00011.jpg"] },
     "m-villa": { name:"M-Villa", sub:"Villa interior · Mountain View, Tagamoa, Cairo", cover:"DSC09366.jpg",   // cover (Amr, 2026-09-28): the old first photo is also the "after" in before/after
                  facts:{ Location:"Mountain View, Tagamoa, Cairo", Type:"Residential · Villa", Scope:"Interior finishing", Year:"2026" },
                  intro:"A raw concrete shell turned into a warm, calm home. The centrepiece is the staircase: marble treads, a full-height timber slat screen and hidden step lighting.",
