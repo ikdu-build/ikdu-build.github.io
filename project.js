@@ -14,8 +14,8 @@
                  // gallery in this exact order (Amr, 2026-09-28): the whole-roof overview first, then the close-ups
                  gallery:["DSC09787.jpg", "DSC00057.jpg", "DSC09885.jpg", "DSC00011.jpg"] },
     "m-villa": { name:"M-Villa", sub:"Villa interior · Mountain View, Tagamoa, Cairo", cover:"DSC09366.jpg",   // cover (Amr, 2026-09-28): the old first photo is also the "after" in before/after
-                 facts:{ Location:"Mountain View, Tagamoa, Cairo", Type:"Residential · Villa", Scope:"Interior finishing", Year:"2026" },
-                 intro:"A raw concrete shell turned into a warm, calm home. The centrepiece is the staircase: marble treads, a full-height timber slat screen and hidden step lighting.",
+                 facts:{ Location:"Mountain View, Tagamoa, Cairo", Type:"Residential · Villa", Scope:"Design + build", Year:"2026" },
+                 intro:"A raw concrete shell turned into a warm, calm home, designed and built by us. Open-book Italian marble runs across the floors, and the centrepiece is the staircase: marble treads, a full-height timber slat screen and hidden step lighting.",
                  ba:[["20230917_135241.jpg","DSC09375.jpg"]],
                  detail:[["DSC09518.jpg","DSC09527.jpg","Hidden door · flush with the timber slat wall"]],
                  // gallery in this exact order (Amr, 2026-09-28): tall photos pair up two by two
@@ -44,8 +44,8 @@
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · روف", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"من الخرسانة لحد قعدة برّه كاملة: برجولة خشب بيتش باين، وكنبة وبار وكاونتر وحوض بيلت إن وترابيزة دوّارة، كلهم تيرازو اتصبّ في الموقع." },
     "m-villa":     { name:"M-Villa", sub:"تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة",
-                     facts:{ "المكان":"ماونتن فيو، التجمع، القاهرة", "النوع":"سكني · فيلا", "الشغل":"تشطيب داخلي", "السنة":"2026" },
-                     intro:"هيكل خرسانة اتحوّل لبيت دافي وهادي. قلب الفيلا هو السلم: درجات رخام، ساتر شرائح خشب بطول الدور، وإضاءة مخفية في الدرج." },
+                     facts:{ "المكان":"ماونتن فيو، التجمع، القاهرة", "النوع":"سكني · فيلا", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
+                     intro:"هيكل خرسانة اتحوّل لبيت دافي وهادي، من تصميمنا وتنفيذنا. أرضيات رخام إيطالي أوبن بوك، وقلب الفيلا هو السلم: درجات رخام، ساتر شرائح خشب بطول الدور، وإضاءة مخفية في الدرج." },
     "twin-villas": { name:"الفيلتين التوأم", sub:"فيلتين · تشطيب كامل · ليجندا، الجيزة",
                      facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلتين توأم", "الشغل":"تشطيب كامل، جوّه وبرّه", "السنة":"2023 (الفيلا الأولى) · 2024 (التوأم)" },
                      intro:"تشطيب كامل لفيلتين عائليتين في ليجندا (الأولى هنا، والتانية قريب): باركيه هيرينجبون، مطبخ خشب كلاسيك، دريسنج روم، حمامات حجر، ومدخل حجر جديد." },
