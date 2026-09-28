@@ -9,7 +9,7 @@
     "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
                  intro:"Taken from bare concrete to a finished outdoor living room: a pitch pine pergola, and a couch, bar, counter, built-in sink and rotating table, all in terrazzo poured on site.",
-                 ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016.jpg"]],
+                 ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016-soft.jpg"]],
                  detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]],
                  // gallery in this exact order (Amr, 2026-09-28): the whole-roof overview first, then the close-ups
                  gallery:["DSC09787.jpg", "DSC00057.jpg", "DSC09885.jpg", "DSC00011.jpg"] },
