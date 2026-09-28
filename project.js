@@ -3,7 +3,7 @@
   const PROJECTS = {
     "polysh":  { name:"Polysh", sub:"Nail salon · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Salon", Scope:"Full fit-out + furniture", Year:"2025" },
-                 intro:"From bare concrete to the furniture — all made to measure.",
+                 intro:"From bare concrete to the furniture, made to measure.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
     "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
@@ -23,7 +23,7 @@
                  gallery:["DSC09599.jpg", "DSC09722.jpg", "DSC09712.jpg", "DSC09737.jpg", "DSC09755-1.jpg", "DSC09717.jpg", "DSC09617.jpg"] },
     "twin-villas":    { name:"Twin Villas", sub:"Twin villas · full finishing · Legenda, Giza",
                  facts:{ Location:"Legenda, Giza", Type:"Residential · Twin villas", Scope:"Full finishing, inside + out", Year:"2023 (first villa) · 2024 (twin)" },
-                 intro:"Full finishing of twin family villas in Legenda (the first shown here, the twin coming soon): herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
+                 intro:"Two family villas in Legenda, finished inside and out: herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
                  ba:[["20230329_110331.jpg","DSC01968.jpg"]] },
     "sane":    { name:"Sane", sub:"Kids' art space · Masyaf & Almaza, North Coast", cover:"8379CE78-E7CE-4747-A89E-ADBB7ABB8C41_1_201_a.jpg",
                  facts:{ Location:"Masyaf & Almaza, North Coast", Type:"Education · Kids' space", Scope:"Landscape · Interiors · Furniture", Year:"2025" },
@@ -40,7 +40,7 @@
   const PROJECTS_AR = {
     "polysh":      { name:"Polysh", sub:"صالون أظافر · أركان، الجيزة",
                      facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · صالون", "الشغل":"تشطيب وتجهيز كامل + الفرش", "السنة":"2025" },
-                     intro:"من الخرسانة لحد الفرش — كله معمول على المقاس." },
+                     intro:"من الخرسانة لحد الفرش، معمول على المقاس." },
     "s-roof":      { name:"روف سوديك", sub:"روف · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · روف", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"من الخرسانة لحد قعدة برّه كاملة: برجولة خشب بيتش باين، وكنبة وبار وكاونتر وحوض بيلت إن وترابيزة دوّارة، كلهم تيرازو اتصبّ في الموقع." },
@@ -49,7 +49,7 @@
                      intro:"هيكل خرسانة اتحوّل لبيت دافي وهادي، من تصميمنا وتنفيذنا. أرضيات رخام إيطالي أوبن بوك، وسلم بدرجات رخام، ساتر شرائح خشب بطول الدور، وإضاءة مخفية في الدرج." },
     "twin-villas": { name:"الفيلتين التوأم", sub:"فيلتين · تشطيب كامل · ليجندا، الجيزة",
                      facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلتين توأم", "الشغل":"تشطيب كامل، جوّه وبرّه", "السنة":"2023 (الفيلا الأولى) · 2024 (التوأم)" },
-                     intro:"تشطيب كامل لفيلتين عائليتين في ليجندا (الأولى هنا، والتانية قريب): باركيه هيرينجبون، مطبخ خشب كلاسيك، دريسنج روم، حمامات حجر، ومدخل حجر جديد." },
+                     intro:"فيلتين عائليتين في ليجندا، اتشطبوا جوّه وبرّه: باركيه هيرينجبون، مطبخ خشب كلاسيك، دريسنج روم، حمامات حجر، ومدخل حجر جديد." },
     "sane":        { name:"Sane", sub:"مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي",
                      facts:{ "المكان":"مصياف وألماظة، الساحل الشمالي", "النوع":"تعليمي · مساحة للأطفال", "الشغل":"لاندسكيب · تشطيب داخلي · فرش", "السنة":"2025" },
                      intro:"فصل في الجنينة لمساحة فنية للأطفال: ممشى دائري اتصبّ في الموقع، نجيلة، سور خشب، وفرش أطفال معمول مخصوص." }
