@@ -64,10 +64,8 @@
   U.altSteps ??= U.steps;
   const P = window.IKDU_AR ? { ...PROJECTS[key], ...PROJECTS_AR[key] } : PROJECTS[key];
   const NAME = k => (window.IKDU_AR ? PROJECTS_AR[k] : PROJECTS[k]).name;
-  // The saved snapshot (data.js, written by the picker via serve.py) wins, so every browser shows the same picks.
-  // This browser's own picker copy (localStorage) is only a fallback. (2026-09-28: an old local copy was hiding new picks.)
+  // Picks come from the saved snapshot (data.js, written by the picker via serve.py), so every browser shows the same.
   let picks = window.IKDU_PICKS;
-  if (!picks) try { picks = JSON.parse(localStorage.getItem("ikdu-picks")); } catch {}
   const order = picks?.order || Object.keys(PROJECTS);
 
   // photos list via site.js's asset path, so it also works on /ar/ pages and on the live site

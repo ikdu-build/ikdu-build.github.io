@@ -12,10 +12,8 @@ const H = window.IKDU_AR ? {
 };
   // If photos were chosen in picker.html, rebuild the project sections from those picks
   (() => {
-    // The saved snapshot (data.js, written by the picker via serve.py) wins, so every browser shows the same picks.
-    // This browser's own picker copy (localStorage) is only a fallback. (2026-09-28: an old local copy was hiding new picks.)
+    // Picks come from the saved snapshot (data.js, written by the picker via serve.py), so every browser shows the same.
     let picks = window.IKDU_PICKS;
-    if (!picks) try { picks = JSON.parse(localStorage.getItem("ikdu-picks")); } catch {}
     if (!picks) return;
     const INFO = H.info;
     const main = document.querySelector("main"); main.innerHTML = "";
@@ -91,7 +89,6 @@ const H = window.IKDU_AR ? {
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fitSlides, 200); });
 
   // Each project section cycles its own photos while it is on screen
-  const still = new URLSearchParams(location.search).has("still");
   document.querySelectorAll('.project').forEach(sec => {
     const slides = [...sec.querySelectorAll('.slide')], bar = sec.querySelector('.dots');
     // Timing (Amr, 2026-09-27): the FIRST switch comes after 1.5 s (to hook people scrolling), then every 2 s.
@@ -111,7 +108,6 @@ const H = window.IKDU_AR ? {
     show(FIRST_MS);
     if (slides.length < 2) bar.hidden = true;
     new IntersectionObserver(([e]) => {
-      if (still) { bar.classList.remove('run'); return; }  // ?still=1 keeps the first photo (review screenshots)
       if (e.isIntersecting && !timer && slides.length > 1) { restartBar(FIRST_MS); next(FIRST_MS); }
       if (!e.isIntersecting && timer) { clearTimeout(timer); timer = null; bar.classList.remove('run'); }
     }, { threshold: .5 }).observe(sec);

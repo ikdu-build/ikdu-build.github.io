@@ -46,7 +46,7 @@
   // Only pages that exist in both languages get it; add a file name here when its twin is built.
   const TWINS = ["hero.html", "about.html", "connect.html", "transformation.html",
                  "twin-villas.html", "polysh.html", "s-roof.html", "sane.html", "m-villa.html"];
-  const file = location.pathname.split("/").pop() || "hero.html";
+  const file = (location.pathname.split("/").pop() || "hero.html").replace(/^index\.html$/, "hero.html");   // live home = index.html (copy of hero.html)
   const twin = TWINS.includes(file) ? (AR ? `../${file}` : `ar/${file}`) : null;
   const twinLink = twin ? `<a class="lang-switch" href="${twin}${location.search}${location.hash}" hreflang="${AR ? "en" : "ar"}" lang="${AR ? "en" : "ar"}" aria-label="${T.otherLabel}">${T.other}</a>` : "";
   if (twin) document.querySelector("header nav.right")?.insertAdjacentHTML("beforeend", twinLink);
@@ -89,23 +89,4 @@
     <div class="links"><a href="hero.html">${T.projects}</a><a href="about.html">${T.about}</a><a href="mailto:hello@ikdu.build" dir="ltr">hello@ikdu.build</a><a href="https://www.instagram.com/ikdu.build/">${T.ig}</a><a href="https://www.linkedin.com/company/ikdu/">${T.li}</a><a href="https://www.facebook.com/ikdu.build/">${T.fb}</a><a href="connect.html">${T.connect}</a></div>
     <small>${T.place}</small></footer>`);
 
-  // DARK MODE PREVIEW (2026-09-27, not for launch until Amanda OKs it): only on pages that load dark.css.
-  // Button only, never automatic: the site is beige unless the visitor taps "Dark". Choice remembered in this browser.
-  if (document.querySelector('link[href$="dark.css"]')) {
-    const root = document.documentElement;
-    const LOGO = [["wordmark-black", "wordmark-beige"], ["arabic-black", "arabic-beige"], ["emblem-brick", "emblem-camel"]];  // supplied colourways
-    const apply = dark => {
-      root.dataset.theme = dark ? "dark" : "light";
-      document.querySelectorAll("header .logo img").forEach(img =>
-        LOGO.forEach(([light, drk]) => { img.src = dark ? img.src.replace(light, drk) : img.src.replace(drk, light); }));
-      btns.forEach(b => { b.textContent = dark ? (AR ? "فاتح" : "Light") : (AR ? "داكن" : "Dark"); b.setAttribute("aria-pressed", dark); });
-    };
-    // one button in the header menu (computers, next to عربي/EN) and one in the phone menu
-    const BTN = `<button class="theme-toggle" type="button"></button>`;
-    document.querySelector("header nav.right")?.insertAdjacentHTML("beforeend", BTN);
-    document.querySelector(".menu-overlay .wa")?.insertAdjacentHTML("beforebegin", BTN);
-    const btns = document.querySelectorAll(".theme-toggle");
-    btns.forEach(b => b.onclick = () => { const dark = root.dataset.theme !== "dark"; apply(dark); try { localStorage.setItem("ikdu-theme", dark ? "dark" : "light"); } catch {} });
-    apply(root.dataset.theme === "dark");
-  }
 })();
