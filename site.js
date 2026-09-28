@@ -30,7 +30,7 @@
     const alt = o.alt ?? (window.ikduAlt ? window.ikduAlt(key, "") : "");
     return `<picture><source type="image/webp" srcset="${base}-600.webp 600w, ${base}-1200.webp 1200w, ${base}-1600.webp 1600w" sizes="${o.sizes || "100vw"}">` +
       `<img src="${base}-1200.jpg" alt="${alt.replace(/"/g, "&quot;")}" data-pic="${key}"${o.cls ? ` class="${o.cls}"` : ""}${o.id ? ` id="${o.id}"` : ""}` +
-      `${o.eager ? ` fetchpriority="high"` : (/[?&]shot=/.test(location.search) ? "" : ` loading="lazy"`)} decoding="async"></picture>`;  // review screenshots (?shot=) load everything at once
+      `${o.eager ? ` fetchpriority="high"` : ` loading="lazy"`} decoding="async"></picture>`;
   };
   window.ikduThumb = key => { const [folder, file] = key.split("/"); return `${A}/web/${folder}/${file.replace(/\.[a-z]+$/i, "")}-600.webp`; };
 
@@ -47,6 +47,10 @@
   const TWINS = ["hero.html", "about.html", "connect.html", "transformation.html",
                  "twin-villas.html", "polysh.html", "s-roof.html", "sane.html", "m-villa.html"];
   const file = (location.pathname.split("/").pop() || "hero.html").replace(/^index\.html$/, "hero.html");   // live home = index.html (copy of hero.html)
+  // Pages are pre-rendered at build time (make_site.py), so the menu, footer, WhatsApp button etc. may already be in the HTML.
+  // Take those copies out first and build them again, so nothing appears twice and every button works.
+  document.querySelectorAll(".lang-switch, .wa-float, .menu-btn, .menu-overlay, .site-footer").forEach(e => e.remove());
+  document.querySelectorAll("header .nav-projects").forEach(w => { const a = w.querySelector("a"); w.replaceWith(a); });
   const twin = TWINS.includes(file) ? (AR ? `../${file}` : `ar/${file}`) : null;
   const twinLink = twin ? `<a class="lang-switch" href="${twin}${location.search}${location.hash}" hreflang="${AR ? "en" : "ar"}" lang="${AR ? "en" : "ar"}" aria-label="${T.otherLabel}">${T.other}</a>` : "";
   if (twin) document.querySelector("header nav.right")?.insertAdjacentHTML("beforeend", twinLink);

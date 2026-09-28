@@ -177,11 +177,3 @@ const H = window.IKDU_AR ? {
   if (startCat) setTimeout(() => goToCat(startCat, false), 200);
   addEventListener('scroll', () => { hdr.classList.toggle('small', scrollY > 60 || document.body.classList.contains("grouped")); spy(); }, { passive: true });
   const h = location.hash.slice(1); if (h && !h.startsWith('cat-')) setTimeout(() => { document.getElementById(h)?.scrollIntoView(); hdr.classList.toggle('small', scrollY > 60); }, 300);
-  // Screenshot helper: ?shot=<section id> hides everything above that section (no scrolling needed)
-  const shot = new URLSearchParams(location.search).get("shot");
-  if (shot) { const t = document.getElementById(shot); let el = t;
-    while (el && el.parentElement !== document.body) el = el.parentElement;
-    for (let x = el?.previousElementSibling; x; x = x.previousElementSibling) if (x.tagName !== "HEADER" && x.tagName !== "SCRIPT") x.style.display = "none";
-    for (let x = t?.previousElementSibling; x && t.parentElement !== document.body; x = x.previousElementSibling) x.style.display = "none";
-    if (el && el.tagName !== "MAIN") el.style.marginTop = "64px"; document.getElementById("hdr")?.classList.add("small");
-    document.querySelectorAll(".gallery figure").forEach(f => f.classList.add("in")); }

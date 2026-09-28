@@ -86,7 +86,8 @@
     const compFiles = [...comps.flat(), ...details.flatMap(d => d.slice(0, 2))];
     const alt = f => ikduAlt(key + "/" + f, P.name + U.by);
     const pic = (f, o = {}) => ikduPic(key + "/" + f, { alt: alt(f), ...o });
-    document.getElementById("coverImg").outerHTML = pic(cover, { id: "coverImg", eager: true });
+    const coverEl = document.getElementById("coverImg");   // on a pre-rendered page it already sits inside a <picture>: replace the whole thing
+    (coverEl.closest("picture") || coverEl).outerHTML = pic(cover, { id: "coverImg", eager: true });
     document.getElementById("name").textContent = P.name;
     document.getElementById("sub").textContent = P.sub;
     // Facts not filled in yet (written as "[...]") are left out, so no placeholders show
@@ -96,6 +97,7 @@
     factsEl.innerHTML = facts.map(([k, v]) => `<div><span class="label">${k}</span><b>${v}</b></div>`).join("");
     document.getElementById("intro").textContent = P.intro;
     // Concept -> Reality page exists for these projects: link under the intro
+    document.querySelectorAll(".concept-link").forEach(e => e.remove());
     if (["polysh", "s-roof"].includes(key)) document.getElementById("intro").insertAdjacentHTML("afterend", `<p class="concept-link"><a href="transformation.html#${key}">${U.conceptLink}</a></p>`);
 
     if (comps.length) {
@@ -181,6 +183,7 @@
 
     // Gallery: wide photos full width and uncropped; tall photos side by side in pairs (a lone one sits centred)
     const g = document.getElementById("gallery");
+    g.innerHTML = "";   // pre-rendered page: start the gallery fresh
     const orient = Object.fromEntries(all[key].map(x => [x.f, x.o]));
     const list = P.gallery || photos.filter(f => f !== cover && !compFiles.includes(f));   // a project can fix its own gallery order
     const tall = list.filter(f => typeof f === "string" && orient[f] === "P");
@@ -227,16 +230,8 @@
     const nFirst = picks?.home[nk]?.[0] || all[nk][all[nk].length - 1].f;
     const next = document.getElementById("next");
     next.href = `${nk}.html`;
-    next.querySelector("img").outerHTML = ikduPic(nk + "/" + nFirst, { alt: "" });
+    const nextImg = next.querySelector("img"); (nextImg.closest("picture") || nextImg).outerHTML = ikduPic(nk + "/" + nFirst, { alt: "" });
     next.querySelector("h3").textContent = NAME(nk);
     // Jump to a section if the link asks for one (e.g. twin-villas.html#ba)
     const h = location.hash.slice(1); if (h) setTimeout(() => document.getElementById(h)?.scrollIntoView(), 300);
-  // Screenshot helper: ?shot=<section id> hides everything above that section (no scrolling needed)
-  const shot = new URLSearchParams(location.search).get("shot");
-  if (shot) { const t = document.getElementById(shot); let el = t;
-    while (el && el.parentElement !== document.body) el = el.parentElement;
-    for (let x = el?.previousElementSibling; x; x = x.previousElementSibling) if (x.tagName !== "HEADER" && x.tagName !== "SCRIPT") x.style.display = "none";
-    for (let x = t?.previousElementSibling; x && t.parentElement !== document.body; x = x.previousElementSibling) x.style.display = "none";
-    if (el && el.tagName !== "MAIN") el.style.marginTop = "64px"; document.getElementById("hdr")?.classList.add("small");
-    document.querySelectorAll(".gallery figure").forEach(f => f.classList.add("in")); }
   });
