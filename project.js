@@ -106,7 +106,7 @@
     document.getElementById("intro").textContent = P.intro;
     // Concept -> Reality page exists for these projects: link under the intro
     document.querySelectorAll(".concept-link").forEach(e => e.remove());
-    if (["polysh", "s-roof"].includes(key)) document.getElementById("intro").insertAdjacentHTML("afterend", `<p class="concept-link"><a href="transformation.html#${key}">${U.conceptLink}</a></p>`);
+    if (["polysh", "s-roof", "l-villa"].includes(key)) document.getElementById("intro").insertAdjacentHTML("afterend", `<p class="concept-link"><a href="transformation.html#${key}">${U.conceptLink}</a></p>`);
 
     if (comps.length) {
       const hasSlider = comps.some(c => c.length === 2);
@@ -121,7 +121,7 @@
         const imgs = el.querySelectorAll("img"), tabs = el.querySelectorAll("button"), dots = el.querySelectorAll(".dots span");
         // a very wide finished (last) photo widens the frame, so shots like the Polysh shopfront aren't cut at the sides
         const last = imgs[imgs.length - 1], frame = el.querySelector(".frame");
-        const shapeFrame = () => { const r = last.naturalWidth / last.naturalHeight; if (r > 1.5) frame.style.aspectRatio = r; };   // only wider than the usual 3:2
+        const shapeFrame = () => { const r = last.naturalWidth / last.naturalHeight; if (r > 1.5) { frame.style.aspectRatio = r; el.style.setProperty("--r", r); } };   // only wider than the usual 3:2; --r keeps it within the screen height
         last.complete ? shapeFrame() : last.addEventListener("load", shapeFrame, { once: true });
         let i = 0, timer = null;
         const go = n => {
@@ -213,21 +213,23 @@
     // the taller one is cropped from the bottom. One column (phones): photos keep their own shape.
     const evenPairs = () => {
       const figs = [...g.querySelectorAll("figure:not(.wide):not(.solo):not(.duo-item)")];
-      figs.forEach(f => { f.style.aspectRatio = ""; f.classList.remove("crop"); });
+      figs.forEach(f => { f.style.aspectRatio = ""; f.classList.remove("crop", "pair", "first", "second"); });
       const rows = {};
       figs.forEach(f => (rows[f.offsetTop] ??= []).push(f));
       Object.values(rows).filter(r => r.length === 2).forEach(r => {
         const ratios = r.map(f => { const im = f.querySelector("img"); return im.naturalWidth / im.naturalHeight; });
         if (ratios.some(x => !x)) return;                 // not loaded yet: the load handler runs this again
         const ar = Math.max(...ratios);                   // wider shape = shorter photo
-        r.forEach(f => { f.style.aspectRatio = ar; f.classList.add("crop"); });
+        r.forEach((f, k) => { f.style.aspectRatio = ar; f.style.setProperty("--r", ar); f.classList.add("crop", "pair", k ? "second" : "first"); });   // --r: the pair shrinks to fit the screen height
       });
     };
     // duo: each photo's width follows its shape (width ÷ height), so both end up exactly the same height
     const duoFit = im => {
       const f = im.closest(".duo-item"); if (!f || !im.naturalWidth) return;
       f.style.flexGrow = im.naturalWidth / im.naturalHeight;
-      // (no height cap: the row's edges line up with the full-width photos above and below)
+      // height cap (Amr, 2026-09-29): once both shapes are known, the row is at most as wide as fits the screen height
+      const items = [...f.parentElement.children], sum = items.reduce((s, x) => s + (+x.style.flexGrow || 0), 0);
+      if (items.every(x => +x.style.flexGrow)) f.parentElement.style.maxWidth = `calc(var(--fit) * ${sum} + ${16 * (items.length - 1)}px)`;
     };
     g.querySelectorAll(".duo-item img").forEach(im => im.complete ? duoFit(im) : im.addEventListener("load", () => duoFit(im), { once: true }));
     g.querySelectorAll("img").forEach(im => im.complete || im.addEventListener("load", evenPairs, { once: true }));

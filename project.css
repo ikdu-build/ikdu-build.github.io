@@ -78,7 +78,7 @@
   .gallery figure { overflow:hidden; align-self:start; }
   .gallery figure.wide { grid-column:1 / -1; }
   .gallery figure.solo { grid-column:1 / -1; justify-self:center; }
-  .gallery figure.solo img { width:auto; max-width:100%; max-height:85vh; }
+  .gallery figure.solo img { width:auto; max-width:100%; max-height:85vh; }   /* desktop: capped at --fit (below) */
   .gallery img { width:100%; height:auto; display:block; transform:scale(1.08); transition:transform 1.8s ease; }
   .gallery figure.in img { transform:scale(1); }
   /* duo: two photos side by side at the same height, uncropped (widths set from each photo's shape in project.js) */
@@ -119,3 +119,15 @@
   .concept-link a:hover { color:var(--brown); }
   [dir="rtl"] .concept-link { letter-spacing:0; font-size:15px; }
   @media (max-width:760px) { .concept-link { padding:0 16px; margin:-40px auto 56px; } }
+
+  /* Every photo fits the screen below the header (Amr, 2026-09-29): wide photos, tall pairs, duos and the 3-step story
+     are capped at the visible height; they get narrower and stay centred, nothing is cropped. Phones unchanged.
+     --r (width ÷ height) is set per pair / story by project.js. */
+  :root { --fit:calc(100vh - 96px); }   /* screen minus the 64 px header and a little air */
+  @media (min-width:761px) {
+    .gallery figure.wide { justify-self:center; }
+    .gallery figure.wide img, .gallery figure.solo img { width:auto; max-width:100%; max-height:var(--fit); }
+    .gallery figure.pair { width:100%; max-width:calc(var(--fit) * var(--r)); }
+    .gallery figure.pair.first { justify-self:end; } .gallery figure.pair.second { justify-self:start; }   /* the two meet in the middle (also in Arabic) */
+    .steps { max-width:calc((var(--fit) - 40px) * var(--r, 1.5)); margin-left:auto; margin-right:auto; }   /* 40 px = the step names under the photo */
+  }

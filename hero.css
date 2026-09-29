@@ -28,7 +28,14 @@
   .menu-btn { display:none; }
 
   /* Hero slideshow: crossfade + slow zoom, feels like video */
-  /* (no scroll-snap: it fought the category jump and pulled headlines under the header) */
+  /* Gentle snap (Amr, 2026-09-29): scrolling stays free; when it stops near a project, that project settles just under the
+     small header. The top of the page is its own snap point (first project + big header). Off in the category view (sticky
+     chips; the old snap fought the category jump) and for people who ask for less motion. */
+  html { scroll-snap-type:y proximity; scroll-padding-top:64px; }
+  main { scroll-snap-align:start; }
+  .project:not(:first-of-type) { scroll-snap-align:start; }
+  html:has(body.grouped) { scroll-snap-type:none; }
+  @media (prefers-reduced-motion:reduce) { html { scroll-snap-type:none; } }
   main { padding-top:120px; }
   .project { position:relative; height:calc(100vh - 64px); margin:0 0 8px; overflow:hidden; background:#000; }
   .project:first-of-type { height:calc(100vh - 120px); }
