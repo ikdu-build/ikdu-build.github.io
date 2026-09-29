@@ -19,7 +19,7 @@ const H = window.IKDU_AR ? {
     const main = document.querySelector("main"); main.innerHTML = "";
     // Default: Amr's own sequence (from the picker), no headlines.
     // After someone picks a category, the same sections are regrouped under headlines (Villas, Commercial, Apartments).
-    const GROUPS = ["villa", "commercial", "apartments"];
+    const GROUPS = ["commercial", "villa", "apartments"];   // commercial first: IKDU's main target (Amr, 2026-09-29)
     const shown = picks.order.filter(p => picks.home[p]?.length);
     const ordered = GROUPS.flatMap(g => shown.filter(p => window.IKDU_PROJECT_CAT[p] === g)).concat(shown.filter(p => !GROUPS.includes(window.IKDU_PROJECT_CAT[p])));
     window.IKDU_ORDER = { seq: shown, grouped: ordered, groups: GROUPS };

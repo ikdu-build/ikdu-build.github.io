@@ -112,3 +112,14 @@
              font-family:var(--serif); font-size:24px; letter-spacing:.01em;
              background:linear-gradient(rgba(0,0,0,.35), transparent); text-shadow:0 1px 10px rgba(0,0,0,.35); }
   @media (max-width:760px) { .tagline { font-size:17px; padding:18px 16px 44px; } }
+
+  /* Phone turned sideways / short screens (2026-09-29): compact header with the emblem from the start (like the other pages),
+     each project fills the screen below it, smaller caption so it fits */
+  @media (max-height:500px) and (orientation:landscape) {
+    main { padding-top:64px; }
+    .project, .project:first-of-type { height:calc(100svh - 64px); }
+    .logo .word { opacity:0; transform:scale(.8); } .logo .emblem { opacity:1; transform:scale(1); }
+    .caption { bottom:20px; } .caption h2 { font-size:30px; } .caption p { margin:4px 0 8px; }
+    .tagline { font-size:16px; padding:12px 16px 36px; }
+    .dots { bottom:16px; }
+  }

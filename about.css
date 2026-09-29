@@ -95,8 +95,42 @@
     .included { gap:20px; }
   }
 
+  /* ---- About option A (Amr, 2026-09-29): service cards with photos, small terracotta photo, "How we work" as one project's journey ---- */
+  .svc-head { display:flex; justify-content:space-between; align-items:baseline; gap:32px; border-top:1px solid var(--camel); padding-top:28px; margin-bottom:32px; }
+  .svc-head .title { margin-bottom:0 !important; }
+  .svc-head p { max-width:420px; opacity:.85; }
+  .svc { display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  .svc-card { display:flex; flex-direction:column; background:var(--cream); color:var(--ink); text-decoration:none; }
+  .svc-img, .inc-img, .step-img { display:block; position:relative; overflow:hidden; background:var(--beige); }
+  .svc-img { aspect-ratio:4/5; }
+  .svc-img img, .inc-img img, .step-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease; }
+  .svc-card:hover .svc-img img { transform:scale(1.04); }
+  .svc-card h3 { font-size:30px; margin:22px 24px 8px; }
+  .svc-card p { margin:0 24px; opacity:.85; }
+  .svc-card .more { margin:auto 24px 24px; padding-top:18px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; }
+  .svc-card:hover .more { color:var(--brick); }
+  /* photo fills its column beside heading + list, so its top and bottom line up with them (Amr: alignment) */
+  .included { grid-template-columns:minmax(220px, 1fr) 2fr; align-items:stretch; }
+  .inc-side { position:relative; min-height:320px; }
+  .inc-side .inc-img { position:absolute; inset:0; }
+  .journey { margin:-16px 0 28px; opacity:.75; }
+  .step-img { aspect-ratio:1/1; margin-bottom:18px; }
+  .steps4 li { border-top:0; padding-top:0; }
+  .steps4 li::before { border-top:1px solid var(--camel); padding-top:14px; }
+  .tag3d { position:absolute; top:10px; left:10px; background:var(--cream); color:var(--ink); font-size:10px; letter-spacing:.15em; text-transform:uppercase; padding:5px 8px; line-height:1; }
+  [dir="rtl"] .tag3d { left:auto; right:10px; letter-spacing:0; font-size:12px; }
+  @media (max-width:760px) {
+    .svc-head { flex-direction:column; gap:10px; }
+    .svc { grid-template-columns:1fr; gap:20px; } .svc-img { aspect-ratio:4/3; }
+    .included { grid-template-columns:1fr; } .inc-side { min-height:0; } .inc-side .inc-img { position:relative; aspect-ratio:3/2; }
+    .steps4 { grid-template-columns:1fr 1fr; gap:24px 16px; }   /* phones: 2 x 2, so the journey still reads as a sequence */
+  }
+
   /* Link to the Concept -> Reality page (2026-09-29) */
   .concept-link { text-align:center; padding:72px 24px 0; font-size:12px; letter-spacing:.2em; text-transform:uppercase; }
   .concept-link a { color:var(--ink); text-decoration:none; border-bottom:1px solid var(--camel); padding-bottom:3px; }
   .concept-link a:hover { color:var(--brown); }
   [dir="rtl"] .concept-link { letter-spacing:0; font-size:15px; }
+
+  /* Phone turned sideways / short screens (2026-09-29): the opening photo fits the screen below the header */
+  @media (max-height:500px) and (orientation:landscape) { .open { min-height:0; height:calc(100svh - 64px); margin-top:64px; } .frame { height:86%; } }

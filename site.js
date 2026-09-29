@@ -13,7 +13,7 @@
   const A = AR ? "../assets" : "assets";          // assets folder, seen from this page
   window.IKDU_ASSETS = A;
   const T = AR
-    ? { cr: "من التصميم للتنفيذ", projects: "المشاريع", services: "خدماتنا", about: "عنّا وخدماتنا", connect: "تواصل معانا", menu: "القائمة", close: "إغلاق",
+    ? { cr: "من التصميم للتنفيذ", projects: "المشاريع", services: "خدماتنا", about: "عنّا وخدماتنا", connect: "تواصل معنا", menu: "القائمة", close: "إغلاق",
         waFloat: "واتساب", waFloatLabel: "كلّمنا على واتساب", waUs: "كلّمنا واتساب", place: "الجيزة، مصر",
         villa: "فيلات", apartments: "شقق", commercial: "تجاري", other: "EN", otherLabel: "English",
         ig: "إنستجرام", li: "لينكدإن", fb: "فيسبوك" }
@@ -35,10 +35,10 @@
   window.ikduThumb = key => { const [folder, file] = key.split("/"); return `${A}/web/${folder}/${file.replace(/\.[a-z]+$/i, "")}-600.webp`; };
 
   // Building-type categories (Amanda's p28 icons, black only; "buildings" hidden until a building project exists)
-  window.IKDU_CATS = {
+  window.IKDU_CATS = {   // order = commercial, villas, apartments (Amr, 2026-09-29)
+    commercial: { label: T.commercial, icon: `${A}/web/icons/icon-retail.png` },  // Amanda's "retail space" icon, closest match in her set
     villa:      { label: T.villa,      icon: `${A}/web/icons/icon-villa.png` },
-    apartments: { label: T.apartments, icon: `${A}/web/icons/icon-apartments.png` },
-    commercial: { label: T.commercial, icon: `${A}/web/icons/icon-retail.png` }  // Amanda's "retail space" icon, closest match in her set
+    apartments: { label: T.apartments, icon: `${A}/web/icons/icon-apartments.png` }
   };
   window.IKDU_PROJECT_CAT = { "l-villa": "villa", "l-villa-2": "villa", "m-villa": "villa", "s-roof": "apartments", "polysh": "commercial", "sane": "commercial" };
 
@@ -76,24 +76,35 @@
   document.body.insertAdjacentHTML("beforeend",
     `<a class="wa-float" href="${waLink}" aria-label="${T.waFloatLabel}">${WA_ICON}<span>${T.waFloat}</span></a>`);
 
-  // Phone menu
+  // Phone menu ("is-open", not "open": the About page already uses .open for its opening photo)
   const header = document.querySelector("header");
   if (header) {
     header.querySelector(".menu-btn")?.remove();
     header.insertAdjacentHTML("beforeend", `<button class="menu-btn" aria-label="${T.menu}">${T.menu}</button>`);
+    // Editorial list (Amr, option A, 2026-09-29): header-like top bar (emblem centred, Close where MENU was), numbered links with
+    // camel lines like "How we work", then language switch, WhatsApp and email at the bottom
+    const links = [["hero.html", T.projects], ["transformation.html", T.cr], ["about.html", T.about], ["connect.html", T.connect]];
     document.body.insertAdjacentHTML("beforeend", `<nav class="menu-overlay" aria-label="${T.menu}">
-      <button class="close">${T.close}</button>
-      <a href="hero.html">${T.projects}</a><a href="transformation.html">${T.cr}</a><a href="about.html">${T.about}</a><a href="connect.html">${T.connect}</a>
-      ${twinLink}<a class="wa" href="${waLink}">${T.waUs}</a></nav>`);
+      <div class="mo-top"><a class="mo-logo" href="hero.html"><img src="${A}/web/brand/emblem-brick.png" alt="${AR ? "إكدو" : "IKDU"}"></a><button class="close">${T.close}</button></div>
+      <ol class="mo-links">${links.map(([h, t], n) => `<li><a href="${h}"${h === file ? ' class="on"' : ""}><span class="n">0${n + 1}</span>${t}</a></li>`).join("")}</ol>
+      <div class="mo-foot">${twinLink}<a class="wa" href="${waLink}">${T.waUs}</a><a class="mail" href="mailto:hello@ikdu.build" dir="ltr">hello@ikdu.build</a></div></nav>`);
     const ov = document.querySelector(".menu-overlay");
-    header.querySelector(".menu-btn").onclick = () => ov.classList.add("open");
-    ov.querySelector(".close").onclick = () => ov.classList.remove("open");
+    header.querySelector(".menu-btn").onclick = () => ov.classList.add("is-open");
+    ov.querySelector(".close").onclick = () => ov.classList.remove("is-open");
   }
 
-  // Footer
+  // Footer. Social + email: text on laptops, icons on phones (Amr, 2026-09-29); plain line icons in the text colour
+  const svg = d => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const SOCIAL = [
+    ["https://www.instagram.com/ikdu.build/", T.ig, svg('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/>')],
+    ["https://www.linkedin.com/company/ikdu/", T.li, svg('<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.3v.01M12 17v-6.5M12 13.2c0-1.6 1.1-2.7 2.5-2.7s2.5 1 2.5 2.7V17"/>')],
+    ["https://www.facebook.com/ikdu.build/", T.fb, svg('<path d="M14.5 8H17V4.5h-2.5A4 4 0 0 0 10.5 8.5V11H8v3.5h2.5V21H14v-6.5h2.6l.4-3.5h-3V9a1 1 0 0 1 1-1z"/>')],
+    ["mailto:hello@ikdu.build", "hello@ikdu.build", svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>'), true],
+  ];
   document.body.insertAdjacentHTML("beforeend", `<footer class="site-footer">
     <img src="${A}/web/brand/bilingual-handdrawn.png" alt="IKDU إكدو">
-    <div class="links"><a href="hero.html">${T.projects}</a><a href="transformation.html">${T.cr}</a><a href="about.html">${T.about}</a><a href="mailto:hello@ikdu.build" dir="ltr">hello@ikdu.build</a><a href="https://www.instagram.com/ikdu.build/">${T.ig}</a><a href="https://www.linkedin.com/company/ikdu/">${T.li}</a><a href="https://www.facebook.com/ikdu.build/">${T.fb}</a><a href="connect.html">${T.connect}</a></div>
+    <div class="mid"><div class="links"><a href="hero.html">${T.projects}</a><a href="transformation.html">${T.cr}</a><a href="about.html">${T.about}</a><a href="connect.html">${T.connect}</a></div>
+    <div class="social">${SOCIAL.map(([h, label, ico, ltr]) => `<a href="${h}" aria-label="${label}"${ltr ? ' dir="ltr"' : ""}>${ico}<span>${label}</span></a>`).join("")}</div></div>
     <small>${T.place}</small></footer>`);
 
 })();

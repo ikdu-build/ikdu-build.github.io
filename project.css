@@ -69,7 +69,7 @@
   .steps .dots { position:absolute; z-index:2; left:50%; bottom:24px; transform:translateX(-50%); display:flex; gap:10px; }
   .steps .dots span { width:40px; height:3px; background:rgba(255,255,255,.4); overflow:hidden; }
   .steps .dots span::after { content:""; display:block; height:100%; width:0; background:#fff; }
-  .steps .dots span.on::after { animation:fill 2.5s linear forwards; }
+  .steps .dots span.on::after { animation:fill var(--dur, 2.5s) linear forwards; }   /* --dur set by project.js: 1.5 s first, then 2.5 s */
   [dir="rtl"] .steps .dots span::after { margin-left:auto; }
   @keyframes fill { to { width:100% } }
 

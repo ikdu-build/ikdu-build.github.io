@@ -45,7 +45,7 @@
   const PROJECTS_AR = {
     "polysh":      { name:"Polysh", sub:"صالون أظافر · أركان، الجيزة",
                      facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · صالون", "الشغل":"تشطيب وتجهيز كامل + الفرش", "السنة":"2025" },
-                     intro:"من الخرسانة لحد الفرش، معمول على المقاس: حيطان تيراكوتا ونيشات مقوّسة في كل حتة." },
+                     intro:"من الخرسانة حتى الفرش، مصنوعًا على المقاس: حيطان تيراكوتا ونيشات مقوّسة في كل أنحاء المكان." },
     "s-roof":      { name:"S-Roof", sub:"روف · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · روف", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"من الخرسانة لحد قعدة برّه كاملة: برجولة خشب بيتش باين، وكنبة وبار وكاونتر وحوض بيلت إن وترابيزة دوّارة، كلهم تيرازو اتصبّ في الموقع." },
@@ -131,10 +131,20 @@
           // timer like the home page: one small white line per photo on the picture, the current one fills
           dots.forEach((d, k) => { d.classList.remove("on"); if (k === i) { void d.offsetWidth; d.classList.add("on"); } });
         };
-        const STEP_MS = 2500;   // 2.5 s per photo (was 3.5 s, Amr: "very slow"); the current line fills over the same time
-        const play = () => { clearInterval(timer); timer = setInterval(() => go(i + 1), STEP_MS); };
+        // 2.5 s per photo, but the first switch comes after 1.5 s (Amr, 2026-09-29, like the home page); the current line fills over the same time
+        const FIRST_MS = 1500, STEP_MS = 2500;
+        let first = true;
+        const play = () => {
+          clearTimeout(timer);
+          const ms = first ? FIRST_MS : STEP_MS; first = false;
+          dots.forEach(d => d.style.setProperty("--dur", ms + "ms"));
+          timer = setTimeout(() => { go(i + 1); play(); }, ms);
+        };
         tabs.forEach((t, k) => t.onclick = () => { go(k); play(); });
-        new IntersectionObserver(([e]) => { if (e.isIntersecting) { go(0); play(); } else clearInterval(timer); }, { threshold: .5 }).observe(el);
+        // tap/click the photo to skip to the next one (Amr, 2026-09-29)
+        frame.style.cursor = "pointer";
+        frame.addEventListener("click", () => { go(i + 1); play(); });
+        new IntersectionObserver(([e]) => { if (e.isIntersecting) { first = true; go(0); play(); } else clearTimeout(timer); }, { threshold: .5 }).observe(el);
       });
     }
 

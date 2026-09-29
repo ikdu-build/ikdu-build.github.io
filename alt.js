@@ -65,6 +65,7 @@ window.IKDU_ALT = {
   "s-roof/DSC09938.jpg": "Sodic rooftop outdoor kitchen: timber cabinets and louvred storage, table tucked away",
   "s-roof/DSC09947.jpg": "Sodic rooftop outdoor kitchen with the rotating table swung out",
   "s-roof/IMG-20251218-WA0024.jpg": "Sodic rooftop during works: bare steel pergola frame",
+  "s-roof/IMG-20251218-WA0024-frame.jpg": "S-Roof during works: the white pergola frame going up against the sky",
   "s-roof/IMG-20251230-WA0007.jpg": "Sodic rooftop during works: pergola frame with battens going up",
   "s-roof/IMG_1016.jpg": "Sodic rooftop at dusk: pergola and built-in lounge with hidden LED lighting",
   "s-roof/DSC09787.jpg": "S-Roof overview: pitch pine pergola over the built-in seating, and the outdoor kitchen along the timber screen",
