@@ -91,6 +91,15 @@
     const ov = document.querySelector(".menu-overlay");
     header.querySelector(".menu-btn").onclick = () => ov.classList.add("is-open");
     ov.querySelector(".close").onclick = () => ov.classList.remove("is-open");
+    // Scrolling closes the menu (Amr, 2026-09-29): a swipe/wheel on the menu when it fits the screen, or the page moving behind it.
+    // On a short (sideways) screen the menu itself scrolls, so only the page moving closes it there.
+    const shut = () => ov.classList.remove("is-open");
+    const fits = () => ov.scrollHeight <= ov.clientHeight + 1;
+    let y0 = null;
+    ov.addEventListener("touchstart", e => { y0 = e.touches[0].clientY; }, { passive: true });
+    ov.addEventListener("touchmove", e => { if (y0 !== null && fits() && Math.abs(e.touches[0].clientY - y0) > 30) { shut(); y0 = null; } }, { passive: true });
+    ov.addEventListener("wheel", () => { if (fits()) shut(); }, { passive: true });
+    addEventListener("scroll", () => { if (ov.classList.contains("is-open")) shut(); }, { passive: true });
   }
 
   // Footer. Social + email: text on laptops, icons on phones (Amr, 2026-09-29); plain line icons in the text colour

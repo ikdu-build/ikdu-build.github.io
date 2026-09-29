@@ -50,8 +50,8 @@ header .logo { grid-column:2; justify-self:center; }
 .mo-links { list-style:none; margin:0; padding:28px 24px 0; }
 .mo-links li { border-top:1px solid var(--camel); }
 .mo-links li:last-child { border-bottom:1px solid var(--camel); }
-.mo-links a { display:flex; align-items:baseline; gap:18px; padding:18px 0; color:var(--ink); text-decoration:none; white-space:nowrap;
-              font-family:var(--serif); font-size:clamp(26px, 7.5vw, 34px); line-height:1.1; }
+.mo-links a { display:flex; align-items:baseline; gap:14px; padding:18px 0; color:var(--ink); text-decoration:none; white-space:nowrap;
+              font-family:var(--serif); font-size:min(32px, calc((100vw - 48px) / 14)); line-height:1.1; }   /* sized so "02 Concept → Reality" always fits the width */
 .mo-links a:lang(ar), [dir="rtl"] .mo-links a { font-family:var(--arabic); }
 .mo-links a.on { color:var(--brown); }
 .mo-links .n { font-family:var(--sans); font-size:12px; letter-spacing:.25em; min-width:26px; opacity:.7; }
