@@ -40,12 +40,12 @@
     apartments: { label: T.apartments, icon: `${A}/web/icons/icon-apartments.png` },
     commercial: { label: T.commercial, icon: `${A}/web/icons/icon-retail.png` }  // Amanda's "retail space" icon, closest match in her set
   };
-  window.IKDU_PROJECT_CAT = { "twin-villas": "villa", "m-villa": "villa", "s-roof": "apartments", "polysh": "commercial", "sane": "commercial" };
+  window.IKDU_PROJECT_CAT = { "l-villa": "villa", "l-villa-2": "villa", "m-villa": "villa", "s-roof": "apartments", "polysh": "commercial", "sane": "commercial" };
 
   // Language switcher (عربي / EN): goes to the SAME page in the other language.
   // Only pages that exist in both languages get it; add a file name here when its twin is built.
   const TWINS = ["hero.html", "about.html", "connect.html", "transformation.html",
-                 "twin-villas.html", "polysh.html", "s-roof.html", "sane.html", "m-villa.html"];
+                 "l-villa.html", "l-villa-2.html", "polysh.html", "s-roof.html", "sane.html", "m-villa.html"];
   const file = (location.pathname.split("/").pop() || "hero.html").replace(/^index\.html$/, "hero.html");   // live home = index.html (copy of hero.html)
   // Pages are pre-rendered at build time (make_site.py), so the menu, footer, WhatsApp button etc. may already be in the HTML.
   // Take those copies out first and build them again, so nothing appears twice and every button works.

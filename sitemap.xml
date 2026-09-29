@@ -49,16 +49,28 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://ikdu.build/ar/transformation.html"/>
   </url>
   <url>
-    <loc>https://ikdu.build/twin-villas.html</loc>
+    <loc>https://ikdu.build/l-villa.html</loc>
     <lastmod>2026-09-29</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ikdu.build/twin-villas.html"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://ikdu.build/ar/twin-villas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ikdu.build/l-villa.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ikdu.build/ar/l-villa.html"/>
   </url>
   <url>
-    <loc>https://ikdu.build/ar/twin-villas.html</loc>
+    <loc>https://ikdu.build/ar/l-villa.html</loc>
     <lastmod>2026-09-29</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ikdu.build/twin-villas.html"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://ikdu.build/ar/twin-villas.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ikdu.build/l-villa.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ikdu.build/ar/l-villa.html"/>
+  </url>
+  <url>
+    <loc>https://ikdu.build/l-villa-2.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ikdu.build/l-villa-2.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ikdu.build/ar/l-villa-2.html"/>
+  </url>
+  <url>
+    <loc>https://ikdu.build/ar/l-villa-2.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ikdu.build/l-villa-2.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ikdu.build/ar/l-villa-2.html"/>
   </url>
   <url>
     <loc>https://ikdu.build/polysh.html</loc>

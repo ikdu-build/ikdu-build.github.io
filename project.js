@@ -3,10 +3,10 @@
   const PROJECTS = {
     "polysh":  { name:"Polysh", sub:"Nail salon · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Salon", Scope:"Full fit-out + furniture", Year:"2025" },
-                 intro:"From bare concrete to the furniture, made to measure.",
+                 intro:"From bare concrete to the furniture, made to measure: terracotta walls and arched niches throughout.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
-    "s-roof":  { name:"Sodic Rooftop", sub:"Rooftop · Sodic Courtyard, Giza",
+    "s-roof":  { name:"S-Roof", sub:"Rooftop · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
                  intro:"Taken from bare concrete to a finished outdoor living room: a pitch pine pergola, and a couch, bar, counter, built-in sink and rotating table, all in terrazzo poured on site.",
                  ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016-soft.jpg"]],
@@ -21,10 +21,15 @@
                          ["DSC09530-HDR-2.jpg","DSC09538-HDR-1.jpg","Hidden bathroom storage · behind the mirror"]],
                  // gallery in this exact order (Amr, 2026-09-28): tall photos pair up two by two
                  gallery:["DSC09599.jpg", "DSC09722.jpg", "DSC09712.jpg", "DSC09737.jpg", "DSC09755-1.jpg", "DSC09717.jpg", "DSC09617.jpg"] },
-    "twin-villas":    { name:"Twin Villas", sub:"Twin villas · full finishing · Legenda, Giza",
-                 facts:{ Location:"Legenda, Giza", Type:"Residential · Twin villas", Scope:"Full finishing, inside + out", Year:"2023 (first villa) · 2024 (twin)" },
-                 intro:"Two family villas in Legenda, finished inside and out: herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
+    "l-villa":    { name:"L-Villa", sub:"Villa · full finishing · Legenda, Giza",
+                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Full finishing, inside + out", Year:"2023" },
+                 intro:"A family villa in Legenda, finished inside and out: herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
                  ba:[["20230329_110331.jpg","DSC01968.jpg"]] },
+    // L-Villa II (Amr, 2026-09-29): L-Villa's mirror twin next door; its own page with the 4 real photos from the pro shoot. More after its full shoot.
+    "l-villa-2":  { name:"L-Villa II", sub:"Villa · full finishing · Legenda, Giza", cover:"DSC02035.jpg",
+                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Full finishing, inside + out", Year:"2024" },
+                 intro:"The mirror twin of L-Villa, right next door in Legenda, finished inside and out to the same standard.",
+                 gallery:["DSC02036.jpg", "DSC01939.jpg", "DSC02032.jpg"] },
     "sane":    { name:"Sane", sub:"Kids' art space · Masyaf & Almaza, North Coast", cover:"8379CE78-E7CE-4747-A89E-ADBB7ABB8C41_1_201_a.jpg",
                  facts:{ Location:"Masyaf & Almaza, North Coast", Type:"Education · Kids' space", Scope:"Landscape · Interiors · Furniture", Year:"2025" },
                  intro:"A garden classroom for a kids' art space: a circular path poured on site, turf, timber fencing and custom children's furniture.",
@@ -33,23 +38,26 @@
                  gallery:["20250823-DSC04416-Edit.jpg", "new-2.jpg", "new.jpg", ["new-4.jpg", "new-5.jpg"]] }
   };
 
-  const key = document.body.dataset.project;   // each project page says which project it is: <body data-project="twin-villas">
+  const key = document.body.dataset.project;   // each project page says which project it is: <body data-project="l-villa">
 
   // Arabic text for ar/<project>.html (DRAFT for Amr's approval, Egyptian register, written in Arabic).
   // Photos, before/after and details still come from PROJECTS above; only the words change.
   const PROJECTS_AR = {
     "polysh":      { name:"Polysh", sub:"صالون أظافر · أركان، الجيزة",
                      facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · صالون", "الشغل":"تشطيب وتجهيز كامل + الفرش", "السنة":"2025" },
-                     intro:"من الخرسانة لحد الفرش، معمول على المقاس." },
-    "s-roof":      { name:"روف سوديك", sub:"روف · سوديك كورتيارد، الجيزة",
+                     intro:"من الخرسانة لحد الفرش، معمول على المقاس: حيطان تيراكوتا ونيشات مقوّسة في كل حتة." },
+    "s-roof":      { name:"S-Roof", sub:"روف · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · روف", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"من الخرسانة لحد قعدة برّه كاملة: برجولة خشب بيتش باين، وكنبة وبار وكاونتر وحوض بيلت إن وترابيزة دوّارة، كلهم تيرازو اتصبّ في الموقع." },
     "m-villa":     { name:"M-Villa", sub:"تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة",
                      facts:{ "المكان":"ماونتن فيو، التجمع، القاهرة", "النوع":"سكني · فيلا", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"هيكل خرسانة اتحوّل لبيت دافي وهادي، من تصميمنا وتنفيذنا. أرضيات رخام إيطالي أوبن بوك، وسلم بدرجات رخام، ساتر شرائح خشب بطول الدور، وإضاءة مخفية في الدرج." },
-    "twin-villas": { name:"الفيلتين التوأم", sub:"فيلتين · تشطيب كامل · ليجندا، الجيزة",
-                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلتين توأم", "الشغل":"تشطيب كامل، جوّه وبرّه", "السنة":"2023 (الفيلا الأولى) · 2024 (التوأم)" },
-                     intro:"فيلتين عائليتين في ليجندا، اتشطبوا جوّه وبرّه: باركيه هيرينجبون، مطبخ خشب كلاسيك، دريسنج روم، حمامات حجر، ومدخل حجر جديد." },
+    "l-villa": { name:"L-Villa", sub:"فيلا · تشطيب كامل · ليجندا، الجيزة",
+                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "الشغل":"تشطيب كامل، جوّه وبرّه", "السنة":"2023" },
+                     intro:"فيلا عائلية في ليجندا، اتشطبت جوّه وبرّه: باركيه هيرينجبون، مطبخ خشب كلاسيك، دريسنج روم، حمامات حجر، ومدخل حجر جديد." },
+    "l-villa-2": { name:"L-Villa II", sub:"فيلا · تشطيب كامل · ليجندا، الجيزة",
+                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "الشغل":"تشطيب كامل، جوّه وبرّه", "السنة":"2024" },
+                     intro:"التوأم المعكوس لـ L-Villa، جنبها على طول في ليجندا، اتشطبت جوّه وبرّه بنفس المستوى." },
     "sane":        { name:"Sane", sub:"مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي",
                      facts:{ "المكان":"مصياف وألماظة، الساحل الشمالي", "النوع":"تعليمي · مساحة للأطفال", "الشغل":"لاندسكيب · تشطيب داخلي · فرش", "السنة":"2025" },
                      intro:"فصل في الجنينة لمساحة فنية للأطفال: ممشى دائري اتصبّ في الموقع، نجيلة، سور خشب، وفرش أطفال معمول مخصوص." }
@@ -232,6 +240,6 @@
     next.href = `${nk}.html`;
     const nextImg = next.querySelector("img"); (nextImg.closest("picture") || nextImg).outerHTML = ikduPic(nk + "/" + nFirst, { alt: "" });
     next.querySelector("h3").textContent = NAME(nk);
-    // Jump to a section if the link asks for one (e.g. twin-villas.html#ba)
+    // Jump to a section if the link asks for one (e.g. l-villa.html#ba)
     const h = location.hash.slice(1); if (h) setTimeout(() => document.getElementById(h)?.scrollIntoView(), 300);
   });

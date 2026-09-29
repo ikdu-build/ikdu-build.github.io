@@ -1,12 +1,12 @@
 // Home page script, shared by hero.html (English) and ar/hero.html (Arabic). Text comes from H below.
 const H = window.IKDU_AR ? {
-  info: { "polysh": ["Polysh", "صالون أظافر · أركان، الجيزة"], "s-roof": ["روف سوديك", "روف · سوديك كورتيارد، الجيزة"],
-          "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "twin-villas": ["الفيلتين التوأم", "فيلتين · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
+  info: { "polysh": ["Polysh", "صالون أظافر · أركان، الجيزة"], "s-roof": ["S-Roof", "روف · سوديك كورتيارد، الجيزة"],
+          "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "l-villa": ["L-Villa", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "كل المشاريع", jumpNav: "أقسام المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
   view: "شوف المشروع &larr;", tagline: "مقاولات وتشطيبات في مصر كلها… من الخرسانة لحد ما تستلم مكانك جاهز."
 } : {
-  info: { "polysh": ["Polysh", "Nail salon · Arkan, Giza"], "s-roof": ["Sodic Rooftop", "Rooftop · Sodic Courtyard, Giza"],
-          "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "twin-villas": ["Twin Villas", "Twin villas · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
+  info: { "polysh": ["Polysh", "Nail salon · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Sodic Courtyard, Giza"],
+          "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "l-villa": ["L-Villa", "Villa · full finishing · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
   view: "View project &rarr;", tagline: "Contracting &amp; fit-out across Egypt — from bare concrete to finished space."
 };
@@ -41,10 +41,10 @@ const H = window.IKDU_AR ? {
   // Photos listed here always fill the frame (cropped, never blurred sides) — e.g. close-ups.
   const ALWAYS_FILL = ["m-villa/DSC09755-1.jpg"];
   // Which part of a photo to keep when it's cropped: "left-right% top-bottom%" (50% 50% = centre)
-  const FOCUS = { "twin-villas/DSC01968.jpg": "74% 50%", "m-villa/DSC09366.jpg": "22% 50%" };   // m-villa: keep the staircase in the phone crop
+  const FOCUS = { "l-villa/DSC01968.jpg": "74% 50%", "m-villa/DSC09366.jpg": "22% 50%" };   // m-villa: keep the staircase in the phone crop
   // Zoom out that ENDS on a chosen frame: show the photo from `from` to `to` (0 = left edge, 1 = right edge).
-  // Twin Villas garden: ends with the building's left end just visible and the palm tree in the middle.
-  const END_FRAME = { "twin-villas/DSC02021.jpg": { from: .10, to: .78 } };
+  // L-Villa garden: ends with the building's left end just visible and the palm tree in the middle.
+  const END_FRAME = { "l-villa/DSC02021.jpg": { from: .10, to: .78 } };
   // Photos always shown whole (nothing cropped); leftover space gets a blurred copy of the photo
   const ALWAYS_WHOLE = [];
 
