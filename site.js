@@ -30,6 +30,7 @@
     const alt = o.alt ?? (window.ikduAlt ? window.ikduAlt(key, "") : "");
     return `<picture><source type="image/webp" srcset="${base}-600.webp 600w, ${base}-1200.webp 1200w, ${base}-1600.webp 1600w" sizes="${o.sizes || "100vw"}">` +
       `<img src="${base}-1200.jpg" alt="${alt.replace(/"/g, "&quot;")}" data-pic="${key}"${o.cls ? ` class="${o.cls}"` : ""}${o.id ? ` id="${o.id}"` : ""}` +
+      (o.w && o.h ? ` width="${o.w}" height="${o.h}"` : "") +   // real size (photos.json): the browser reserves the space before the photo loads
       `${o.eager ? ` fetchpriority="high"` : ` loading="lazy"`} decoding="async"></picture>`;
   };
   window.ikduThumb = key => { const [folder, file] = key.split("/"); return `${A}/web/${folder}/${file.replace(/\.[a-z]+$/i, "")}-600.webp`; };

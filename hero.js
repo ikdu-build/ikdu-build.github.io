@@ -3,12 +3,12 @@ const H = window.IKDU_AR ? {
   info: { "polysh": ["Polysh", "صالون أظافر · أركان، الجيزة"], "s-roof": ["S-Roof", "روف · سوديك كورتيارد، الجيزة"],
           "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "l-villa": ["L-Villa", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "كل المشاريع", jumpNav: "أقسام المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
-  view: "شوف المشروع &larr;", tagline: "مقاولات وتشطيبات في مصر كلها… من الخرسانة لحد ما تستلم مكانك جاهز."
+  view: "شوف المشروع &larr;", cr: { h: "من التصميم للتنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شوفهم جنب بعض &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مصر كلها… من الخرسانة لحد ما تستلم مكانك جاهز."
 } : {
   info: { "polysh": ["Polysh", "Nail salon · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Sodic Courtyard, Giza"],
           "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "l-villa": ["L-Villa", "Villa · full finishing · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
-  view: "View project &rarr;", tagline: "Contracting &amp; fit-out across Egypt — from bare concrete to finished space."
+  view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting &amp; fit-out across Egypt — from bare concrete to finished space."
 };
   // If photos were chosen in picker.html, rebuild the project sections from those picks
   (() => {
@@ -28,9 +28,18 @@ const H = window.IKDU_AR ? {
       const cat = window.IKDU_PROJECT_CAT[p], c = window.IKDU_CATS[cat];
       main.insertAdjacentHTML("beforeend", `<section class="project" id="${p}" data-cat="${cat || ""}">
         ${picks.home[p].map((f, fi) => `<div class="slide">${ikduPic(p + "/" + f, { alt: ikduAlt(p + "/" + f, name + H.by), eager: pi === 0 && fi === 0 })}</div>`).join("")}
-        <div class="caption"><div class="name">${c ? `<a class="cat" href="#cat-${cat}" title="${c.label}"><span class="chip"><img src="${c.icon}" alt="${c.label} — ${H.jump}"></span></a>` : ""}<h2>${name}</h2></div><p>${sub}</p><a href="${p}.html">${H.view}</a></div><div class="dots" aria-hidden="true"></div></section>`);
+        <div class="caption"><div class="name">${c ? `<a class="cat" href="#cat-${cat}" title="${c.label}"><span class="chip"><img src="${c.icon}" alt="${c.label} — ${H.jump}"></span></a>` : ""}<h2>${name}</h2></div><p>${sub}</p><a class="view" href="${p}.html">${H.view}</a></div><div class="dots" aria-hidden="true"></div></section>`);
     });
     main.querySelector(".project")?.insertAdjacentHTML("beforeend", `<p class="tagline">${H.tagline}</p>`);
+    // The whole photo opens the project (Amr, 2026-09-30: many visitors, older ones especially, didn't see the small link).
+    // The link sits under the caption, so the category icon and the "View project" button keep working on top of it.
+    main.querySelectorAll(".project").forEach(sec => sec.insertAdjacentHTML("afterbegin", `<a class="hit" href="${sec.id}.html" aria-label="${(INFO[sec.id] || [sec.id])[0]}" tabindex="-1"></a>`));
+    // Concept -> Reality teaser after the 2nd project (Amr, 2026-09-30: people missed that page)
+    const secs = main.querySelectorAll(".project");
+    (secs[1] || secs[0])?.insertAdjacentHTML("afterend", `<section class="cr-teaser" id="cr-teaser"><a href="transformation.html" class="crt-pair">
+        <span class="crt-img">${ikduPic("polysh/render-p08.jpg", { alt: H.cr.r, sizes: "(max-width:760px) 50vw, 40vw" })}<em>${H.cr.r}</em></span>
+        <span class="crt-img">${ikduPic("polysh/DSC02600.jpg", { alt: H.cr.d, sizes: "(max-width:760px) 50vw, 40vw" })}<em>${H.cr.d}</em></span></a>
+      <div class="crt-text"><h2>${H.cr.h}</h2><p>${H.cr.p}</p><a class="crt-btn" href="transformation.html">${H.cr.btn}</a></div></section>`);
     // Category chips (touch devices always; desktop once a category is picked). "All projects" goes back to the sequence.
     main.insertAdjacentHTML("afterbegin", `<nav class="filters" aria-label="${H.jumpNav}"><a href="hero.html" data-all class="all">${H.all}</a>${
       GROUPS.filter(k => window.IKDU_CATS[k] && shown.some(p => window.IKDU_PROJECT_CAT[p] === k)).map(k => { const c = window.IKDU_CATS[k];
@@ -76,7 +85,9 @@ const H = window.IKDU_AR ? {
         s.classList.toggle('custom', !!ef);
         if (ef) { s.classList.remove('fit'); endFrame(s, img, END_FRAME[ef]); return; }
         const whole = ALWAYS_WHOLE.some(p => pic.endsWith(p));
-        const phone = innerWidth <= 760;  // on phones photos fill the screen (cropped) instead of blurred bands
+        // on phones AND upright tablets (frame taller than wide) photos fill the screen (cropped) instead of sitting small on a
+        // blurred copy: on an upright iPad the blur filled most of the screen and looked like a photo that never finished loading (2026-09-30)
+        const phone = innerWidth <= 760 || frame < 1;
         s.classList.toggle('fit', (crop > 1.7 && !fill && !phone) || whole);
         const zoom = crop > 1.35 ? .03 : crop > 1.15 ? .05 : .08;
         s.style.setProperty('--zoom', zoom);
@@ -93,7 +104,14 @@ const H = window.IKDU_AR ? {
     const slides = [...sec.querySelectorAll('.slide')], bar = sec.querySelector('.dots');
     // Timing (Amr, 2026-09-27): the FIRST switch comes after 1.5 s (to hook people scrolling), then every 2 s.
     // Starts again from 1.5 s each time the project comes back into view. The current photo's line fills over the same time.
-    const FIRST_MS = 1500, NEXT_MS = 2000;
+    // Slowed down (Amr, 2026-09-29): first switch after 2 s, then every 3 s.
+    const FIRST_MS = 2000, NEXT_MS = 3000;
+    // iPad fix (2026-09-29): photos start downloading one screen BEFORE the project comes into view, and the loop never
+    // switches to a photo that hasn't arrived yet (it used to switch to a blank / half-loaded photo on slow connections).
+    const imgs = slides.map(s => s.querySelector("picture img, img:not(.bg)"));
+    const warm = () => imgs.forEach(im => { if (im && im.loading === "lazy") im.loading = "eager"; });
+    new IntersectionObserver(([e], o) => { if (e.isIntersecting) { warm(); o.disconnect(); } }, { rootMargin: "100% 0px" }).observe(sec);
+    const ready = n => { const im = imgs[n]; return !im || (im.complete && im.naturalWidth > 0); };
     // One small line per photo (shows how many photos there are); the current one fills up. Back by Amr's request 2026-09-27, a bit bigger.
     bar.innerHTML = slides.map(() => "<span></span>").join("");
     const dots = [...bar.children];
@@ -104,7 +122,10 @@ const H = window.IKDU_AR ? {
       slides.forEach((s, n) => s.classList.toggle('on', n === i));
       restartBar(ms);
     };
-    const next = ms => { timer = setTimeout(() => { show(NEXT_MS); next(NEXT_MS); }, ms); };   // chain: each photo waits its own time
+    const next = ms => { timer = setTimeout(function tick() {                                  // chain: each photo waits its own time
+      if (!ready((i + 1) % slides.length)) { timer = setTimeout(tick, 250); return; }         // next photo not loaded yet: keep this one a bit longer
+      show(NEXT_MS); next(NEXT_MS);
+    }, ms); };
     show(FIRST_MS);
     if (slides.length < 2) bar.hidden = true;
     new IntersectionObserver(([e]) => {
@@ -129,6 +150,8 @@ const H = window.IKDU_AR ? {
       const sec = document.getElementById(p); if (!sec) return;
       mainEl.appendChild(sec);
     });
+    const crt = document.getElementById("cr-teaser"), ps = mainEl.querySelectorAll(".project");   // teaser stays after the 2nd project
+    if (crt) (ps[1] || ps[0])?.after(crt);
     const first = mainEl.querySelector(".project"), tag = document.querySelector(".tagline");   // tagline stays on the first project
     if (first && tag && tag.parentElement !== first) first.appendChild(tag);
     document.querySelectorAll(".filters a[data-cat]").forEach(a => a.classList.remove("on"));

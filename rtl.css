@@ -25,7 +25,7 @@ html[lang="ar"] .label, html[lang="ar"] nav { font-size: 14px; }
 [dir="rtl"] .included li::before { left: auto; right: 0; }
 
 /* Project pages: "before" on the right of the slider (the start, in Arabic reading order) */
-[dir="rtl"] .ba .before { clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }  /* AR: before LEFT of the line, finished on the right; line sweeps right -> left */
+[dir="rtl"] .ba .before { -webkit-clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }  /* AR: before LEFT of the line, finished on the right; line sweeps right -> left */
 [dir="rtl"] .ba .tag.b { right: auto; left: 16px; }
 [dir="rtl"] .ba .tag.a { left: auto; right: 16px; }
 [dir="rtl"] .steps .tabs button { text-align: right; }

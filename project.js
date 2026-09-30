@@ -66,9 +66,9 @@
   const DETAIL_AR = { "DSC09938.jpg": "ترابيزة بتلف · بتتخبى جوّه كاونتر التيرازو", "DSC09530-HDR-2.jpg": "تخزين مخفي في الحمام · ورا المراية", "DSC09518.jpg": "باب مخفي · على نفس مستوى حيطة الشرائح الخشب" };
   const U = window.IKDU_AR
     ? { ba:"قبل / بعد", drag:"اسحب الخط وقارن.", story:"من أرض فاضية لمكان جاهز.", steps:["قبل", "أثناء الشغل", "بعد"],
-        before:"قبل", after:"بعد", detail:"تفاصيل", dragMove:"اسحب الخط وشوفها بتتحرك.", concept:"تصميم ثلاثي الأبعاد", conceptLink:"شوف التصميم الثلاثي الأبعاد جنب المكان بعد التنفيذ ←", by:" من إكدو", knob:"اسحب", slider:"مقارنة قبل وبعد" }
+        before:"قبل", after:"بعد", detail:"تفاصيل", dragMove:"اسحب الخط وشوفها بتتحرك.", concept:"تصميم ثلاثي الأبعاد", conceptLink:"شوف التصميم الثلاثي الأبعاد جنب المكان بعد التنفيذ ←", ccTitle:"من التصميم للتنفيذ", ccText:"التصميم الثلاثي الأبعاد لهذا المشروع بجانب المكان بعد التنفيذ.", ccBtn:"شوفهم جنب بعض ←", delivered:"تم التنفيذ", by:" من إكدو", knob:"اسحب", slider:"مقارنة قبل وبعد" }
     : { ba:"Before / after", drag:"Drag the line to compare.", story:"From bare site to finished space.", steps:["Before", "Building", "After"],
-        altSteps:["Before", "During", "After"], before:"Before", after:"After", detail:"In detail", dragMove:"Drag the line to see it move.", concept:"3D concept", conceptLink:"See the 3D concept next to the finished space →", by:" by IKDU", knob:"Drag", slider:"Before and after comparison" };
+        altSteps:["Before", "During", "After"], before:"Before", after:"After", detail:"In detail", dragMove:"Drag the line to see it move.", concept:"3D concept", conceptLink:"See the 3D concept next to the finished space →", ccTitle:"From 3D concept to reality", ccText:"See this project's 3D design next to the finished space.", ccBtn:"See them side by side →", delivered:"Delivered", by:" by IKDU", knob:"Drag", slider:"Before and after comparison" };
   U.altSteps ??= U.steps;
   const P = window.IKDU_AR ? { ...PROJECTS[key], ...PROJECTS_AR[key] } : PROJECTS[key];
   const NAME = k => (window.IKDU_AR ? PROJECTS_AR[k] : PROJECTS[k]).name;
@@ -93,7 +93,14 @@
     const details = picks?.detail?.[key]?.length ? picks.detail[key] : (P.detail || []);
     const compFiles = [...comps.flat(), ...details.flatMap(d => d.slice(0, 2))];
     const alt = f => ikduAlt(key + "/" + f, P.name + U.by);
-    const pic = (f, o = {}) => ikduPic(key + "/" + f, { alt: alt(f), ...o });
+    const dims = Object.fromEntries(all[key].map(x => [x.f, x]));   // w/h from photos.json (2026-09-29): space is reserved before a photo loads
+    const pic = (f, o = {}) => ikduPic(key + "/" + f, { alt: alt(f), w: dims[f]?.w, h: dims[f]?.h, ...o });
+    const ratio = f => dims[f]?.w ? dims[f].w / dims[f].h : 0;
+    // resolves when every photo has finished loading (or failed), so animations never run on photos still arriving (iPad fix)
+    const loaded = ims => Promise.all(ims.map(im => im.complete && im.naturalWidth ? 0 : new Promise(r => {
+      im.loading = "eager"; im.addEventListener("load", r, { once: true }); im.addEventListener("error", r, { once: true }); setTimeout(r, 8000);
+    })));
+    const imRatio = im => im.naturalWidth ? im.naturalWidth / im.naturalHeight : (+im.getAttribute("width") / +im.getAttribute("height") || 0);
     const coverEl = document.getElementById("coverImg");   // on a pre-rendered page it already sits inside a <picture>: replace the whole thing
     (coverEl.closest("picture") || coverEl).outerHTML = pic(cover, { id: "coverImg", eager: true });
     document.getElementById("name").textContent = P.name;
@@ -106,7 +113,12 @@
     document.getElementById("intro").textContent = P.intro;
     // Concept -> Reality page exists for these projects: link under the intro
     document.querySelectorAll(".concept-link").forEach(e => e.remove());
-    if (["polysh", "s-roof", "l-villa"].includes(key)) document.getElementById("intro").insertAdjacentHTML("afterend", `<p class="concept-link"><a href="transformation.html#${key}">${U.conceptLink}</a></p>`);
+    // (Amr, 2026-09-30: the small text link was missed) a picture card: the project's first concept/delivered pair + a clear button
+    const CR = { "polysh": ["render-p08.jpg", "DSC02600.jpg"], "s-roof": ["render-R3-9.jpg", "DSC09930.jpg"], "l-villa": ["render-k101-crop.jpg", "DSC02001.jpg"] };
+    document.querySelectorAll(".concept-card").forEach(e => e.remove());
+    if (CR[key]) document.getElementById("intro").insertAdjacentHTML("afterend", `<a class="concept-card" href="transformation.html#${key}">
+        <span class="cc-pair">${CR[key].map((f, n) => `<span class="cc-img">${pic(f, { alt: n ? U.after : U.concept, sizes: "(max-width:760px) 45vw, 240px", w: 0 })}<em>${n ? U.delivered : U.concept}</em></span>`).join("")}</span>
+        <span class="cc-text"><b class="serif">${U.ccTitle}</b><span>${U.ccText}</span><span class="cc-btn">${U.ccBtn}</span></span></a>`);
 
     if (comps.length) {
       const hasSlider = comps.some(c => c.length === 2);
@@ -117,6 +129,7 @@
           : `<div class="ba compare">${pic(c[1], { alt: `${U.after}: ${alt(c[1])}`, sizes: "(max-width:760px) 100vw, 1120px" })}${pic(c[0], { alt: `${U.before}: ${alt(c[0])}`, cls: "before", sizes: "(max-width:760px) 100vw, 1120px" })}
               <span class="line"></span><span class="knob" aria-hidden="true">${U.knob}</span><span class="tag b label">${U.before}</span><span class="tag a label">${U.after}</span></div>`).join("");
 
+      document.querySelectorAll("#ba img").forEach(im => im.loading = "eager");   // iPad fix: only a few photos, load them now (not "when needed")
       document.querySelectorAll(".steps").forEach(el => {
         const imgs = el.querySelectorAll("img"), tabs = el.querySelectorAll("button"), dots = el.querySelectorAll(".dots span");
         // a very wide finished (last) photo widens the frame, so shots like the Polysh shopfront aren't cut at the sides
@@ -144,7 +157,8 @@
         // tap/click the photo to skip to the next one (Amr, 2026-09-29)
         frame.style.cursor = "pointer";
         frame.addEventListener("click", () => { go(i + 1); play(); });
-        new IntersectionObserver(([e]) => { if (e.isIntersecting) { first = true; go(0); play(); } else clearTimeout(timer); }, { threshold: .5 }).observe(el);
+        // the sequence starts only once all three photos have arrived (on a slow iPad it used to switch to photos still loading)
+        new IntersectionObserver(([e]) => { if (e.isIntersecting) loaded([...imgs]).then(() => { first = true; go(0); play(); }); else clearTimeout(timer); }, { threshold: .5 }).observe(el);
       });
     }
 
@@ -155,6 +169,7 @@
       document.getElementById("detail").innerHTML = `<h2 class="serif">${U.detail}</h2><p>${U.dragMove}</p><div class="detail-row${two ? " two" : ""}">` +
         details.map(([a, b, cap]) => `<div class="detail-item"><div class="ba">${pic(b, { sizes: size })}${pic(a, { cls: "before", sizes: size })}
           <span class="line"></span><span class="knob" aria-hidden="true">${U.knob}</span></div>${(window.IKDU_AR ? DETAIL_AR[a] : cap) ? `<p class="ba-cap">${window.IKDU_AR ? DETAIL_AR[a] : cap}</p>` : ""}</div>`).join("") + `</div>`;
+      document.querySelectorAll("#detail img").forEach(im => im.loading = "eager");
     }
 
     document.querySelectorAll(".ba").forEach(el => {
@@ -187,13 +202,18 @@
           if (!en.isIntersecting || en.intersectionRatio < .5) return;   // wait until at least half the slider is on screen
           io.disconnect();
           if (used) return;
-          const t0 = performance.now(), D = 3000;   // 3 s wipe, after a 400 ms pause
-          const step = now => {
-            const k = Math.min(1, (now - t0) / D), ease = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-            set(FROM + (TO - FROM) * ease);
-            anim = k < 1 ? requestAnimationFrame(step) : null;
-          };
-          setTimeout(() => { if (!used) anim = requestAnimationFrame(step); }, 400);
+          // iPad fix (2026-09-29): wipe only after BOTH photos have arrived. It used to start while the "before" photo was still
+          // loading, so the "after" photo showed on both sides of the line.
+          loaded([...el.querySelectorAll("img")]).then(() => setTimeout(() => {
+            if (used) return;
+            const t0 = performance.now(), D = 3000;   // 3 s wipe, after a 400 ms pause
+            const step = now => {
+              const k = Math.min(1, (now - t0) / D), ease = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+              set(FROM + (TO - FROM) * ease);
+              anim = k < 1 ? requestAnimationFrame(step) : null;
+            };
+            anim = requestAnimationFrame(step);
+          }, 400));
         }, { threshold: .6 });
         io.observe(el);
       }
@@ -210,12 +230,24 @@
     const chip3d = f => renders.has(f) ? `<span class="chip3d">${U.concept}</span>` : "";
     list.forEach(f => {
       if (Array.isArray(f)) {   // ["a.jpg", "b.jpg"] = side by side at the same height, neither cropped (any shapes, e.g. wide + tall)
-        g.insertAdjacentHTML("beforeend", `<div class="duo">${f.map(x => `<figure class="duo-item">${pic(x, { sizes: "(max-width:760px) 100vw, 60vw" })}${chip3d(x)}</figure>`).join("")}</div>`);
+        // 3 or more photos: on phones they become a swipeable row (next photo peeking, dots below) instead of a tall stack (Amr, 2026-09-29)
+        const swipe = f.length >= 3;
+        g.insertAdjacentHTML("beforeend", `<div class="duo${swipe ? " swipe" : ""}">${f.map(x => `<figure class="duo-item">${pic(x, { sizes: swipe ? "(max-width:760px) 80vw, 60vw" : "(max-width:760px) 100vw, 60vw" })}${chip3d(x)}</figure>`).join("")}</div>` +
+          (swipe ? `<div class="swipe-dots" aria-hidden="true">${f.map((x, n) => `<span${n ? "" : ' class="on"'}></span>`).join("")}</div>` : ""));
+        if (swipe) {
+          const row = g.lastElementChild.previousElementSibling, dots = g.lastElementChild.children;
+          row.addEventListener("scroll", () => {   // the dot of the photo nearest the middle is filled
+            const mid = row.getBoundingClientRect().left + row.clientWidth / 2;
+            let best = 0, dist = Infinity;
+            [...row.children].forEach((fig, n) => { const r = fig.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < dist) { dist = d; best = n; } });
+            [...dots].forEach((d, n) => d.classList.toggle("on", n === best));
+          }, { passive: true });
+        }
         return;
       }
       let cls = "wide";
       if (orient[f] === "P") cls = tall.length % 2 && f === tall[tall.length - 1] ? "solo" : "";
-      g.insertAdjacentHTML("beforeend", `<figure class="${cls}">${pic(f, { sizes: cls === "wide" ? "100vw" : "(max-width:760px) 100vw, 50vw" })}${chip3d(f)}</figure>`);
+      g.insertAdjacentHTML("beforeend", `<figure class="${cls}"${ratio(f) ? ` style="--r:${ratio(f).toFixed(4)}"` : ""}>${pic(f, { sizes: cls === "wide" ? "100vw" : "(max-width:760px) 100vw, 50vw" })}${chip3d(f)}</figure>`);
     });
     const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add("in")), { threshold: .15 });
     g.querySelectorAll("figure").forEach(f => io.observe(f));
@@ -227,7 +259,7 @@
       const rows = {};
       figs.forEach(f => (rows[f.offsetTop] ??= []).push(f));
       Object.values(rows).filter(r => r.length === 2).forEach(r => {
-        const ratios = r.map(f => { const im = f.querySelector("img"); return im.naturalWidth / im.naturalHeight; });
+        const ratios = r.map(f => imRatio(f.querySelector("img")));   // known from photos.json even before the photo loads
         if (ratios.some(x => !x)) return;                 // not loaded yet: the load handler runs this again
         const ar = Math.max(...ratios);                   // wider shape = shorter photo
         r.forEach((f, k) => { f.style.aspectRatio = ar; f.style.setProperty("--r", ar); f.classList.add("crop", "pair", k ? "second" : "first"); });   // --r: the pair shrinks to fit the screen height
@@ -235,13 +267,13 @@
     };
     // duo: each photo's width follows its shape (width ÷ height), so both end up exactly the same height
     const duoFit = im => {
-      const f = im.closest(".duo-item"); if (!f || !im.naturalWidth) return;
-      f.style.flexGrow = im.naturalWidth / im.naturalHeight;
+      const f = im.closest(".duo-item"), r = imRatio(im); if (!f || !r) return;
+      f.style.flexGrow = r;
       // height cap (Amr, 2026-09-29): once both shapes are known, the row is at most as wide as fits the screen height
       const items = [...f.parentElement.children], sum = items.reduce((s, x) => s + (+x.style.flexGrow || 0), 0);
       if (items.every(x => +x.style.flexGrow)) f.parentElement.style.maxWidth = `calc(var(--fit) * ${sum} + ${16 * (items.length - 1)}px)`;
     };
-    g.querySelectorAll(".duo-item img").forEach(im => im.complete ? duoFit(im) : im.addEventListener("load", () => duoFit(im), { once: true }));
+    g.querySelectorAll(".duo-item img").forEach(im => { duoFit(im); if (!im.complete) im.addEventListener("load", () => duoFit(im), { once: true }); });
     g.querySelectorAll("img").forEach(im => im.complete || im.addEventListener("load", evenPairs, { once: true }));
     evenPairs(); addEventListener("resize", evenPairs);
 

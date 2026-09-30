@@ -40,7 +40,7 @@
   .ba-wrap > p { opacity:.7; margin-bottom:24px; }
   .ba { position:relative; aspect-ratio:var(--ar, 3/2); max-width:calc(85vh * var(--arn, 1.5)); margin-left:auto; margin-right:auto; overflow:hidden; user-select:none; touch-action:pan-y; cursor:ew-resize; margin-bottom:24px; }
   .ba img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; }
-  .ba .before { clip-path:inset(0 0 0 var(--x, 50%)); }   /* EN: before sits RIGHT of the line, finished on the left (AR mirrored in rtl.css) */
+  .ba .before { -webkit-clip-path:inset(0 0 0 var(--x, 50%)); clip-path:inset(0 0 0 var(--x, 50%)); }   /* EN: before sits RIGHT of the line, finished on the left (AR mirrored in rtl.css) */
   .ba .line { position:absolute; top:0; bottom:0; left:var(--x, 50%); width:2px; background:#fff; transform:translateX(-1px); }
   .ba .knob { position:absolute; top:50%; left:var(--x, 50%); width:48px; height:48px; border-radius:50%; background:#fff;
               transform:translate(-50%,-50%); display:grid; place-items:center; font-size:14px; color:var(--ink); box-shadow:0 2px 12px rgba(0,0,0,.25); }
@@ -78,7 +78,8 @@
   .gallery figure { overflow:hidden; align-self:start; }
   .gallery figure.wide { grid-column:1 / -1; }
   .gallery figure.solo { grid-column:1 / -1; justify-self:center; }
-  .gallery figure.solo img { width:auto; max-width:100%; max-height:85vh; }   /* desktop: capped at --fit (below) */
+  .gallery figure.solo { width:min(100%, calc(85vh * var(--r, .75))); }   /* desktop: capped at --fit (below) */
+  .gallery figure.solo img { width:100%; }
   .gallery img { width:100%; height:auto; display:block; transform:scale(1.08); transition:transform 1.8s ease; }
   .gallery figure.in img { transform:scale(1); }
   /* duo: two photos side by side at the same height, uncropped (widths set from each photo's shape in project.js) */
@@ -125,9 +126,46 @@
      --r (width ÷ height) is set per pair / story by project.js. */
   :root { --fit:calc(100vh - 96px); }   /* screen minus the 64 px header and a little air */
   @media (min-width:761px) {
-    .gallery figure.wide { justify-self:center; }
-    .gallery figure.wide img, .gallery figure.solo img { width:auto; max-width:100%; max-height:var(--fit); }
+    /* width from the photo's shape (--r, set by project.js from photos.json), so the space is right before the photo loads */
+    .gallery figure.wide, .gallery figure.solo { justify-self:center; width:min(100%, calc(var(--fit) * var(--r, 1.5))); }
+    .gallery figure.wide img, .gallery figure.solo img { width:100%; max-height:none; }
     .gallery figure.pair { width:100%; max-width:calc(var(--fit) * var(--r)); }
     .gallery figure.pair.first { justify-self:end; } .gallery figure.pair.second { justify-self:start; }   /* the two meet in the middle (also in Arabic) */
     .steps { max-width:calc((var(--fit) - 40px) * var(--r, 1.5)); margin-left:auto; margin-right:auto; }   /* 40 px = the step names under the photo */
+  }
+
+  /* 3+ photos side by side (e.g. Polysh massage room): on phones a swipeable row at one height, next photo peeking,
+     dots below, instead of three tall photos stacked (Amr, 2026-09-29). Laptops unchanged. */
+  .swipe-dots { display:none; }
+  @media (max-width:760px) {
+    .gallery .duo.swipe { flex-direction:row; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none;
+                          margin:0 -16px; padding:0 16px; width:calc(100% + 32px); min-width:0; scroll-padding:0 16px; }
+    .gallery { grid-template-columns:minmax(0, 1fr); }   /* the row must not widen the page */
+    .gallery .duo.swipe::-webkit-scrollbar { display:none; }
+    .gallery .duo.swipe figure { flex:0 0 auto !important; width:auto; height:min(42vh, 330px); scroll-snap-align:center; }
+    .gallery .duo.swipe figure picture { display:block; height:100%; }
+    .gallery .duo.swipe figure img { height:100%; width:auto; max-width:none; }
+    .swipe-dots { display:flex; grid-column:1 / -1; justify-content:center; gap:8px; margin:-2px 0 6px; }
+    .swipe-dots span { width:6px; height:6px; border-radius:50%; background:var(--ink); opacity:.25; transition:opacity .2s; }
+    .swipe-dots span.on { opacity:.8; }
+  }
+
+  /* Concept -> Reality picture card under the intro (Polysh, S-Roof, L-Villa; Amr 2026-09-30: the small text link was missed) */
+  .concept-card { display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:center; max-width:760px; margin:-48px auto 80px; padding:18px;
+                  background:var(--cream); color:var(--ink); text-decoration:none; }
+  .cc-pair { display:grid; grid-template-columns:1fr 1fr; gap:8px; width:260px; }
+  .cc-img { position:relative; display:block; aspect-ratio:4/5; overflow:hidden; background:var(--beige); }
+  .cc-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease; }
+  .concept-card:hover .cc-img img { transform:scale(1.05); }
+  .cc-img em { position:absolute; left:6px; top:6px; background:var(--cream); font-style:normal; font-size:9px; letter-spacing:.12em; text-transform:uppercase; padding:4px 6px; line-height:1; }
+  [dir="rtl"] .cc-img em { left:auto; right:6px; letter-spacing:0; font-size:11px; }
+  .cc-text { display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
+  .cc-text b { font-weight:400; font-size:28px; line-height:1.1; }
+  .cc-text > span:not(.cc-btn) { opacity:.8; line-height:1.5; }
+  .cc-btn { margin-top:6px; padding:13px 22px; border-radius:999px; background:var(--brick); color:#fff; font-size:13px; letter-spacing:.12em; text-transform:uppercase; }
+  .concept-card:hover .cc-btn { filter:brightness(1.1); }
+  [dir="rtl"] .cc-btn { letter-spacing:0; font-size:15px; }
+  @media (max-width:760px) {
+    .concept-card { grid-template-columns:1fr; gap:16px; margin:-32px 16px 56px; }
+    .cc-pair { width:100%; } .cc-text b { font-size:24px; } .cc-btn { align-self:stretch; text-align:center; }
   }
