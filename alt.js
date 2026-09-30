@@ -53,7 +53,7 @@ window.IKDU_ALT = {
   "polysh/DSC02597.jpg": "Polysh manicure stations behind the terracotta shelving screen",
   "polysh/DSC02608.jpg": "Polysh reception: curved terracotta desk in front of a copper chain curtain with the Polysh sign",
   "polysh/DSC02619.jpg": "Polysh pedicure chairs and manicure stations with lit display shelves",
-  "polysh/DSC02639.jpg": "Polysh salon floor: manicure stations and pedicure chairs under arched niches",
+  "polysh/DSC02639.jpg": "Polysh spa floor: manicure stations and pedicure chairs under arched niches",
   "polysh/DSC02645.jpg": "Polysh manicure stations with warm linear lighting and terracotta walls",
   "polysh/IMG_1862.jpg": "Polysh detail: terracotta plaster wall and slim niche shelving",
   "polysh/IMG_0959.jpg": "Polysh shopfront: glass façade and the Polysh sign on a terracotta wall",

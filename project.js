@@ -1,8 +1,8 @@
 // Shared script for the 5 project pages. The project comes from <body data-project="…">.
   // Project info. [Brackets] = still to confirm with Amr.
   const PROJECTS = {
-    "polysh":  { name:"Polysh", sub:"Nail salon · Arkan, Giza",
-                 facts:{ Location:"Arkan, Giza", Type:"Commercial · Salon", Scope:"Full fit-out + furniture", Year:"2025" },
+    "polysh":  { name:"Polysh", sub:"Nail spa · Arkan, Giza",
+                 facts:{ Location:"Arkan, Giza", Type:"Commercial · Nail spa", Scope:"Full fit-out + furniture", Year:"2025" },
                  intro:"From bare concrete to the furniture, made to measure: terracotta walls and arched niches throughout.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
@@ -43,8 +43,8 @@
   // Arabic text for ar/<project>.html (DRAFT for Amr's approval, Egyptian register, written in Arabic).
   // Photos, before/after and details still come from PROJECTS above; only the words change.
   const PROJECTS_AR = {
-    "polysh":      { name:"Polysh", sub:"صالون أظافر · أركان، الجيزة",
-                     facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · صالون", "الشغل":"تشطيب وتجهيز كامل + الفرش", "السنة":"2025" },
+    "polysh":      { name:"Polysh", sub:"سبا أظافر · أركان، الجيزة",
+                     facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · سبا أظافر", "الشغل":"تشطيب وتجهيز كامل + الفرش", "السنة":"2025" },
                      intro:"من الخرسانة حتى الفرش، مصنوعًا على المقاس: حيطان تيراكوتا ونيشات مقوّسة في كل أنحاء المكان." },
     "s-roof":      { name:"S-Roof", sub:"روف · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · روف", "الشغل":"تصميم وتنفيذ", "السنة":"2026" },
