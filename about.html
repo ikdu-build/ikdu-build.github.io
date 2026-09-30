@@ -36,8 +36,8 @@
 <button class="menu-btn" aria-label="Menu">Menu</button></header>
 
 <section class="open" id="open">
-  <picture><source type="image/webp" srcset="assets/web/polysh/20241104_193756-600.webp 600w, assets/web/polysh/20241104_193756-1200.webp 1200w, assets/web/polysh/20241104_193756-1600.webp 1600w" sizes="100vw"><img src="assets/web/polysh/20241104_193756-1200.jpg" alt="Polysh before fit-out: bare concrete shell with brick walls" data-pic="polysh/20241104_193756.jpg" id="openPhoto" fetchpriority="high" decoding="async"></picture>
-  <div class="frame"><h1>Contemporary form, rooted in history.</h1></div>
+  <picture><source type="image/webp" srcset="assets/web/polysh/material-1861-600.webp 600w, assets/web/polysh/material-1861-1200.webp 1200w, assets/web/polysh/material-1861-1600.webp 1600w" sizes="100vw"><img src="assets/web/polysh/material-1861-1200.jpg" alt="Polysh detail: the copper chain curtain glowing under a grey plaster ceiling" data-pic="polysh/material-1861.jpg" id="openPhoto" fetchpriority="high" decoding="async"></picture>
+  <div class="frame"><h1>From the first line drawn to the final detail built.</h1></div>
 </section>
 
 <section class="block">
@@ -119,9 +119,9 @@
 <script src="alt.js"></script>
 <script src="site.js"></script>
 <script>
-  // Opening photo: Polysh as a bare concrete-and-brick shell, before fit-out (construction photo, per the manual's moodboard; no people)
+  // Opening photo (Amr, 2026-09-30): Polysh copper chain curtain under the grey ceiling (material close-up, IMG_1861); Amanda's "first line" quote in her frame
   const op = document.getElementById("openPhoto");   // pre-rendered page: the photo is already there, replace it
-  (op.closest("picture") || op).outerHTML = ikduPic("polysh/20241104_193756.jpg", { eager: true, id: "openPhoto" });
+  (op.closest("picture") || op).outerHTML = ikduPic("polysh/material-1861.jpg", { eager: true, id: "openPhoto" });
   // Small photos in Services / What's included / How we work (Amr, 2026-09-29): <span data-photo> -> picture (+ "3D concept" tag on the render)
   document.querySelectorAll("span[data-photo]").forEach(s => {
     const sizes = s.classList.contains("step-img") ? "(max-width:760px) 100vw, 260px" : "(max-width:760px) 100vw, 360px";

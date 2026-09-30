@@ -38,7 +38,7 @@
 <button class="menu-btn" aria-label="القائمة">القائمة</button></header>
 
 <section class="open" id="open">
-  <picture><source type="image/webp" srcset="../assets/web/polysh/20241104_193756-600.webp 600w, ../assets/web/polysh/20241104_193756-1200.webp 1200w, ../assets/web/polysh/20241104_193756-1600.webp 1600w" sizes="100vw"><img src="../assets/web/polysh/20241104_193756-1200.jpg" alt="بوليش قبل التنفيذ: خرسانة على الطوب، مساحة فاضية" data-pic="polysh/20241104_193756.jpg" id="openPhoto" fetchpriority="high" decoding="async"></picture>
+  <picture><source type="image/webp" srcset="../assets/web/polysh/material-1861-600.webp 600w, ../assets/web/polysh/material-1861-1200.webp 1200w, ../assets/web/polysh/material-1861-1600.webp 1600w" sizes="100vw"><img src="../assets/web/polysh/material-1861-1200.jpg" alt="تفصيلة في بوليش: ستارة السلاسل النحاسية تحت سقف جبس رمادي" data-pic="polysh/material-1861.jpg" id="openPhoto" fetchpriority="high" decoding="async"></picture>
   <div class="frame"><img class="wordmark" src="../assets/web/brand/arabic-brick.png" alt="إكدو"></div>
 </section>
 
@@ -122,9 +122,9 @@
 <script src="../alt-ar.js"></script>
 <script src="../site.js"></script>
 <script>
-  // Opening photo: Polysh as a bare concrete-and-brick shell, before fit-out (construction photo, per the manual's moodboard; no people)
+  // Opening photo (Amr, 2026-09-30): Polysh copper chain curtain under the grey ceiling (material close-up, IMG_1861); Amanda's Arabic logo in her frame
   const op = document.getElementById("openPhoto");   // pre-rendered page: the photo is already there, replace it
-  (op.closest("picture") || op).outerHTML = ikduPic("polysh/20241104_193756.jpg", { eager: true, id: "openPhoto" });
+  (op.closest("picture") || op).outerHTML = ikduPic("polysh/material-1861.jpg", { eager: true, id: "openPhoto" });
   // Small photos in Services / What's included / How we work (Amr, 2026-09-29): <span data-photo> -> picture (+ "3D concept" tag on the render)
   document.querySelectorAll("span[data-photo]").forEach(s => {
     const sizes = s.classList.contains("step-img") ? "(max-width:760px) 100vw, 260px" : "(max-width:760px) 100vw, 360px";
