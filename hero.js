@@ -8,7 +8,7 @@ const H = window.IKDU_AR ? {
   info: { "polysh": ["Polysh", "Nail salon · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Sodic Courtyard, Giza"],
           "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "l-villa": ["L-Villa", "Villa · full finishing · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
-  view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting &amp; fit-out across Egypt — from bare concrete to finished space."
+  view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting & fit-out across Egypt, from bare concrete to finished space."
 };
   // If photos were chosen in picker.html, rebuild the project sections from those picks
   (() => {
@@ -28,7 +28,7 @@ const H = window.IKDU_AR ? {
       const cat = window.IKDU_PROJECT_CAT[p], c = window.IKDU_CATS[cat];
       main.insertAdjacentHTML("beforeend", `<section class="project" id="${p}" data-cat="${cat || ""}">
         ${picks.home[p].map((f, fi) => `<div class="slide">${ikduPic(p + "/" + f, { alt: ikduAlt(p + "/" + f, name + H.by), eager: pi === 0 && fi === 0 })}</div>`).join("")}
-        <div class="caption"><div class="name">${c ? `<a class="cat" href="#cat-${cat}" title="${c.label}"><span class="chip"><img src="${c.icon}" alt="${c.label} — ${H.jump}"></span></a>` : ""}<h2>${name}</h2></div><p>${sub}</p><a class="view" href="${p}.html">${H.view}</a></div><div class="dots" aria-hidden="true"></div></section>`);
+        <div class="caption"><div class="name">${c ? `<a class="cat" href="#cat-${cat}" title="${c.label}"><span class="chip"><img src="${c.icon}" alt="${c.label}: ${H.jump}"></span></a>` : ""}<h2>${name}</h2></div><p>${sub}</p><a class="view" href="${p}.html">${H.view}</a></div><div class="dots" aria-hidden="true"></div></section>`);
     });
     main.querySelector(".project")?.insertAdjacentHTML("beforeend", `<p class="tagline">${H.tagline}</p>`);
     // The whole photo opens the project (Amr, 2026-09-30: many visitors, older ones especially, didn't see the small link).

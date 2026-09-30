@@ -14,6 +14,11 @@ header nav a { white-space:nowrap; }
 /* Logo always in the middle column (2026-09-29 fix): when the nav links are hidden (below 1200 px, e.g. a phone turned
    sideways or a tablet) the logo used to slide into the empty left column. */
 header .logo { grid-column:2; justify-self:center; }
+/* (2026-09-30, Amr: the emblem shifted left for a moment when a page opened on his phone) the logo is pinned to the exact centre of the
+   header, independent of the grid columns, the MENU button or font loading; the two nav groups keep their own columns */
+header .logo { position:absolute !important; grid-column:auto !important; left:50%; top:50%; transform:translate(-50%, -50%); margin:0 !important; }   /* grid-column auto: otherwise 50% is measured inside the grid column, not the header */
+header nav:not(.right) { grid-column:1; }
+header nav.right { grid-column:3; }
 
 /* Phone turned sideways / short screens: compact 64 px header everywhere (the home page's 120 px header took a third of the screen) */
 @media (max-height:500px) and (orientation:landscape) {

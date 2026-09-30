@@ -9,7 +9,7 @@
   const MSG = AR
     ? { sending: "بنبعت…", ok: "وصلتنا رسالتك، وهنرد عليك في أقرب وقت.", missing: "من فضلك اكتب اسمك، ووسيلة نتواصل بيها معاك، ورسالتك.",
         fail: "الرسالة موصلتش. جرّب تاني، أو كلّمنا على واتساب أو hello@ikdu.build.", notSet: "الفورم لسه مش متوصّل. كلّمنا على واتساب أو hello@ikdu.build." }
-    : { sending: "Sending…", ok: "Thanks — we'll reply soon.", missing: "Please add your name, an email or phone number, and a message.",
+    : { sending: "Sending…", ok: "Thanks, we'll reply soon.", missing: "Please add your name, an email or phone number, and a message.",
         fail: "That didn't go through. Please try again, or reach us on WhatsApp or hello@ikdu.build.", notSet: "The form isn't connected yet. Please reach us on WhatsApp or hello@ikdu.build." };
   const form = document.getElementById("contactForm");
   if (!form) return;

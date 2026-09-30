@@ -1,7 +1,7 @@
 // Alt text for every photo the site uses (written from the photos, 2026-09-26).
 // Key = "<project folder>/<file>". Anything missing falls back to "<Project> by IKDU".
 // Building-type icons: their alt text comes from the category labels in site.js (IKDU_CATS),
-// e.g. "Villas — filter projects". Legend/chip icons next to a visible label use alt="" (the label is the text).
+// e.g. "Villas, filter projects". Legend/chip icons next to a visible label use alt="" (the label is the text).
 window.IKDU_ALT = {
   "l-villa/20230329_105857.jpg": "L-Villa living room before finishing: bare plaster walls, exposed conduit and a wheelbarrow",
   "l-villa/20230329_110039.jpg": "L-Villa entrance before finishing: rough columns and unfinished steps",
