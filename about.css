@@ -134,3 +134,10 @@
 
   /* Phone turned sideways / short screens (2026-09-29): the opening photo fits the screen below the header */
   @media (max-height:500px) and (orientation:landscape) { .open { min-height:0; height:calc(100svh - 64px); margin-top:64px; } .frame { height:86%; } }
+
+  /* Two-colour O36 wall element (Amr, 2026-09-30; Amanda's manual p23): brick blocks + cream centre, drawn as SVG over the photo */
+  .frame.o36 { background:none; aspect-ratio:206/316; }
+  .frame.o36 svg { position:absolute; inset:0; width:100%; height:100%; }
+  .o36-b { fill:var(--brick); } .o36-c { fill:var(--cream); }
+  .frame.o36 h1 { position:relative; width:58%; color:var(--brown); }
+  .frame.o36 .wordmark { position:relative; width:56%; }

@@ -43,6 +43,7 @@ window.IKDU_ALT = {
   "m-villa/DSC09737.jpg": "M-Villa bathroom: grey marble, backlit mirror, vessel basin and a glass shower",
   "m-villa/DSC09617.jpg": "M-Villa garden: new lawn with timber fencing and hedges",
   "polysh/20241104_193756.jpg": "Polysh before fit-out: bare concrete shell with brick walls",
+  "polysh/material-1829-h.jpg": "Polysh detail: fluted sand-coloured plaster wall, lines running across",
   "polysh/material-1861.jpg": "Polysh detail: the copper chain curtain glowing under a grey plaster ceiling",
   "polysh/20241228_063515.jpg": "Polysh during fit-out: installing walls and services",
   "polysh/DSC02600.jpg": "Polysh waiting lounge: curved sofa, terracotta niche shelving, chain curtain and the \"You just got Polyshed\" sign",
