@@ -17,7 +17,7 @@
   * { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--bg); color:var(--ink); font-family:var(--sans); min-height:100vh; display:flex; flex-direction:column; }
   header { height:64px; display:grid; place-items:center; border-bottom:1px solid var(--camel); }
-  header img { height:40px; display:block; }
+  header img { height:40px; width:auto; display:block; }
   main { flex:1; display:grid; place-items:center; padding:48px 16px; }
   .box { width:100%; max-width:760px; display:grid; grid-template-columns:1fr 1fr; gap:48px; }
   .box > div { border-top:1px solid var(--camel); padding-top:24px; }
@@ -34,7 +34,7 @@
 </style>
 </head>
 <body>
-<header><a href="/"><img src="/assets/web/brand/emblem-brick.png" alt="IKDU"></a></header>
+<header><a href="/"><img src="/assets/web/brand/emblem-brick.png" alt="IKDU" width="44" height="96"></a></header>
 <main>
   <div class="box">
     <div>

@@ -17,6 +17,10 @@ header .logo { grid-column:2; justify-self:center; }
 /* (2026-09-30, Amr: the emblem shifted left for a moment when a page opened on his phone) the logo is pinned to the exact centre of the
    header, independent of the grid columns, the MENU button or font loading; the two nav groups keep their own columns */
 header .logo { position:absolute !important; grid-column:auto !important; left:50%; top:50%; transform:translate(-50%, -50%); margin:0 !important; }   /* grid-column auto: otherwise 50% is measured inside the grid column, not the header */
+/* (2026-10-01) the emblem / wordmark images have no size until they download, so on a phone the logo box started 0 px wide and
+   jumped when the image landed. Their real proportions (emblem 44x96, wordmark 461x110) reserve the right width from the first paint. */
+header .logo img[src*="emblem"], .mo-logo img { aspect-ratio:44 / 96; width:auto; }
+header .logo img[src*="wordmark"] { aspect-ratio:461 / 110; width:auto; }
 header nav:not(.right) { grid-column:1; }
 header nav.right { grid-column:3; }
 

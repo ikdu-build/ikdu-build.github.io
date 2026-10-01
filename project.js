@@ -24,7 +24,9 @@
     "l-villa":    { name:"L-Villa", sub:"Villa · full finishing · Legenda, Giza",
                  facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Full finishing, inside + out", Year:"2023" },
                  intro:"A family villa in Legenda, finished inside and out: herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
-                 ba:[["20230329_110331.jpg","DSC01968.jpg"]] },
+                 ba:[["20230329_110331.jpg","DSC01968.jpg"]],
+                 // fixed order (Amr, 2026-10-01): the gallery ends on the garden terrace with the palm tree, after the bathrooms
+                 gallery:["DSC01954.jpg", "DSC02012.jpg", "DSC01964.jpg", "DSC01980.jpg", "DSC01988.jpg", "DSC01948.jpg", "DSC01972.jpg", "DSC02021.jpg"] },
     // L-Villa II (Amr, 2026-09-29): L-Villa's mirror twin next door; its own page with the 4 real photos from the pro shoot. More after its full shoot.
     "l-villa-2":  { name:"L-Villa II", sub:"Villa · full finishing · Legenda, Giza", cover:"DSC02035.jpg",
                  facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Full finishing, inside + out", Year:"2024" },
