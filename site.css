@@ -33,7 +33,7 @@ header nav.right { grid-column:3; }
 /* Very small phones (320-360 px): let the logo column shrink so MENU keeps its side margin (2026-09-28) */
 @media (max-width:360px) {
   header { grid-template-columns:1fr 130px 1fr !important; }
-  header .logo { width:130px !important; }
+  #hdr .logo { width:130px !important; }   /* home only (its wordmark box). On other pages this 130 px box left the emblem at its left edge, ~56 px off-centre on 360 px Samsung phones (2026-10-05, from Amr's screen recording) */
 }
 
 /* Floating WhatsApp button (bottom-right, always visible) */
