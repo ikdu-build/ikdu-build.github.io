@@ -31,7 +31,7 @@
   /* Gentle snap (Amr, 2026-09-29): scrolling stays free; when it stops near a project, that project settles just under the
      small header. The top of the page is its own snap point (first project + big header). Off in the category view (sticky
      chips; the old snap fought the category jump) and for people who ask for less motion. */
-  html { scroll-snap-type:y proximity; scroll-padding-top:64px; }
+  html { scroll-padding-top:64px; }   /* snap removed 2026-10-19: the home page is no longer a stack of full-screen projects */
   main { scroll-snap-align:start; }
   .project:not(:first-of-type) { scroll-snap-align:start; }
   html:has(body.grouped) { scroll-snap-type:none; }
@@ -157,3 +157,49 @@
     .crt-btn { display:flex; justify-content:center; }
   }
   @media (max-height:500px) and (orientation:landscape) { .cr-teaser { padding:24px 40px; gap:24px; } .crt-img { aspect-ratio:1; } }
+
+
+  /* ---- Home layout A (Amr, 2026-10-19): opening slideshow of all projects, then the project grid, Concept -> Reality, What we do ---- */
+  .project, .project:first-of-type { scroll-snap-align:none !important; }
+  .project.showreel { height:calc(100vh - 120px - 72px); margin:0; }          /* ~72 px of the next section peeks in */
+  .showreel .caption h2, .showreel .caption p { transition:opacity .3s; }
+  .showreel .down { position:absolute; z-index:3; left:50%; bottom:14px; width:34px; height:34px; margin-left:-17px; display:grid; place-items:center; }
+  .showreel .down span { width:14px; height:14px; border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg); animation:nudge 1.8s ease-in-out infinite; }
+  @keyframes nudge { 0%, 100% { transform:translateY(-3px) rotate(45deg); opacity:.6 } 50% { transform:translateY(5px) rotate(45deg); opacity:1 } }
+  .showreel .dots { bottom:56px; }
+  .pgrid { padding:44px 40px 72px; max-width:1240px; margin:0 auto; scroll-margin-top:64px; }
+  .pg-head { display:flex; align-items:baseline; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:18px; }
+  .pg-head h2 { font-family:var(--serif); font-weight:400; font-size:clamp(32px, 3.4vw, 48px); }
+  .pg-head p { opacity:.75; }
+  .pgrid .filters { display:flex; position:static; justify-content:flex-start; padding:0 0 22px; background:none; }
+  .pgrid .filters a.all { display:inline-flex; }
+  .cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px 22px; }
+  .pcard { display:block; color:var(--ink); text-decoration:none; }
+  .pcard[hidden] { display:none; }
+  .pc-img { position:relative; display:block; aspect-ratio:4/5; overflow:hidden; background:var(--cream); }
+  .pc-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease; }
+  .pcard:hover .pc-img img { transform:scale(1.04); }
+  .pc-img .chip { position:absolute; top:10px; left:10px; }
+  [dir="rtl"] .pc-img .chip { left:auto; right:10px; }
+  .pcard h3 { font-family:var(--serif); font-weight:400; font-size:28px; margin:12px 0 2px; }
+  .pc-sub { display:block; font-size:12px; letter-spacing:.15em; text-transform:uppercase; opacity:.75; line-height:1.5; }
+  [dir="rtl"] .pc-sub { letter-spacing:0; font-size:14px; }
+  .cr-teaser { margin:0; }
+  .intro { margin:96px auto; }
+  .intro .what { display:block; margin-bottom:14px; opacity:.7; }
+  .svc-links { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin:28px 0 22px; }
+  .svc-links a { padding:12px 20px; border:1px solid rgba(0,0,0,.3); border-radius:999px; color:var(--ink); text-decoration:none; font-size:13px; letter-spacing:.12em; text-transform:uppercase; }
+  .svc-links a:hover { border-color:var(--brick); color:var(--brick); }
+  [dir="rtl"] .svc-links a { letter-spacing:0; font-size:15px; }
+  .intro .more { color:var(--ink); font-size:12px; letter-spacing:.2em; text-transform:uppercase; border-bottom:1px solid var(--camel); padding-bottom:3px; text-decoration:none; }
+  [dir="rtl"] .intro .more { letter-spacing:0; font-size:15px; }
+  @media (max-width:760px) {
+    .project.showreel { height:calc(100svh - 84px - 64px); }
+    .showreel .down { display:none; }                         /* phones: the peeking "Our projects" heading is the cue */
+    .showreel .dots { bottom:18px; }
+    .pgrid { padding:28px 16px 56px; }
+    .cards { grid-template-columns:1fr 1fr; gap:22px 12px; }
+    .pcard h3 { font-size:21px; margin-top:8px; } .pc-sub { font-size:10px; letter-spacing:.1em; }
+    .intro { margin:64px auto; }
+  }
+  @media (max-height:500px) and (orientation:landscape) { .project.showreel { height:calc(100svh - 64px - 48px); } }

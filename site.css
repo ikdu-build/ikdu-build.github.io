@@ -22,6 +22,11 @@ header .logo { position:absolute !important; grid-column:auto !important; left:5
 header .logo img[src*="emblem"], .mo-logo img { aspect-ratio:44 / 96; width:auto; }
 header .logo img[src*="wordmark"] { aspect-ratio:461 / 110; width:auto; }
 header nav:not(.right) { grid-column:1; }
+/* other-language link in the header on phones/tablets (when the nav links are folded into MENU) */
+.lang-quick { display:none; grid-column:1; justify-self:start; color:var(--ink); text-decoration:none; font-size:14px; padding:12px 12px 12px 0; }
+.lang-quick:lang(en) { font-size:12px; letter-spacing:.2em; }
+[dir="rtl"] .lang-quick { padding:12px 0 12px 12px; }
+@media (max-width:1200px) { .lang-quick { display:block; } }
 header nav.right { grid-column:3; }
 
 /* Phone turned sideways / short screens: compact 64 px header everywhere (the home page's 120 px header took a third of the screen) */

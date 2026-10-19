@@ -3,47 +3,57 @@ const H = window.IKDU_AR ? {
   info: { "polysh": ["Polysh", "سبا أظافر · أركان، الجيزة"], "s-roof": ["S-Roof", "روف · سوديك كورتيارد، الجيزة"],
           "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "l-villa": ["L-Villa", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "كل المشاريع", jumpNav: "أقسام المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
+  ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لتشاهد صوره.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["تنفيذ", "services"], ["أثاث", "services"]], more: "عنّا وخدماتنا &larr;", down: "مشاريعنا",
   view: "شوف المشروع &larr;", cr: { h: "من التصميم للتنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شوفهم جنب بعض &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مصر كلها… من الخرسانة لحد ما تستلم مكانك جاهز."
 } : {
   info: { "polysh": ["Polysh", "Nail spa · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Sodic Courtyard, Giza"],
           "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "l-villa": ["L-Villa", "Villa · full finishing · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
+  ours: "Our projects", oursSub: "Tap any project to see it.", what: "What we do", svc: [["Design + Build", "services"], ["Build", "services"], ["Furniture", "services"]], more: "About &amp; Services &rarr;", down: "Our projects",
   view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting & fit-out across Egypt, from bare concrete to finished space."
 };
-  // If photos were chosen in picker.html, rebuild the project sections from those picks
+  // Home layout (Amr, 2026-10-19, option A): visitors got stuck on the full-screen first project, "Projects" showed the same
+  // page again and most missed Concept -> Reality. Now: 1) a shorter opening slideshow cycling through every project (caption +
+  // "View project" follow the photo; the next section peeks in), 2) "Our projects" card grid with category filters (the target of
+  // the Projects menu item), 3) Concept -> Reality, 4) "What we do" (the intro text + links to the services), 5) contact.
   (() => {
-    // Picks come from the saved snapshot (data.js, written by the picker via serve.py), so every browser shows the same.
-    let picks = window.IKDU_PICKS;
+    const picks = window.IKDU_PICKS;
     if (!picks) return;
     const INFO = H.info;
     const main = document.querySelector("main"); main.innerHTML = "";
-    // Default: Amr's own sequence (from the picker), no headlines.
-    // After someone picks a category, the same sections are regrouped under headlines (Villas, Commercial, Apartments).
     const GROUPS = ["commercial", "villa", "apartments"];   // commercial first: IKDU's main target (Amr, 2026-09-29)
     const shown = picks.order.filter(p => picks.home[p]?.length);
-    const ordered = GROUPS.flatMap(g => shown.filter(p => window.IKDU_PROJECT_CAT[p] === g)).concat(shown.filter(p => !GROUPS.includes(window.IKDU_PROJECT_CAT[p])));
-    window.IKDU_ORDER = { seq: shown, grouped: ordered, groups: GROUPS };
-    shown.forEach((p, pi) => {
-      const [name, sub] = INFO[p] || [p, ""];
-      const cat = window.IKDU_PROJECT_CAT[p], c = window.IKDU_CATS[cat];
-      main.insertAdjacentHTML("beforeend", `<section class="project" id="${p}" data-cat="${cat || ""}">
-        ${picks.home[p].map((f, fi) => `<div class="slide">${ikduPic(p + "/" + f, { alt: ikduAlt(p + "/" + f, name + H.by), eager: pi === 0 && fi === 0 })}</div>`).join("")}
-        <div class="caption"><div class="name">${c ? `<a class="cat" href="#cat-${cat}" title="${c.label}"><span class="chip"><img src="${c.icon}" alt="${c.label}: ${H.jump}"></span></a>` : ""}<h2>${name}</h2></div><p>${sub}</p><a class="view" href="${p}.html">${H.view}</a></div><div class="dots" aria-hidden="true"></div></section>`);
-    });
-    main.querySelector(".project")?.insertAdjacentHTML("beforeend", `<p class="tagline">${H.tagline}</p>`);
-    // The whole photo opens the project (Amr, 2026-09-30: many visitors, older ones especially, didn't see the small link).
-    // The link sits under the caption, so the category icon and the "View project" button keep working on top of it.
-    main.querySelectorAll(".project").forEach(sec => sec.insertAdjacentHTML("afterbegin", `<a class="hit" href="${sec.id}.html" aria-label="${(INFO[sec.id] || [sec.id])[0]}" tabindex="-1"></a>`));
-    // Concept -> Reality teaser after the 2nd project (Amr, 2026-09-30: people missed that page)
-    const secs = main.querySelectorAll(".project");
-    (secs[1] || secs[0])?.insertAdjacentHTML("afterend", `<section class="cr-teaser" id="cr-teaser"><a href="transformation.html" class="crt-pair">
+    window.IKDU_ORDER = { seq: shown, groups: GROUPS };
+    // 1) opening slideshow: the first picked photo of each project, newest first
+    main.insertAdjacentHTML("beforeend", `<section class="project showreel" id="top">
+      <a class="hit" href="${shown[0]}.html" tabindex="-1" aria-hidden="true"></a>
+      ${shown.map((p, pi) => `<div class="slide" data-p="${p}">${ikduPic(p + "/" + picks.home[p][0], { alt: ikduAlt(p + "/" + picks.home[p][0], (INFO[p] || [p])[0] + H.by), eager: pi === 0 })}</div>`).join("")}
+      <div class="caption"><div class="name"><a class="cat" href="#projects"><span class="chip"><img src="" alt=""></span></a><h2></h2></div><p></p><a class="view" href="#">${H.view}</a></div>
+      <div class="dots" aria-hidden="true"></div>
+      <p class="tagline">${H.tagline}</p>
+      <a class="down" href="#projects" aria-label="${H.down}"><span></span></a></section>`);
+    main.querySelectorAll(".showreel img").forEach(im => { if (im.loading === "lazy") im.loading = "eager"; });   // first screen: all six photos start downloading now (small, ~90 KB each)
+    // 2) project cards (second picked photo, so the grid doesn't repeat the slideshow)
+    const CARD = { "sane": "new.jpg" };   // card photo overrides: Sane = shelving wall, no children's faces
+    main.insertAdjacentHTML("beforeend", `<section class="pgrid" id="projects">
+      <div class="pg-head"><h2>${H.ours}</h2><p>${H.oursSub}</p></div>
+      <nav class="filters" aria-label="${H.jumpNav}"><a href="#projects" data-all class="all on">${H.all}</a>${
+        GROUPS.filter(k => window.IKDU_CATS[k] && shown.some(p => window.IKDU_PROJECT_CAT[p] === k)).map(k => { const c = window.IKDU_CATS[k];
+          return `<a href="#cat-${k}" data-cat="${k}"><span class="chip"><img src="${c.icon}" alt=""></span>${c.label}</a>`; }).join("")}</nav>
+      <div class="cards">${shown.map(p => { const [name, sub] = INFO[p] || [p, ""], cat = window.IKDU_PROJECT_CAT[p], c = window.IKDU_CATS[cat], f = CARD[p] || picks.home[p][1] || picks.home[p][0];
+        return `<a class="pcard" href="${p}.html" data-cat="${cat || ""}"><span class="pc-img">${ikduPic(p + "/" + f, { alt: ikduAlt(p + "/" + f, name + H.by), sizes: "(max-width:760px) 50vw, 33vw" })}${c ? `<span class="chip"><img src="${c.icon}" alt="${c.label}"></span>` : ""}</span><h3>${name}</h3><span class="pc-sub">${sub}</span></a>`; }).join("")}</div></section>`);
+    // 3) Concept -> Reality
+    main.insertAdjacentHTML("beforeend", `<section class="cr-teaser" id="cr-teaser"><a href="transformation.html" class="crt-pair">
         <span class="crt-img">${ikduPic("polysh/render-p08.jpg", { alt: H.cr.r, sizes: "(max-width:760px) 50vw, 40vw" })}<em>${H.cr.r}</em></span>
         <span class="crt-img">${ikduPic("polysh/DSC02600.jpg", { alt: H.cr.d, sizes: "(max-width:760px) 50vw, 40vw" })}<em>${H.cr.d}</em></span></a>
       <div class="crt-text"><h2>${H.cr.h}</h2><p>${H.cr.p}</p><a class="crt-btn" href="transformation.html">${H.cr.btn}</a></div></section>`);
-    // Category chips (touch devices always; desktop once a category is picked). "All projects" goes back to the sequence.
-    main.insertAdjacentHTML("afterbegin", `<nav class="filters" aria-label="${H.jumpNav}"><a href="hero.html" data-all class="all">${H.all}</a>${
-      GROUPS.filter(k => window.IKDU_CATS[k] && shown.some(p => window.IKDU_PROJECT_CAT[p] === k)).map(k => { const c = window.IKDU_CATS[k];
-        return `<a href="#cat-${k}" data-cat="${k}"><span class="chip"><img src="${c.icon}" alt=""></span>${c.label}</a>`; }).join("")}</nav>`);
+    // 4) "What we do": the existing intro text gets a heading and the three services
+    const intro = document.querySelector(".intro");
+    if (intro) {
+      intro.querySelectorAll(".what, .svc-links, .more").forEach(e => e.remove());   // pre-rendered copies
+      intro.insertAdjacentHTML("afterbegin", `<p class="what label">${H.what}</p>`);
+      intro.insertAdjacentHTML("beforeend", `<div class="svc-links">${H.svc.map(([t, a]) => `<a href="about.html#${a}">${t}</a>`).join("")}</div><a class="more" href="about.html">${H.more}</a>`);
+    }
   })();
 
   // Set zoom per photo based on how much of it the frame already cuts off.
@@ -117,10 +127,18 @@ const H = window.IKDU_AR ? {
     const dots = [...bar.children];
     let i = -1, timer = null;
     const restartBar = ms => { bar.style.setProperty('--dur', ms + 'ms'); dots.forEach((d, n) => d.classList.toggle('on', n === i)); bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run'); };
+    const cap = sec.classList.contains("showreel") && sec.querySelector(".caption"), hit = sec.querySelector(".hit");
+    const sync = () => {                               // showreel: caption, category icon and links follow the current project
+      if (!cap) return;
+      const p = slides[i].dataset.p, [name, sub] = H.info[p] || [p, ""], c = window.IKDU_CATS[window.IKDU_PROJECT_CAT[p]];
+      cap.querySelector("h2").textContent = name; cap.querySelector("p").textContent = sub;
+      cap.querySelector(".view").href = hit.href = p + ".html"; hit.setAttribute("aria-label", name);
+      const ic = cap.querySelector(".cat img"); if (c) { ic.src = c.icon; ic.alt = c.label; cap.querySelector(".cat").hidden = false; } else cap.querySelector(".cat").hidden = true;
+    };
     const show = ms => {
       i = (i + 1) % slides.length;
       slides.forEach((s, n) => s.classList.toggle('on', n === i));
-      restartBar(ms);
+      sync(); restartBar(ms);
     };
     const next = ms => { timer = setTimeout(function tick() {                                  // chain: each photo waits its own time
       if (!ready((i + 1) % slides.length)) { timer = setTimeout(tick, 250); return; }         // next photo not loaded yet: keep this one a bit longer
@@ -135,68 +153,24 @@ const H = window.IKDU_AR ? {
   });
 
   const hdr = document.getElementById('hdr');
-
-  // Category pick: regroup the SAME sections (their loops keep running), picked category first, the others under it; the page goes to the top.
-  // Compact view (Amr, 2026-09-27): small header (emblem) + the chip row only, no big category headlines. The chip of the category
-  // you're looking at is highlighted (sage) and follows you as you scroll.
-  // "All projects" (or the logo) puts Amr's sequence back. Old links with ?cat=villa or #cat-villa open the grouped view.
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mainEl = document.querySelector("main"), O = window.IKDU_ORDER || { seq: [], grouped: [], groups: [] };
-  function layout(grouped, pick) {   // pick = the picked category: its group goes on top, the others follow
-    document.body.classList.toggle("grouped", grouped);
-    const groups = pick ? [pick, ...O.groups.filter(g => g !== pick)] : O.groups;
-    const list = grouped ? groups.flatMap(g => O.seq.filter(p => window.IKDU_PROJECT_CAT[p] === g)).concat(O.seq.filter(p => !O.groups.includes(window.IKDU_PROJECT_CAT[p]))) : O.seq;
-    list.forEach(p => {
-      const sec = document.getElementById(p); if (!sec) return;
-      mainEl.appendChild(sec);
-    });
-    const crt = document.getElementById("cr-teaser"), ps = mainEl.querySelectorAll(".project");   // teaser stays after the 2nd project
-    if (crt) (ps[1] || ps[0])?.after(crt);
-    const first = mainEl.querySelector(".project"), tag = document.querySelector(".tagline");   // tagline stays on the first project
-    if (first && tag && tag.parentElement !== first) first.appendChild(tag);
-    document.querySelectorAll(".filters a[data-cat]").forEach(a => a.classList.remove("on"));
-    hdr.classList.toggle('small', grouped || scrollY > 60);
-  }
-  // highlight the chip of the category currently under the chip row
-  const filtersEl = document.querySelector(".filters");
-  function spy() {
-    if (!document.body.classList.contains("grouped")) return;
-    const y = filtersEl.getBoundingClientRect().bottom + 40;
-    const sec = [...mainEl.querySelectorAll(".project")].find(s => { const r = s.getBoundingClientRect(); return r.top <= y && r.bottom > y; });
-    const cat = sec && window.IKDU_PROJECT_CAT[sec.id];
-    if (cat) mark(cat);
-  }
-  // mark a chip and, on phones (chip row scrolls sideways), slide the row so the highlighted chip is fully visible
-  let marked = null;
-  function mark(cat) {
-    document.querySelectorAll(".filters a[data-cat]").forEach(a => a.classList.toggle("on", a.dataset.cat === cat));
-    if (cat === marked) return; marked = cat;
-    const a = filtersEl.querySelector(`a[data-cat="${cat}"]`), max = filtersEl.scrollWidth - filtersEl.clientWidth;
-    if (!a || max <= 0) return;
-    const left = Math.min(max, Math.max(0, a.offsetLeft - (filtersEl.clientWidth - a.offsetWidth) / 2));
-    filtersEl.scrollTo({ left: document.dir === "rtl" ? left - max : left, behavior: reduceMotion ? "auto" : "smooth" });
-  }
-  function goToCat(cat, smooth) {
-    layout(true, cat);   // picked category first, the other categories under it
-    marked = null; mark(cat);
-    scrollTo({ top: 0, behavior: smooth && !reduceMotion ? "smooth" : "auto" });   // picked category is now first: show it from the top, chips above it
-    history.replaceState(null, "", location.pathname + "#cat-" + cat);
-  }
-  function showAll() {
-    layout(false);
-    history.replaceState(null, "", location.pathname);
-    scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  // Category filters on the project grid (also opened by #cat-villa links from the menu / About page)
+  const grid = document.getElementById("projects");
+  function filter(cat, scroll) {
+    document.querySelectorAll(".pcard").forEach(c => c.hidden = !!cat && c.dataset.cat !== cat);
+    document.querySelectorAll(".filters a").forEach(a => a.classList.toggle("on", cat ? a.dataset.cat === cat : a.hasAttribute("data-all")));
+    history.replaceState(null, "", location.pathname + (cat ? "#cat-" + cat : ""));
+    if (scroll && grid) grid.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
   }
   document.addEventListener("click", e => {
-    if (e.target.closest(".filters a[data-all]")) { e.preventDefault(); showAll(); return; }
-    const a = e.target.closest('.caption .cat, .filters a, a[href*="#cat-"]');
+    const a = e.target.closest('.filters a, a[href*="#cat-"]');
     if (!a) return;
+    if (a.hasAttribute("data-all")) { e.preventDefault(); filter(null, false); return; }
     const m = a.getAttribute("href").match(/#cat-([a-z-]+)/);
-    if (!m || !O.groups.includes(m[1])) return;   // not a category link: let it navigate
-    e.preventDefault(); e.stopPropagation();       // icon click regroups + jumps; it never opens the project
-    goToCat(m[1], true);
+    if (!m) return;
+    e.preventDefault(); filter(m[1], !a.closest(".filters"));
   });
   const startCat = new URLSearchParams(location.search).get("cat") || (location.hash.match(/^#cat-([a-z-]+)/) || [])[1];
-  if (startCat) setTimeout(() => goToCat(startCat, false), 200);
-  addEventListener('scroll', () => { hdr.classList.toggle('small', scrollY > 60 || document.body.classList.contains("grouped")); spy(); }, { passive: true });
+  if (startCat) setTimeout(() => filter(startCat, true), 200);
+  addEventListener('scroll', () => hdr.classList.toggle('small', scrollY > 60), { passive: true });
   const h = location.hash.slice(1); if (h && !h.startsWith('cat-')) setTimeout(() => { document.getElementById(h)?.scrollIntoView(); hdr.classList.toggle('small', scrollY > 60); }, 300);

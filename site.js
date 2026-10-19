@@ -50,11 +50,13 @@
   const file = (location.pathname.split("/").pop() || "hero.html").replace(/^index\.html$/, "hero.html");   // live home = index.html (copy of hero.html)
   // Pages are pre-rendered at build time (make_site.py), so the menu, footer, WhatsApp button etc. may already be in the HTML.
   // Take those copies out first and build them again, so nothing appears twice and every button works.
-  document.querySelectorAll(".lang-switch, .nav-cr, .wa-float, .menu-btn, .menu-overlay, .site-footer").forEach(e => e.remove());
+  document.querySelectorAll(".lang-switch, .lang-quick, .nav-cr, .wa-float, .menu-btn, .menu-overlay, .site-footer").forEach(e => e.remove());
   document.querySelectorAll("header .nav-projects").forEach(w => { const a = w.querySelector("a"); w.replaceWith(a); });
   const twin = TWINS.includes(file) ? (AR ? `../${file}` : `ar/${file}`) : null;
   const twinLink = twin ? `<a class="lang-switch" href="${twin}${location.search}${location.hash}" hreflang="${AR ? "en" : "ar"}" lang="${AR ? "en" : "ar"}" aria-label="${T.otherLabel}">${T.other}</a>` : "";
   if (twin) document.querySelector("header nav.right")?.insertAdjacentHTML("beforeend", twinLink);
+  // Phones / tablets (Amr, 2026-10-19: switching back from Arabic was hard): the other language sits in the header, opposite MENU
+  if (twin) document.querySelector("header")?.insertAdjacentHTML("beforeend", twinLink.replace('class="lang-switch"', 'class="lang-quick"'));
 
   // "Projects" hover legend (desktop): category icons with labels, each opens the filtered projects view
   document.querySelectorAll("header nav a").forEach(a => {
