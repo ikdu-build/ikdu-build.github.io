@@ -1,10 +1,10 @@
 // Home page script, shared by hero.html (English) and ar/hero.html (Arabic). Text comes from H below.
 const H = window.IKDU_AR ? {
-  info: { "polysh": ["Polysh", "سبا أظافر · أركان، الجيزة"], "s-roof": ["S-Roof", "روف · سوديك كورتيارد، الجيزة"],
+  info: { "polysh": ["Polysh", "سبا أظافر · أركان، الجيزة"], "s-roof": ["S-Roof", "سطح · سوديك كورتيارد، الجيزة"],
           "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "l-villa": ["L-Villa", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
-  by: " من إكدو", jump: "روح لقسم", all: "كل المشاريع", jumpNav: "أقسام المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
-  ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لتشاهد صوره.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["تنفيذ", "services"], ["أثاث", "services"]], more: "عنّا وخدماتنا &larr;", down: "مشاريعنا",
-  view: "شوف المشروع &larr;", cr: { h: "من التصميم للتنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شوفهم جنب بعض &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مصر كلها… من الخرسانة لحد ما تستلم مكانك جاهز."
+  by: " من إكدو", jump: "روح لقسم", all: "جميع المشاريع", jumpNav: "فئات المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
+  ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لمشاهدته.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["تنفيذ", "services"], ["أثاث", "services"]], more: "من نحن وخدماتنا &larr;", down: "مشاريعنا",
+  view: "شاهد المشروع &larr;", cr: { h: "من التصميم للتنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شوفهم جنب بعض &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مناطق مختلفة من مصر، من الخرسانة حتى تسليم المكان جاهزًا."
 } : {
   info: { "polysh": ["Polysh", "Nail spa · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Sodic Courtyard, Giza"],
           "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "l-villa": ["L-Villa", "Villa · full finishing · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },

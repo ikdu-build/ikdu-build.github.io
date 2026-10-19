@@ -13,8 +13,8 @@
   const A = AR ? "../assets" : "assets";          // assets folder, seen from this page
   window.IKDU_ASSETS = A;
   const T = AR
-    ? { cr: "من التصميم للتنفيذ", projects: "المشاريع", services: "خدماتنا", about: "عنّا وخدماتنا", connect: "تواصل معنا", menu: "القائمة", close: "إغلاق",
-        waFloat: "واتساب", waFloatLabel: "كلّمنا على واتساب", waUs: "كلّمنا واتساب", place: "الجيزة، مصر",
+    ? { cr: "من التصميم إلى التنفيذ", projects: "المشاريع", services: "خدماتنا", about: "من نحن وخدماتنا", connect: "تواصل معنا", menu: "القائمة", close: "إغلاق",
+        waFloat: "واتساب", waFloatLabel: "تواصل معنا عبر واتساب", waUs: "كلّمنا واتساب", place: "الجيزة، مصر",
         villa: "فيلات", apartments: "شقق", commercial: "تجاري", other: "EN", otherLabel: "English",
         ig: "إنستجرام", li: "لينكدإن", fb: "فيسبوك" }
     : { cr: "Concept → Reality", projects: "Projects", services: "Services", about: "About &amp; Services", connect: "Contact us", menu: "Menu", close: "Close",

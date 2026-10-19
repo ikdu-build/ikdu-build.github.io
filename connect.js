@@ -7,8 +7,8 @@
   const WEB3FORMS_KEY = "222c75bb-c265-4bc7-a6d7-c636fb0e3390";   // form "ikdu.build website", account hello@ikdu.build (2026-09-28). Public by design: it only lets people send to hello@.
   const AR = window.IKDU_AR;
   const MSG = AR
-    ? { sending: "بنبعت…", ok: "وصلتنا رسالتك، وهنرد عليك في أقرب وقت.", missing: "من فضلك اكتب اسمك، ووسيلة نتواصل بيها معاك، ورسالتك.",
-        fail: "الرسالة موصلتش. جرّب تاني، أو كلّمنا على واتساب أو hello@ikdu.build.", notSet: "الفورم لسه مش متوصّل. كلّمنا على واتساب أو hello@ikdu.build." }
+    ? { sending: "جارٍ الإرسال…", ok: "وصلتنا رسالتك، وسنرد عليك في أقرب وقت.", missing: "من فضلك اكتب اسمك، ووسيلة للتواصل معك، ورسالتك.",
+        fail: "لم تُرسَل الرسالة. حاول مرة أخرى، أو تواصل معنا عبر واتساب أو hello@ikdu.build.", notSet: "النموذج غير متصل بعد. تواصل معنا عبر واتساب أو hello@ikdu.build." }
     : { sending: "Sending…", ok: "Thanks, we'll reply soon.", missing: "Please add your name, an email or phone number, and a message.",
         fail: "That didn't go through. Please try again, or reach us on WhatsApp or hello@ikdu.build.", notSet: "The form isn't connected yet. Please reach us on WhatsApp or hello@ikdu.build." };
   const form = document.getElementById("contactForm");
