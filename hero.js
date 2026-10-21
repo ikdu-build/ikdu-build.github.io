@@ -3,14 +3,14 @@ const H = window.IKDU_AR ? {
   info: { "polysh": ["Polysh", "سبا أظافر · أركان، الجيزة"], "s-roof": ["S-Roof", "سطح · سوديك كورتيارد، الجيزة"],
           "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "l-villa": ["L-Villa", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "جميع المشاريع", jumpNav: "فئات المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
-  ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لمشاهدته.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["تنفيذ", "services"], ["أثاث", "services"]], more: "من نحن وخدماتنا &larr;", down: "مشاريعنا",
-  view: "شاهد المشروع &larr;", cr: { h: "من التصميم للتنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شوفهم جنب بعض &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مناطق مختلفة من مصر، من الخرسانة حتى تسليم المكان جاهزًا."
+  ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لمشاهدته.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["أنت تصمّم، ونحن ننفّذ", "services"], ["أثاث", "services"]], more: "من نحن وخدماتنا &larr;", down: "مشاريعنا",
+  view: "شاهد المشروع &larr;", cr: { h: "من التصميم إلى التنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شاهدها جنبًا إلى جنب &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مناطق مختلفة من مصر، من الأرض حتى تسليم المكان جاهزًا."
 } : {
   info: { "polysh": ["Polysh", "Nail spa · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Sodic Courtyard, Giza"],
           "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "l-villa": ["L-Villa", "Villa · full finishing · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
-  ours: "Our projects", oursSub: "Tap any project to see it.", what: "What we do", svc: [["Design + Build", "services"], ["Build", "services"], ["Furniture", "services"]], more: "About &amp; Services &rarr;", down: "Our projects",
-  view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting & fit-out across Egypt, from bare concrete to finished space."
+  ours: "Our projects", oursSub: "Tap any project to see it.", what: "What we do", svc: [["Design + Build", "services"], ["You design, we build", "services"], ["Furniture", "services"]], more: "About &amp; Services &rarr;", down: "Our projects",
+  view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting & fit-out across Egypt, from the ground up to finished space."
 };
   // Home layout (Amr, 2026-10-19, option A): visitors got stuck on the full-screen first project, "Projects" showed the same
   // page again and most missed Concept -> Reality. Now: 1) a shorter opening slideshow cycling through every project (caption +
