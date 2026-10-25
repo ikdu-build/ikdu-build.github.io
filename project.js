@@ -3,7 +3,7 @@
   const PROJECTS = {
     "polysh":  { name:"Polysh", sub:"Nail spa · Full fit-out · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Nail spa", Scope:"Full fit-out + furniture", Year:"2025" },
-                 credit:"Concept by Sarah Awad. Developed, detailed and built by IKDU, with Saqala Studio supporting design and production.",   // Amr, 2026-10-25 (option A; Sarah Awad asked to be credited under her name)
+                 credit:"Original design by Sarah Awad. Design development and selected pieces by Saqala Studio. Built by IKDU.",   // Amr, 2026-10-25 (Sarah Awad asked to be credited under her name; 'Original design' = her 3D proposal + drawing set; Saqala changed it and designed a few pieces)
                  intro:"From bare concrete to the furniture, made to measure: terracotta walls and arched niches throughout.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
@@ -49,7 +49,7 @@
   const PROJECTS_AR = {
     "polysh":      { name:"Polysh", sub:"سبا أظافر · تشطيب وتجهيز كامل · أركان، الجيزة",
                      facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · سبا أظافر", "نطاق العمل":"تشطيب وتجهيز كامل + الأثاث", "السنة":"2025" },
-                     credit:"التصميم المبدئي: سارة عوض. تطوير التصميم وتفاصيله والتنفيذ: إكدو، بمساندة Saqala Studio في التصميم والإنتاج.",
+                     credit:"التصميم الأصلي: سارة عوض. تطوير التصميم وتصميم بعض القطع: Saqala Studio. التنفيذ: إكدو.",
                      intro:"من الخرسانة حتى الأثاث، مصنوع على المقاس: جدران تيراكوتا ونيشات مقوّسة في أرجاء المكان." },
     "s-roof":      { name:"S-Roof", sub:"سطح · تصميم وتنفيذ · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · سطح", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
