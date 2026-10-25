@@ -14,7 +14,7 @@
   window.IKDU_ASSETS = A;
   const T = AR
     ? { cr: "من التصميم إلى التنفيذ", projects: "المشاريع", services: "خدماتنا", about: "من نحن وخدماتنا", connect: "تواصل معنا", menu: "القائمة", close: "إغلاق",
-        waFloat: "واتساب", waFloatLabel: "تواصل معنا عبر واتساب", waUs: "كلّمنا واتساب", place: "الجيزة، مصر",
+        waFloat: "واتساب", waFloatLabel: "تواصل معنا عبر واتساب", waUs: "راسلنا عبر واتساب", place: "الجيزة، مصر",
         villa: "فيلات", apartments: "شقق", commercial: "تجاري", other: "EN", otherLabel: "English",
         ig: "إنستجرام", li: "لينكدإن", fb: "فيسبوك" }
     : { cr: "Concept → Reality", projects: "Projects", services: "Services", about: "About &amp; Services", connect: "Contact us", menu: "Menu", close: "Close",
@@ -118,5 +118,32 @@
     <div class="mid"><div class="links"><a href="hero.html">${T.projects}</a><a href="transformation.html">${T.cr}</a><a href="about.html">${T.about}</a><a href="connect.html">${T.connect}</a></div>
     <div class="social">${SOCIAL.map(([h, label, ico, ltr]) => `<a href="${h}" aria-label="${label}"${ltr ? ' dir="ltr"' : ""}>${ico}<span>${label}</span></a>`).join("")}</div></div>
     <small>${T.place}</small></footer>`);
+
+  // Arrows (2026-10-25): none of the brand fonts has → or ←, so browsers drew them in a fallback font.
+  // Each arrow character is wrapped and drawn as a thin line arrow in the text colour; the character stays for copy/screen readers.
+  const arw = d => `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='${d}'/%3E%3C/svg%3E")`;
+  if (!document.getElementById("arw-css")) document.head.insertAdjacentHTML("beforeend", `<style id="arw-css">
+    .arw { display:inline-block; width:1em; height:1em; vertical-align:-.16em; background-color:currentColor; overflow:hidden; text-indent:3em; white-space:nowrap; line-height:1;
+           -webkit-mask:var(--m) center/contain no-repeat; mask:var(--m) center/contain no-repeat; }
+    .arw-r { --m:${arw("M4 12h16M14 6l6 6-6 6")}; }  .arw-l { --m:${arw("M20 12H4M10 6l-6 6 6 6")}; }</style>`);
+  const wrapArrows = root => {
+    const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n =>
+      /[→←]/.test(n.nodeValue) && !n.parentElement.closest(".arw, script, style, title, textarea") ? 1 : 2 });
+    const hits = []; while (walk.nextNode()) hits.push(walk.currentNode);
+    hits.forEach(n => {
+      const f = document.createDocumentFragment();
+      n.nodeValue.split(/([→←])/).forEach(p => {
+        if (p === "→" || p === "←") { const s = document.createElement("span"); s.className = "arw " + (p === "→" ? "arw-r" : "arw-l"); s.textContent = p; f.appendChild(s); }
+        else if (p) f.appendChild(document.createTextNode(p));
+      });
+      n.replaceWith(f);
+    });
+  };
+  wrapArrows(document.body);
+  // hero.js / project.js / transformation.js add text later: wrap arrows in whatever they add
+  new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => {
+    if (n.nodeType === 1 && !n.classList.contains("arw")) wrapArrows(n);
+    else if (n.nodeType === 3 && n.parentElement) wrapArrows(n.parentElement);
+  }))).observe(document.body, { childList: true, subtree: true });
 
 })();

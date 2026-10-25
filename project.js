@@ -15,8 +15,8 @@
                  detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]],
                  // gallery in this exact order (Amr, 2026-09-28): the whole-roof overview first, then the close-ups
                  gallery:["DSC09787.jpg", "DSC00057.jpg", "DSC09885.jpg", "DSC00011.jpg"] },
-    "m-villa": { name:"M-Villa", sub:"Villa · Design + build · Mountain View, Cairo", cover:"DSC09366.jpg",   // cover (Amr, 2026-09-28): the old first photo is also the "after" in before/after
-                 facts:{ Location:"Mountain View, Tagamoa, Cairo", Type:"Residential · Villa", Scope:"Design + build", Year:"2026" },
+    "m-villa": { name:"M-Villa", sub:"Villa · Design + build · Mountain View, New Cairo", cover:"DSC09366.jpg",   // cover (Amr, 2026-09-28): the old first photo is also the "after" in before/after
+                 facts:{ Location:"Mountain View, New Cairo", Type:"Residential · Villa", Scope:"Design + build", Year:"2026" },
                  intro:"A raw concrete shell turned into a warm, calm home, designed and built by us. Open-book Italian marble runs across the floors, and the staircase has marble treads, a full-height timber slat screen and hidden step lighting.",
                  ba:[["20230917_135241.jpg","DSC09375.jpg"]],
                  detail:[["DSC09518.jpg","DSC09527.jpg","Hidden door · flush with the timber slat wall"],
@@ -55,8 +55,8 @@
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · سطح", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
                      credit:"صُمّم بالتعاون مع Saqala Studio، ونفّذته إكدو.",
                      intro:"من الخرسانة إلى جلسة خارجية متكاملة: برجولة من خشب البيتش باين، وأريكة وبار وكاونتر وحوض مدمج وطاولة دوّارة، جميعها من التيرازو المصبوب في الموقع." },
-    "m-villa":     { name:"M-Villa", sub:"فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة",
-                     facts:{ "المكان":"ماونتن فيو، التجمع، القاهرة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
+    "m-villa":     { name:"M-Villa", sub:"فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة الجديدة",
+                     facts:{ "المكان":"ماونتن فيو، القاهرة الجديدة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"هيكل خرساني تحوّل إلى بيت دافئ وهادئ، من تصميمنا وتنفيذنا: أرضيات من الرخام الإيطالي بأسلوب أوبن بوك، ودرج بدرجات رخامية، وساتر من الشرائح الخشبية بطول الطابق، وإضاءة مخفية في الدرج." },
     "l-villa": { name:"L-Villa", sub:"فيلا · تصميم وتنفيذ · ليجندا، الجيزة",
                      facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ، من الداخل والخارج", "السنة":"2023" },
