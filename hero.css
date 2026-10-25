@@ -203,3 +203,11 @@
     .intro { margin:64px auto; }
   }
   @media (max-height:500px) and (orientation:landscape) { .project.showreel { height:calc(100svh - 64px - 48px); } }
+
+  /* "Your project next?" card in the last grid space (Amr, 2026-10-25) */
+  .pc-cta { background:var(--brick); display:grid; place-items:center; text-align:center; transition:filter .3s; }
+  .pc-cta > span { display:flex; flex-direction:column; gap:14px; padding:20px; }
+  .pc-cta b { font-family:var(--serif); font-weight:400; color:var(--cream); font-size:clamp(24px, 2.6vw, 36px); line-height:1.1; }
+  .pc-cta em { font-style:normal; color:var(--cream); font-size:12px; letter-spacing:.2em; text-transform:uppercase; border-bottom:1px solid rgba(234,230,223,.6); align-self:center; padding-bottom:3px; }
+  [dir="rtl"] .pc-cta em { letter-spacing:0; font-size:15px; }
+  .pcta:hover .pc-cta { filter:brightness(1.08); }

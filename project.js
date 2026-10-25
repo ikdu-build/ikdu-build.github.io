@@ -1,19 +1,21 @@
 // Shared script for the 5 project pages. The project comes from <body data-project="…">.
   // Project info. [Brackets] = still to confirm with Amr.
   const PROJECTS = {
-    "polysh":  { name:"Polysh", sub:"Nail spa · Arkan, Giza",
+    "polysh":  { name:"Polysh", sub:"Nail spa · Full fit-out · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Nail spa", Scope:"Full fit-out + furniture", Year:"2025" },
+                 credit:"Concept by Sarah Awad. Developed, detailed and built by IKDU, with Saqala Studio supporting design and production.",   // Amr, 2026-10-25 (option A; Sarah Awad asked to be credited under her name)
                  intro:"From bare concrete to the furniture, made to measure: terracotta walls and arched niches throughout.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
-    "s-roof":  { name:"S-Roof", sub:"Rooftop · Sodic Courtyard, Giza",
+    "s-roof":  { name:"S-Roof", sub:"Rooftop · Design + build · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
+                 credit:"Designed with Saqala Studio, built by IKDU.",   // Amr, 2026-10-25: co-designed with Saqala Studio
                  intro:"Taken from bare concrete to a finished outdoor living room: a pitch pine pergola, and a couch, bar, counter, built-in sink and rotating table, all in terrazzo poured on site.",
                  ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016-soft.jpg"]],
                  detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]],
                  // gallery in this exact order (Amr, 2026-09-28): the whole-roof overview first, then the close-ups
                  gallery:["DSC09787.jpg", "DSC00057.jpg", "DSC09885.jpg", "DSC00011.jpg"] },
-    "m-villa": { name:"M-Villa", sub:"Villa interior · Mountain View, Tagamoa, Cairo", cover:"DSC09366.jpg",   // cover (Amr, 2026-09-28): the old first photo is also the "after" in before/after
+    "m-villa": { name:"M-Villa", sub:"Villa · Design + build · Mountain View, Cairo", cover:"DSC09366.jpg",   // cover (Amr, 2026-09-28): the old first photo is also the "after" in before/after
                  facts:{ Location:"Mountain View, Tagamoa, Cairo", Type:"Residential · Villa", Scope:"Design + build", Year:"2026" },
                  intro:"A raw concrete shell turned into a warm, calm home, designed and built by us. Open-book Italian marble runs across the floors, and the staircase has marble treads, a full-height timber slat screen and hidden step lighting.",
                  ba:[["20230917_135241.jpg","DSC09375.jpg"]],
@@ -21,15 +23,15 @@
                          ["DSC09530-HDR-2.jpg","DSC09538-HDR-1.jpg","Hidden bathroom storage · behind the mirror"]],
                  // gallery in this exact order (Amr, 2026-09-28): tall photos pair up two by two
                  gallery:["DSC09599.jpg", "DSC09722.jpg", "DSC09712.jpg", "DSC09737.jpg", "DSC09755-1.jpg", "DSC09717.jpg", "DSC09617.jpg"] },
-    "l-villa":    { name:"L-Villa", sub:"Villa · full finishing · Legenda, Giza",
-                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Full finishing, inside + out", Year:"2023" },
+    "l-villa":    { name:"L-Villa", sub:"Villa · Design + build · Legenda, Giza",
+                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Design + build, inside + out", Year:"2023" },
                  intro:"A family villa in Legenda, finished inside and out: herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
                  ba:[["20230329_110331.jpg","DSC01968.jpg"]],
                  // fixed order (Amr, 2026-10-01): the gallery ends on the garden terrace with the palm tree, after the bathrooms
                  gallery:["DSC01954.jpg", "DSC02012.jpg", "DSC01964.jpg", "DSC01980.jpg", "DSC01988.jpg", "DSC01948.jpg", "DSC01972.jpg", "DSC02021.jpg"] },
     // L-Villa II (Amr, 2026-09-29): L-Villa's mirror twin next door; its own page with the 4 real photos from the pro shoot. More after its full shoot.
-    "l-villa-2":  { name:"L-Villa II", sub:"Villa · full finishing · Legenda, Giza", cover:"DSC02035.jpg",
-                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Full finishing, inside + out", Year:"2024" },
+    "l-villa-2":  { name:"L-Villa II", sub:"Villa · Design + build · Legenda, Giza", cover:"DSC02035.jpg",
+                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Design + build, inside + out", Year:"2024" },
                  intro:"The mirror twin of L-Villa, right next door in Legenda, finished inside and out to the same standard.",
                  gallery:["DSC02036.jpg", "DSC01939.jpg", "DSC02032.jpg"] },
     "sane":    { name:"Sane", sub:"Kids' art space · Masyaf & Almaza, North Coast", cover:"8379CE78-E7CE-4747-A89E-ADBB7ABB8C41_1_201_a.jpg",
@@ -45,20 +47,22 @@
   // Arabic text for ar/<project>.html (DRAFT for Amr's approval, Egyptian register, written in Arabic).
   // Photos, before/after and details still come from PROJECTS above; only the words change.
   const PROJECTS_AR = {
-    "polysh":      { name:"Polysh", sub:"سبا أظافر · أركان، الجيزة",
+    "polysh":      { name:"Polysh", sub:"سبا أظافر · تشطيب وتجهيز كامل · أركان، الجيزة",
                      facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · سبا أظافر", "نطاق العمل":"تشطيب وتجهيز كامل + الأثاث", "السنة":"2025" },
+                     credit:"التصميم المبدئي: سارة عوض. تطوير التصميم وتفاصيله والتنفيذ: إكدو، بمساندة Saqala Studio في التصميم والإنتاج.",
                      intro:"من الخرسانة حتى الأثاث، مصنوع على المقاس: جدران تيراكوتا ونيشات مقوّسة في أرجاء المكان." },
-    "s-roof":      { name:"S-Roof", sub:"سطح · سوديك كورتيارد، الجيزة",
+    "s-roof":      { name:"S-Roof", sub:"سطح · تصميم وتنفيذ · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · سطح", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
+                     credit:"صُمّم بالتعاون مع Saqala Studio، ونفّذته إكدو.",
                      intro:"من الخرسانة إلى جلسة خارجية متكاملة: برجولة من خشب البيتش باين، وأريكة وبار وكاونتر وحوض مدمج وطاولة دوّارة، جميعها من التيرازو المصبوب في الموقع." },
-    "m-villa":     { name:"M-Villa", sub:"تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة",
+    "m-villa":     { name:"M-Villa", sub:"فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة",
                      facts:{ "المكان":"ماونتن فيو، التجمع، القاهرة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"هيكل خرساني تحوّل إلى بيت دافئ وهادئ، من تصميمنا وتنفيذنا: أرضيات من الرخام الإيطالي بأسلوب أوبن بوك، ودرج بدرجات رخامية، وساتر من الشرائح الخشبية بطول الطابق، وإضاءة مخفية في الدرج." },
-    "l-villa": { name:"L-Villa", sub:"فيلا · تشطيب كامل · ليجندا، الجيزة",
-                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "نطاق العمل":"تشطيب كامل، من الداخل والخارج", "السنة":"2023" },
+    "l-villa": { name:"L-Villa", sub:"فيلا · تصميم وتنفيذ · ليجندا، الجيزة",
+                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ، من الداخل والخارج", "السنة":"2023" },
                      intro:"فيلا عائلية في ليجندا، تم تشطيبها من الداخل والخارج: باركيه بنقشة هيرينجبون، ومطبخ خشبي كلاسيكي، وغرفة ملابس، وحمّامات من الحجر، ومدخل حجري جديد." },
-    "l-villa-2": { name:"L-Villa II", sub:"فيلا · تشطيب كامل · ليجندا، الجيزة",
-                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "نطاق العمل":"تشطيب كامل، من الداخل والخارج", "السنة":"2024" },
+    "l-villa-2": { name:"L-Villa II", sub:"فيلا · تصميم وتنفيذ · ليجندا، الجيزة",
+                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ، من الداخل والخارج", "السنة":"2024" },
                      intro:"التوأم المعكوس لـ L-Villa، بجوارها مباشرة في ليجندا، وتم تشطيبها من الداخل والخارج بالمستوى نفسه." },
     "sane":        { name:"Sane", sub:"مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي",
                      facts:{ "المكان":"مصياف وألماظة، الساحل الشمالي", "النوع":"تعليمي · مساحة للأطفال", "نطاق العمل":"تنسيق حدائق · تشطيب داخلي · أثاث", "السنة":"2025" },
@@ -117,10 +121,12 @@
     document.querySelectorAll(".concept-link").forEach(e => e.remove());
     // (Amr, 2026-09-30: the small text link was missed) a picture card: the project's first concept/delivered pair + a clear button
     const CR = { "polysh": ["render-p08.jpg", "DSC02600.jpg"], "s-roof": ["render-R3-9.jpg", "DSC09930.jpg"], "l-villa": ["render-k101-crop.jpg", "DSC02001.jpg"] };
-    document.querySelectorAll(".concept-card").forEach(e => e.remove());
+    document.querySelectorAll(".concept-card, .credit").forEach(e => e.remove());
     if (CR[key]) document.getElementById("intro").insertAdjacentHTML("afterend", `<a class="concept-card" href="transformation.html#${key}">
         <span class="cc-pair">${CR[key].map((f, n) => `<span class="cc-img">${pic(f, { alt: n ? U.after : U.concept, sizes: "(max-width:760px) 45vw, 240px", w: 0 })}<em>${n ? U.delivered : U.concept}</em></span>`).join("")}</span>
         <span class="cc-text"><b class="serif">${U.ccTitle}</b><span>${U.ccText}</span><span class="cc-btn">${U.ccBtn}</span></span></a>`);
+    // credits (Amr, 2026-10-25): who designed / helped, as a small line under the description
+    if (P.credit) document.getElementById("intro").insertAdjacentHTML("afterend", `<p class="credit">${P.credit}</p>`);
 
     if (comps.length) {
       const hasSlider = comps.some(c => c.length === 2);

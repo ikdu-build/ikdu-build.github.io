@@ -1,15 +1,15 @@
 // Home page script, shared by hero.html (English) and ar/hero.html (Arabic). Text comes from H below.
 const H = window.IKDU_AR ? {
-  info: { "polysh": ["Polysh", "سبا أظافر · أركان، الجيزة"], "s-roof": ["S-Roof", "سطح · سوديك كورتيارد، الجيزة"],
-          "m-villa": ["M-Villa", "تشطيب داخلي لفيلا · ماونتن فيو، التجمع، القاهرة"], "l-villa": ["L-Villa", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تشطيب كامل · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
+  info: { "polysh": ["Polysh", "سبا أظافر · تشطيب وتجهيز كامل · أركان، الجيزة"], "s-roof": ["S-Roof", "سطح · تصميم وتنفيذ · سوديك كورتيارد، الجيزة"],
+          "m-villa": ["M-Villa", "فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة"], "l-villa": ["L-Villa", "فيلا · تصميم وتنفيذ · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تصميم وتنفيذ · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "جميع المشاريع", jumpNav: "فئات المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
-  ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لمشاهدته.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["أنت تصمّم، ونحن ننفّذ", "services"], ["أثاث", "services"]], more: "من نحن وخدماتنا &larr;", down: "مشاريعنا",
+  nextQ: "مشروعك التالي؟", talk: "تحدّث معنا &larr;", ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لمشاهدته.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["أنت تصمّم، ونحن ننفّذ", "services"], ["أثاث", "services"]], more: "من نحن وخدماتنا &larr;", down: "مشاريعنا",
   view: "شاهد المشروع &larr;", cr: { h: "من التصميم إلى التنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شاهدها جنبًا إلى جنب &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مناطق مختلفة من مصر، من الأرض حتى تسليم المكان جاهزًا."
 } : {
-  info: { "polysh": ["Polysh", "Nail spa · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Sodic Courtyard, Giza"],
-          "m-villa": ["M-Villa", "Villa interior · Mountain View, Tagamoa, Cairo"], "l-villa": ["L-Villa", "Villa · full finishing · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · full finishing · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
+  info: { "polysh": ["Polysh", "Nail spa · Full fit-out · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Design + build · Sodic Courtyard, Giza"],
+          "m-villa": ["M-Villa", "Villa · Design + build · Mountain View, Cairo"], "l-villa": ["L-Villa", "Villa · Design + build · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · Design + build · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
-  ours: "Our projects", oursSub: "Tap any project to see it.", what: "What we do", svc: [["Design + Build", "services"], ["You design, we build", "services"], ["Furniture", "services"]], more: "About &amp; Services &rarr;", down: "Our projects",
+  nextQ: "Your project next?", talk: "Talk to us &rarr;", ours: "Our projects", oursSub: "Tap any project to see it.", what: "What we do", svc: [["Design + Build", "services"], ["You design, we build", "services"], ["Furniture", "services"]], more: "About &amp; Services &rarr;", down: "Our projects",
   view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting & fit-out across Egypt, from the ground up to finished space."
 };
   // Home layout (Amr, 2026-10-19, option A): visitors got stuck on the full-screen first project, "Projects" showed the same
@@ -41,7 +41,7 @@ const H = window.IKDU_AR ? {
         GROUPS.filter(k => window.IKDU_CATS[k] && shown.some(p => window.IKDU_PROJECT_CAT[p] === k)).map(k => { const c = window.IKDU_CATS[k];
           return `<a href="#cat-${k}" data-cat="${k}"><span class="chip"><img src="${c.icon}" alt=""></span>${c.label}</a>`; }).join("")}</nav>
       <div class="cards">${shown.map(p => { const [name, sub] = INFO[p] || [p, ""], cat = window.IKDU_PROJECT_CAT[p], c = window.IKDU_CATS[cat], f = CARD[p] || picks.home[p][1] || picks.home[p][0];
-        return `<a class="pcard" href="${p}.html" data-cat="${cat || ""}"><span class="pc-img">${ikduPic(p + "/" + f, { alt: ikduAlt(p + "/" + f, name + H.by), sizes: "(max-width:760px) 50vw, 33vw" })}${c ? `<span class="chip"><img src="${c.icon}" alt="${c.label}"></span>` : ""}</span><h3>${name}</h3><span class="pc-sub">${sub}</span></a>`; }).join("")}</div></section>`);
+        return `<a class="pcard" href="${p}.html" data-cat="${cat || ""}"><span class="pc-img">${ikduPic(p + "/" + f, { alt: ikduAlt(p + "/" + f, name + H.by), sizes: "(max-width:760px) 50vw, 33vw" })}${c ? `<span class="chip"><img src="${c.icon}" alt="${c.label}"></span>` : ""}</span><h3>${name}</h3><span class="pc-sub">${sub}</span></a>`; }).join("")}<a class="pcard pcta" href="connect.html" data-cat="cta"><span class="pc-img pc-cta"><span><b>${H.nextQ}</b><em>${H.talk}</em></span></span></a></div></section>`);   // fills the empty grid space (Amr, 2026-10-25); hidden when a filter is on
     // 3) Concept -> Reality
     main.insertAdjacentHTML("beforeend", `<section class="cr-teaser" id="cr-teaser"><a href="transformation.html" class="crt-pair">
         <span class="crt-img">${ikduPic("polysh/render-p08.jpg", { alt: H.cr.r, sizes: "(max-width:760px) 50vw, 40vw" })}<em>${H.cr.r}</em></span>

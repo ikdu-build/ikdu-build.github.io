@@ -169,3 +169,8 @@
     .concept-card { grid-template-columns:1fr; gap:16px; margin:-32px 16px 56px; }
     .cc-pair { width:100%; } .cc-text b { font-size:24px; } .cc-btn { align-self:stretch; text-align:center; }
   }
+
+  /* Credits line under the description (2026-10-25) */
+  .credit { max-width:760px; margin:-64px auto 72px; padding:0 40px; font-size:13px; letter-spacing:.06em; opacity:.75; }
+  [dir="rtl"] .credit { letter-spacing:0; font-size:15px; }
+  @media (max-width:760px) { .credit { padding:0 16px; margin:-48px auto 56px; } }
