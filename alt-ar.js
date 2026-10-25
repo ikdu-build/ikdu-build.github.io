@@ -3,6 +3,7 @@
 // Project-page photos added 2026-09-27 with the Arabic project pages.
 window.IKDU_ALT_AR = {
   "l-villa/DSC02011.jpg": "ليفنج L-Villa: باركيه هيرينجبون ومكتبة خشب، والباب الرئيسي باين من آخر المساحة",
+  "l-villa/DSC01957.jpg": "غرفة الملابس في L-Villa: دواليب خشب داكن من الأرض حتى السقف",
   "l-villa/DSC02028.jpg": "مدخل L-Villa: أعمدة حجر، بوابة حديد، وباب خشب مصمت",
   "l-villa/DSC01964.jpg": "أوضة النوم الرئيسية في L-Villa: دولاب خشب غامق بباب مراية وسقف بإضاءة مخفية",
   "l-villa/DSC01980.jpg": "الليفينج في L-Villa: كنبة ركنة تحت سقف بإضاءة مخفية",

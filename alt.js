@@ -4,6 +4,7 @@
 // e.g. "Villas, filter projects". Legend/chip icons next to a visible label use alt="" (the label is the text).
 window.IKDU_ALT = {
   "l-villa/20230329_105857.jpg": "L-Villa living room before finishing: bare plaster walls, exposed conduit and a wheelbarrow",
+  "l-villa/DSC01957.jpg": "L-Villa walk-in dressing room: floor-to-ceiling dark timber wardrobes",
   "l-villa/20230329_110039.jpg": "L-Villa entrance before finishing: rough columns and unfinished steps",
   "l-villa/20230329_110331.jpg": "L-Villa bathroom wall before finishing: raw blockwork around the tiled niches",
   "l-villa/20230329_110336.jpg": "L-Villa bathroom during works: niches formed in the stone-look tiled wall",
