@@ -4,13 +4,13 @@ const H = window.IKDU_AR ? {
           "m-villa": ["M-Villa", "فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة"], "l-villa": ["L-Villa", "فيلا · تصميم وتنفيذ · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تصميم وتنفيذ · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "جميع المشاريع", jumpNav: "فئات المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
   nextQ: "مشروعك التالي؟", talk: "تحدّث معنا &larr;", ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لمشاهدته.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["أنت تصمّم، ونحن ننفّذ", "services"], ["أثاث", "services"]], more: "من نحن وخدماتنا &larr;", down: "مشاريعنا",
-  view: "شاهد المشروع &larr;", cr: { h: "من التصميم إلى التنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شاهدها جنبًا إلى جنب &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "مقاولات وتشطيبات في مناطق مختلفة من مصر، من الأرض حتى تسليم المكان جاهزًا."
+  view: "شاهد المشروع &larr;", cr: { h: "من التصميم إلى التنفيذ", p: "تصميماتنا الثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شاهدها جنبًا إلى جنب &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "تصميمات ومقاولات وتشطيبات بنظام تسليم مفتاح في جميع أنحاء مصر."
 } : {
   info: { "polysh": ["Polysh", "Nail spa · Full fit-out · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Design + build · Sodic Courtyard, Giza"],
           "m-villa": ["M-Villa", "Villa · Design + build · Mountain View, Cairo"], "l-villa": ["L-Villa", "Villa · Design + build · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · Design + build · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
   nextQ: "Your project next?", talk: "Talk to us &rarr;", ours: "Our projects", oursSub: "Tap any project to see it.", what: "What we do", svc: [["Design + Build", "services"], ["You design, we build", "services"], ["Furniture", "services"]], more: "About &amp; Services &rarr;", down: "Our projects",
-  view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Contracting & fit-out across Egypt, from the ground up to finished space."
+  view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "Our 3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Design, contracting & turnkey fit-out across Egypt."
 };
   // Home layout (Amr, 2026-10-19, option A): visitors got stuck on the full-screen first project, "Projects" showed the same
   // page again and most missed Concept -> Reality. Now: 1) a shorter opening slideshow cycling through every project (caption +
