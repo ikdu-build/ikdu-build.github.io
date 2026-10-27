@@ -3,13 +3,13 @@
   const PROJECTS = {
     "polysh":  { name:"Polysh", sub:"Nail spa · Full fit-out · Arkan, Giza",
                  facts:{ Location:"Arkan, Giza", Type:"Commercial · Nail spa", Scope:"Full fit-out + furniture", Year:"2025" },
-                 credit:"Original design by Sarah Awad. Design development and selected pieces by Saqala Studio. Built by IKDU.",   // Amr, 2026-10-25 (Sarah Awad asked to be credited under her name; 'Original design' = her 3D proposal + drawing set; Saqala changed it and designed a few pieces)
+                 credit:"Original design by Sarah Awad. Built by IKDU for <a class=\"sq\" href=\"https://saqalastudio.com\" target=\"_blank\" rel=\"noopener\">Saqala Studio</a>.",   // Amr, 2026-10-25 (Sarah Awad asked to be credited under her name; final wording agreed by Amr and his cousin 2026-10-27; Saqala Studio links to saqalastudio.com)
                  intro:"From bare concrete to the furniture, made to measure: terracotta walls and arched niches throughout.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
     "s-roof":  { name:"S-Roof", sub:"Rooftop · Design + build · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
-                 credit:"Designed with Saqala Studio, built by IKDU.",   // Amr, 2026-10-25: co-designed with Saqala Studio
+                 credit:"Designed with <a class=\"sq\" href=\"https://saqalastudio.com\" target=\"_blank\" rel=\"noopener\">Saqala Studio</a>, built by IKDU.",   // Amr, 2026-10-25: co-designed with Saqala Studio
                  intro:"Taken from bare concrete to a finished outdoor living room: a pitch pine pergola, and a couch, bar, counter, built-in sink and rotating table, all in terrazzo poured on site.",
                  ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016-soft.jpg"]],
                  detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]],
@@ -49,11 +49,11 @@
   const PROJECTS_AR = {
     "polysh":      { name:"Polysh", sub:"سبا أظافر · تشطيب وتجهيز كامل · أركان، الجيزة",
                      facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · سبا أظافر", "نطاق العمل":"تشطيب وتجهيز كامل + الأثاث", "السنة":"2025" },
-                     credit:"التصميم الأصلي: سارة عوض. تطوير التصميم وتصميم بعض القطع: Saqala Studio. التنفيذ: إكدو.",
+                     credit:"التصميم الأصلي: سارة عوض. التنفيذ: إكدو لصالح <a class=\"sq\" href=\"https://saqalastudio.com\" target=\"_blank\" rel=\"noopener\">Saqala Studio</a>.",
                      intro:"من الخرسانة حتى الأثاث، مصنوع على المقاس: جدران تيراكوتا ونيشات مقوّسة في أرجاء المكان." },
     "s-roof":      { name:"S-Roof", sub:"سطح · تصميم وتنفيذ · سوديك كورتيارد، الجيزة",
                      facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · سطح", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
-                     credit:"صُمّم بالتعاون مع Saqala Studio، ونفّذته إكدو.",
+                     credit:"صُمّم بالتعاون مع <a class=\"sq\" href=\"https://saqalastudio.com\" target=\"_blank\" rel=\"noopener\">Saqala Studio</a>، ونفّذته إكدو.",
                      intro:"من الخرسانة إلى جلسة خارجية متكاملة: برجولة من خشب البيتش باين، وأريكة وبار وكاونتر وحوض مدمج وطاولة دوّارة، جميعها من التيرازو المصبوب في الموقع." },
     "m-villa":     { name:"M-Villa", sub:"فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة الجديدة",
                      facts:{ "المكان":"ماونتن فيو، القاهرة الجديدة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },

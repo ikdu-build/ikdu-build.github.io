@@ -8,7 +8,7 @@
 .cr-project { max-width:1200px; margin:0 auto 96px; padding:0 40px; }
 .cr-head { margin-bottom:28px; }
 .cr-head h2 { font-size:40px; margin-bottom:6px; }
-.cr-note { margin-top:10px; opacity:.8; }
+.cr-note { margin-top:10px; color:rgba(0,0,0,.8); }
 
 .cr-pair { margin:0 0 56px; }
 .cr-row { display:flex; gap:12px; align-items:flex-start; max-width:calc(85vh * var(--sum) + 12px); margin:0 auto; }
@@ -70,3 +70,6 @@ html.crv-lock, html.crv-lock body { overflow:hidden; }
 .crv.seen .crv-next { background:var(--brick); border-color:var(--brick); color:#fff; }   /* seen both: nudge to the next comparison */
 [dir="rtl"] .crv-count, [dir="rtl"] .crv-close, [dir="rtl"] .crv-tabs button, [dir="rtl"] .crv-hint, [dir="rtl"] .crv-nav button { letter-spacing:0; font-size:13px; }
 @media (orientation:landscape) and (max-height:500px) { .crv-cap, .crv-tabs { display:none; } .crv-top { height:44px; } .crv-nav { padding-top:8px; } .crv-nav button { padding:8px; } }
+
+a.sq { color:var(--brick); text-decoration:underline; text-decoration-color:var(--camel); text-decoration-thickness:1px; text-underline-offset:4px; }
+a.sq:hover, a.sq:focus-visible { color:var(--brown); text-decoration-color:var(--brown); }
