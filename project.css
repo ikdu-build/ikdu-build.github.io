@@ -176,5 +176,5 @@
   @media (max-width:760px) { .credit { padding:0 16px; margin:-48px auto 56px; } }
 
   /* Saqala Studio link (2026-10-27): brick tint + thin camel underline so it reads as clickable; brand colours only */
-  a.sq { color:var(--brick); text-decoration:underline; text-decoration-color:var(--camel); text-decoration-thickness:1px; text-underline-offset:4px; }
-  a.sq:hover, a.sq:focus-visible { color:var(--brown); text-decoration-color:var(--brown); }
+  a.sq { color:inherit; text-decoration:underline; text-decoration-color:var(--camel); text-decoration-thickness:1px; text-underline-offset:4px; }
+  a.sq:hover, a.sq:focus-visible { color:var(--brick); text-decoration-color:var(--brick); }

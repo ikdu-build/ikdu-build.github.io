@@ -9,7 +9,7 @@
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
     "s-roof":  { name:"S-Roof", sub:"Rooftop · Design + build · Sodic Courtyard, Giza",
                  facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
-                 credit:"Designed with <a class=\"sq\" href=\"https://saqalastudio.com\" target=\"_blank\" rel=\"noopener\">Saqala Studio</a>, built by IKDU.",   // Amr, 2026-10-25: co-designed with Saqala Studio
+                 credit:"Designed with <a class=\"sq\" href=\"https://saqalastudio.com\" target=\"_blank\" rel=\"noopener\">Saqala Studio</a>. Built by IKDU.",   // Amr, 2026-10-25: co-designed with Saqala Studio
                  intro:"Taken from bare concrete to a finished outdoor living room: a pitch pine pergola, and a couch, bar, counter, built-in sink and rotating table, all in terrazzo poured on site.",
                  ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016-soft.jpg"]],
                  detail:[["DSC09938.jpg","DSC09947.jpg","Rotating table · tucks into the counter"]],

@@ -71,5 +71,5 @@ html.crv-lock, html.crv-lock body { overflow:hidden; }
 [dir="rtl"] .crv-count, [dir="rtl"] .crv-close, [dir="rtl"] .crv-tabs button, [dir="rtl"] .crv-hint, [dir="rtl"] .crv-nav button { letter-spacing:0; font-size:13px; }
 @media (orientation:landscape) and (max-height:500px) { .crv-cap, .crv-tabs { display:none; } .crv-top { height:44px; } .crv-nav { padding-top:8px; } .crv-nav button { padding:8px; } }
 
-a.sq { color:var(--brick); text-decoration:underline; text-decoration-color:var(--camel); text-decoration-thickness:1px; text-underline-offset:4px; }
-a.sq:hover, a.sq:focus-visible { color:var(--brown); text-decoration-color:var(--brown); }
+a.sq { color:inherit; text-decoration:underline; text-decoration-color:var(--camel); text-decoration-thickness:1px; text-underline-offset:4px; }
+a.sq:hover, a.sq:focus-visible { color:var(--brick); text-decoration-color:var(--brick); }
