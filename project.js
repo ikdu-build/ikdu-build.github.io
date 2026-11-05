@@ -1,14 +1,14 @@
 // Shared script for the 5 project pages. The project comes from <body data-project="…">.
   // Project info. [Brackets] = still to confirm with Amr.
   const PROJECTS = {
-    "polysh":  { name:"Polysh", sub:"Nail spa · Full fit-out · Arkan, Giza",
-                 facts:{ Location:"Arkan, Giza", Type:"Commercial · Nail spa", Scope:"Full fit-out + furniture", Year:"2025" },
+    "polysh":  { name:"Polysh", sub:"Nail spa · Full fit-out · Arkan, Sheikh Zayed",
+                 facts:{ Location:"Arkan, Sheikh Zayed", Type:"Commercial · Nail spa", Scope:"Full fit-out + furniture", Year:"2025" },
                  credit:"Original design by Sarah Awad. Built by IKDU for Saqala Studio.",   // Amr, 2026-10-25 (Sarah Awad asked to be credited under her name; final wording agreed by Amr and his cousin 2026-10-27; Saqala Studio is plain text for now (link to saqalastudio.com removed 2026-11-03, see README to restore))
                  intro:"From bare concrete to the furniture, made to measure: terracotta walls and arched niches throughout.",
                  // gallery in this exact order (Amr, 2026-09-28): lounge, [massage room alcove | vault | vault in the mirror] full width (storefront is now the "after" of the shopfront sequence) (IMG_1862 removed)
                  gallery:["DSC02645.jpg", "DSC02619.jpg", "DSC02600.jpg", ["20260510_215911-alcove.jpg", "20260510_215836.jpg", "20260510_215941.jpg"]] },
-    "s-roof":  { name:"S-Roof", sub:"Rooftop · Design + build · Sodic Courtyard, Giza",
-                 facts:{ Location:"Sodic Courtyard, Giza", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
+    "s-roof":  { name:"S-Roof", sub:"Rooftop · Design + build · Sodic Courtyard, Sheikh Zayed",
+                 facts:{ Location:"Sodic Courtyard, Sheikh Zayed", Type:"Residential · Rooftop", Scope:"Design + build", Year:"2026" },
                  credit:"Designed with Saqala Studio. Built by IKDU.",   // Amr, 2026-10-25: co-designed with Saqala Studio
                  intro:"Taken from bare concrete to a finished outdoor living room: a pitch pine pergola, and a couch, bar, counter, built-in sink and rotating table, all in terrazzo poured on site.",
                  ba:[["IMG-20251218-WA0024.jpg","IMG-20251230-WA0007.jpg","IMG_1016-soft.jpg"]],
@@ -23,15 +23,15 @@
                          ["DSC09530-HDR-2.jpg","DSC09538-HDR-1.jpg","Hidden bathroom storage · behind the mirror"]],
                  // gallery in this exact order (Amr, 2026-09-28): tall photos pair up two by two
                  gallery:["DSC09599.jpg", "DSC09722.jpg", "DSC09712.jpg", "DSC09737.jpg", "DSC09755-1.jpg", "DSC09717.jpg", "DSC09617.jpg"] },
-    "l-villa":    { name:"L-Villa", sub:"Villa · Design + build · Legenda, Giza",
-                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Design + build, inside + out", Year:"2023" },
+    "l-villa":    { name:"L-Villa", sub:"Villa · Design + build · Legenda, Sheikh Zayed",
+                 facts:{ Location:"Legenda, Sheikh Zayed", Type:"Residential · Villa", Scope:"Design + build, inside + out", Year:"2023" },
                  intro:"A family villa in Legenda, finished inside and out: herringbone parquet, a classic timber kitchen, a walk-in dressing room, stone bathrooms and a new stone entrance.",
                  ba:[["20230329_110331.jpg","DSC01968.jpg"]],
                  // fixed order (Amr, 2026-10-01): the gallery ends on the garden terrace with the palm tree, after the bathrooms
                  gallery:["DSC01954.jpg", "DSC02012.jpg", "DSC01964.jpg", "DSC01980.jpg", "DSC01988.jpg", "DSC01948.jpg", "DSC01972.jpg", "DSC02021.jpg"] },
     // L-Villa II (Amr, 2026-09-29): L-Villa's mirror twin next door; its own page with the 4 real photos from the pro shoot. More after its full shoot.
-    "l-villa-2":  { name:"L-Villa II", sub:"Villa · Design + build · Legenda, Giza", cover:"DSC02035.jpg",
-                 facts:{ Location:"Legenda, Giza", Type:"Residential · Villa", Scope:"Design + build, inside + out", Year:"2024" },
+    "l-villa-2":  { name:"L-Villa II", sub:"Villa · Design + build · Legenda, Sheikh Zayed", cover:"DSC02035.jpg",
+                 facts:{ Location:"Legenda, Sheikh Zayed", Type:"Residential · Villa", Scope:"Design + build, inside + out", Year:"2024" },
                  intro:"The mirror twin of L-Villa, right next door in Legenda, finished inside and out to the same standard.",
                  gallery:["DSC02036.jpg", "DSC01939.jpg", "DSC02032.jpg"] },
     "sane":    { name:"Sane", sub:"Kids' art space · Masyaf & Almaza, North Coast", cover:"8379CE78-E7CE-4747-A89E-ADBB7ABB8C41_1_201_a.jpg",
@@ -47,22 +47,22 @@
   // Arabic text for ar/<project>.html (DRAFT for Amr's approval, Egyptian register, written in Arabic).
   // Photos, before/after and details still come from PROJECTS above; only the words change.
   const PROJECTS_AR = {
-    "polysh":      { name:"Polysh", sub:"سبا أظافر · تشطيب وتجهيز كامل · أركان، الجيزة",
-                     facts:{ "المكان":"أركان، الجيزة", "النوع":"تجاري · سبا أظافر", "نطاق العمل":"تشطيب وتجهيز كامل + الأثاث", "السنة":"2025" },
+    "polysh":      { name:"Polysh", sub:"سبا أظافر · تشطيب وتجهيز كامل · أركان، الشيخ زايد",
+                     facts:{ "المكان":"أركان، الشيخ زايد", "النوع":"تجاري · سبا أظافر", "نطاق العمل":"تشطيب وتجهيز كامل + الأثاث", "السنة":"2025" },
                      credit:"التصميم الأصلي: سارة عوض. التنفيذ: إكدو لصالح Saqala Studio.",
                      intro:"من الخرسانة حتى الأثاث، مصنوع على المقاس: جدران تيراكوتا ونيشات مقوّسة في أرجاء المكان." },
-    "s-roof":      { name:"S-Roof", sub:"سطح · تصميم وتنفيذ · سوديك كورتيارد، الجيزة",
-                     facts:{ "المكان":"سوديك كورتيارد، الجيزة", "النوع":"سكني · سطح", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
+    "s-roof":      { name:"S-Roof", sub:"سطح · تصميم وتنفيذ · سوديك كورتيارد، الشيخ زايد",
+                     facts:{ "المكان":"سوديك كورتيارد، الشيخ زايد", "النوع":"سكني · سطح", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
                      credit:"صُمّم بالتعاون مع Saqala Studio، ونفّذته إكدو.",
                      intro:"من الخرسانة إلى جلسة خارجية متكاملة: برجولة من خشب البيتش باين، وأريكة وبار وكاونتر وحوض مدمج وطاولة دوّارة، جميعها من التيرازو المصبوب في الموقع." },
     "m-villa":     { name:"M-Villa", sub:"فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة الجديدة",
                      facts:{ "المكان":"ماونتن فيو، القاهرة الجديدة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ", "السنة":"2026" },
                      intro:"هيكل خرساني تحوّل إلى بيت دافئ وهادئ، من تصميمنا وتنفيذنا: أرضيات من الرخام الإيطالي بأسلوب أوبن بوك، ودرج بدرجات رخامية، وساتر من الشرائح الخشبية بطول الطابق، وإضاءة مخفية في الدرج." },
-    "l-villa": { name:"L-Villa", sub:"فيلا · تصميم وتنفيذ · ليجندا، الجيزة",
-                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ، من الداخل والخارج", "السنة":"2023" },
+    "l-villa": { name:"L-Villa", sub:"فيلا · تصميم وتنفيذ · ليجندا، الشيخ زايد",
+                     facts:{ "المكان":"ليجندا، الشيخ زايد", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ، من الداخل والخارج", "السنة":"2023" },
                      intro:"فيلا عائلية في ليجندا، تم تشطيبها من الداخل والخارج: باركيه بنقشة هيرينجبون، ومطبخ خشبي كلاسيكي، وغرفة ملابس، وحمّامات من الحجر، ومدخل حجري جديد." },
-    "l-villa-2": { name:"L-Villa II", sub:"فيلا · تصميم وتنفيذ · ليجندا، الجيزة",
-                     facts:{ "المكان":"ليجندا، الجيزة", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ، من الداخل والخارج", "السنة":"2024" },
+    "l-villa-2": { name:"L-Villa II", sub:"فيلا · تصميم وتنفيذ · ليجندا، الشيخ زايد",
+                     facts:{ "المكان":"ليجندا، الشيخ زايد", "النوع":"سكني · فيلا", "نطاق العمل":"تصميم وتنفيذ، من الداخل والخارج", "السنة":"2024" },
                      intro:"التوأم المعكوس لـ L-Villa، بجوارها مباشرة في ليجندا، وتم تشطيبها من الداخل والخارج بالمستوى نفسه." },
     "sane":        { name:"Sane", sub:"مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي",
                      facts:{ "المكان":"مصياف وألماظة، الساحل الشمالي", "النوع":"تعليمي · مساحة للأطفال", "نطاق العمل":"تنسيق حدائق · تشطيب داخلي · أثاث", "السنة":"2025" },

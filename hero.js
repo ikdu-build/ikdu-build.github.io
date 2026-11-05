@@ -1,13 +1,13 @@
 // Home page script, shared by hero.html (English) and ar/hero.html (Arabic). Text comes from H below.
 const H = window.IKDU_AR ? {
-  info: { "polysh": ["Polysh", "سبا أظافر · تشطيب وتجهيز كامل · أركان، الجيزة"], "s-roof": ["S-Roof", "سطح · تصميم وتنفيذ · سوديك كورتيارد، الجيزة"],
-          "m-villa": ["M-Villa", "فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة الجديدة"], "l-villa": ["L-Villa", "فيلا · تصميم وتنفيذ · ليجندا، الجيزة"], "l-villa-2": ["L-Villa II", "فيلا · تصميم وتنفيذ · ليجندا، الجيزة"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
+  info: { "polysh": ["Polysh", "سبا أظافر · تشطيب وتجهيز كامل · أركان، الشيخ زايد"], "s-roof": ["S-Roof", "سطح · تصميم وتنفيذ · سوديك كورتيارد، الشيخ زايد"],
+          "m-villa": ["M-Villa", "فيلا · تصميم وتنفيذ · ماونتن فيو، القاهرة الجديدة"], "l-villa": ["L-Villa", "فيلا · تصميم وتنفيذ · ليجندا، الشيخ زايد"], "l-villa-2": ["L-Villa II", "فيلا · تصميم وتنفيذ · ليجندا، الشيخ زايد"], "sane": ["Sane", "مساحة فنية للأطفال · مصياف وألماظة، الساحل الشمالي"] },
   by: " من إكدو", jump: "روح لقسم", all: "جميع المشاريع", jumpNav: "فئات المشاريع", count: n => n === 1 ? "مشروع واحد" : `${n} مشاريع`,
   nextQ: "مشروعك التالي؟", talk: "تحدّث معنا &larr;", ours: "مشاريعنا", oursSub: "اضغط على أي مشروع لمشاهدته.", what: "ما نقدّمه", svc: [["تصميم وتنفيذ", "services"], ["أنت تصمّم، ونحن ننفّذ", "services"], ["أثاث", "services"]], more: "من نحن وخدماتنا &larr;", down: "مشاريعنا",
   view: "شاهد المشروع &larr;", cr: { h: "من التصميم إلى التنفيذ", p: "تصميمات ثلاثية الأبعاد بجانب الأماكن التي سلّمناها.", btn: "شاهدها جنبًا إلى جنب &larr;", r: "تصميم ثلاثي الأبعاد", d: "تم التنفيذ" }, tagline: "تصميمات ومقاولات وتشطيبات بنظام تسليم المفتاح في جميع أنحاء مصر."
 } : {
-  info: { "polysh": ["Polysh", "Nail spa · Full fit-out · Arkan, Giza"], "s-roof": ["S-Roof", "Rooftop · Design + build · Sodic Courtyard, Giza"],
-          "m-villa": ["M-Villa", "Villa · Design + build · Mountain View, New Cairo"], "l-villa": ["L-Villa", "Villa · Design + build · Legenda, Giza"], "l-villa-2": ["L-Villa II", "Villa · Design + build · Legenda, Giza"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
+  info: { "polysh": ["Polysh", "Nail spa · Full fit-out · Arkan, Sheikh Zayed"], "s-roof": ["S-Roof", "Rooftop · Design + build · Sodic Courtyard, Sheikh Zayed"],
+          "m-villa": ["M-Villa", "Villa · Design + build · Mountain View, New Cairo"], "l-villa": ["L-Villa", "Villa · Design + build · Legenda, Sheikh Zayed"], "l-villa-2": ["L-Villa II", "Villa · Design + build · Legenda, Sheikh Zayed"], "sane": ["Sane", "Kids' art space · Masyaf & Almaza, North Coast"] },
   by: " by IKDU", jump: "go to", all: "All projects", jumpNav: "Project categories", count: n => n === 1 ? "1 project" : `${n} projects`,
   nextQ: "Your project next?", talk: "Talk to us &rarr;", ours: "Our projects", oursSub: "Tap any project to see it.", what: "What we do", svc: [["Design + Build", "services"], ["You design, we build", "services"], ["Furniture", "services"]], more: "About &amp; Services &rarr;", down: "Our projects",
   view: "View project &rarr;", cr: { h: "From 3D concept to reality", p: "3D designs next to the finished spaces we delivered.", btn: "See them side by side &rarr;", r: "3D concept", d: "Delivered" }, tagline: "Design, contracting & turnkey fit-out across Egypt."
